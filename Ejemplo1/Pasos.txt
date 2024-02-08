@@ -1,0 +1,5 @@
+1. Instalar Python.
+2. Descargar los archivos de UEDI (PLY).
+3. Crear nuestro archivo de gramatica.
+4. Crear un archivo de entrada.
+5. Ejecutar el archivo gramatica.py (pyhton gramatica.py)
