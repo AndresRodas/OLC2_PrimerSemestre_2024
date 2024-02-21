@@ -1,0 +1,420 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    FLOAT
+
+Grammar
+
+Rule 0     S' -> instrucciones
+Rule 1     instrucciones -> instrucciones instruccion
+Rule 2     instrucciones -> instruccion
+Rule 3     instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PUNTOCOMA
+Rule 4     expressionList -> expressionList COMA expression
+Rule 5     expressionList -> expression
+Rule 6     expression -> expression MAS expression
+Rule 7     expression -> expression MENOS expression
+Rule 8     expression -> expression POR expression
+Rule 9     expression -> expression DIVIDIDO expression
+Rule 10    expression -> PARIZQ expression PARDER
+Rule 11    expression -> ENTERO
+Rule 12    expression -> CADENA
+
+Terminals, with rules where they appear
+
+CADENA               : 12
+COMA                 : 4
+CONSOLE              : 3
+DIVIDIDO             : 9
+ENTERO               : 11
+FLOAT                : 
+LOG                  : 3
+MAS                  : 6
+MENOS                : 7
+PARDER               : 3 10
+PARIZQ               : 3 10
+POR                  : 8
+PUNTO                : 3
+PUNTOCOMA            : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 4 5 6 6 7 7 8 8 9 9 10
+expressionList       : 3 4
+instruccion          : 1 2
+instrucciones        : 1 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . instrucciones
+    (1) instrucciones -> . instrucciones instruccion
+    (2) instrucciones -> . instruccion
+    (3) instruccion -> . CONSOLE PUNTO LOG PARIZQ expressionList PARDER PUNTOCOMA
+
+    CONSOLE         shift and go to state 3
+
+    instrucciones                  shift and go to state 1
+    instruccion                    shift and go to state 2
+
+state 1
+
+    (0) S' -> instrucciones .
+    (1) instrucciones -> instrucciones . instruccion
+    (3) instruccion -> . CONSOLE PUNTO LOG PARIZQ expressionList PARDER PUNTOCOMA
+
+    CONSOLE         shift and go to state 3
+
+    instruccion                    shift and go to state 4
+
+state 2
+
+    (2) instrucciones -> instruccion .
+
+    CONSOLE         reduce using rule 2 (instrucciones -> instruccion .)
+    $end            reduce using rule 2 (instrucciones -> instruccion .)
+
+
+state 3
+
+    (3) instruccion -> CONSOLE . PUNTO LOG PARIZQ expressionList PARDER PUNTOCOMA
+
+    PUNTO           shift and go to state 5
+
+
+state 4
+
+    (1) instrucciones -> instrucciones instruccion .
+
+    CONSOLE         reduce using rule 1 (instrucciones -> instrucciones instruccion .)
+    $end            reduce using rule 1 (instrucciones -> instrucciones instruccion .)
+
+
+state 5
+
+    (3) instruccion -> CONSOLE PUNTO . LOG PARIZQ expressionList PARDER PUNTOCOMA
+
+    LOG             shift and go to state 6
+
+
+state 6
+
+    (3) instruccion -> CONSOLE PUNTO LOG . PARIZQ expressionList PARDER PUNTOCOMA
+
+    PARIZQ          shift and go to state 7
+
+
+state 7
+
+    (3) instruccion -> CONSOLE PUNTO LOG PARIZQ . expressionList PARDER PUNTOCOMA
+    (4) expressionList -> . expressionList COMA expression
+    (5) expressionList -> . expression
+    (6) expression -> . expression MAS expression
+    (7) expression -> . expression MENOS expression
+    (8) expression -> . expression POR expression
+    (9) expression -> . expression DIVIDIDO expression
+    (10) expression -> . PARIZQ expression PARDER
+    (11) expression -> . ENTERO
+    (12) expression -> . CADENA
+
+    PARIZQ          shift and go to state 8
+    ENTERO          shift and go to state 11
+    CADENA          shift and go to state 12
+
+    expressionList                 shift and go to state 9
+    expression                     shift and go to state 10
+
+state 8
+
+    (10) expression -> PARIZQ . expression PARDER
+    (6) expression -> . expression MAS expression
+    (7) expression -> . expression MENOS expression
+    (8) expression -> . expression POR expression
+    (9) expression -> . expression DIVIDIDO expression
+    (10) expression -> . PARIZQ expression PARDER
+    (11) expression -> . ENTERO
+    (12) expression -> . CADENA
+
+    PARIZQ          shift and go to state 8
+    ENTERO          shift and go to state 11
+    CADENA          shift and go to state 12
+
+    expression                     shift and go to state 13
+
+state 9
+
+    (3) instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList . PARDER PUNTOCOMA
+    (4) expressionList -> expressionList . COMA expression
+
+    PARDER          shift and go to state 14
+    COMA            shift and go to state 15
+
+
+state 10
+
+    (5) expressionList -> expression .
+    (6) expression -> expression . MAS expression
+    (7) expression -> expression . MENOS expression
+    (8) expression -> expression . POR expression
+    (9) expression -> expression . DIVIDIDO expression
+
+    PARDER          reduce using rule 5 (expressionList -> expression .)
+    COMA            reduce using rule 5 (expressionList -> expression .)
+    MAS             shift and go to state 16
+    MENOS           shift and go to state 17
+    POR             shift and go to state 18
+    DIVIDIDO        shift and go to state 19
+
+
+state 11
+
+    (11) expression -> ENTERO .
+
+    MAS             reduce using rule 11 (expression -> ENTERO .)
+    MENOS           reduce using rule 11 (expression -> ENTERO .)
+    POR             reduce using rule 11 (expression -> ENTERO .)
+    DIVIDIDO        reduce using rule 11 (expression -> ENTERO .)
+    PARDER          reduce using rule 11 (expression -> ENTERO .)
+    COMA            reduce using rule 11 (expression -> ENTERO .)
+
+
+state 12
+
+    (12) expression -> CADENA .
+
+    MAS             reduce using rule 12 (expression -> CADENA .)
+    MENOS           reduce using rule 12 (expression -> CADENA .)
+    POR             reduce using rule 12 (expression -> CADENA .)
+    DIVIDIDO        reduce using rule 12 (expression -> CADENA .)
+    PARDER          reduce using rule 12 (expression -> CADENA .)
+    COMA            reduce using rule 12 (expression -> CADENA .)
+
+
+state 13
+
+    (10) expression -> PARIZQ expression . PARDER
+    (6) expression -> expression . MAS expression
+    (7) expression -> expression . MENOS expression
+    (8) expression -> expression . POR expression
+    (9) expression -> expression . DIVIDIDO expression
+
+    PARDER          shift and go to state 20
+    MAS             shift and go to state 16
+    MENOS           shift and go to state 17
+    POR             shift and go to state 18
+    DIVIDIDO        shift and go to state 19
+
+
+state 14
+
+    (3) instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER . PUNTOCOMA
+
+    PUNTOCOMA       shift and go to state 21
+
+
+state 15
+
+    (4) expressionList -> expressionList COMA . expression
+    (6) expression -> . expression MAS expression
+    (7) expression -> . expression MENOS expression
+    (8) expression -> . expression POR expression
+    (9) expression -> . expression DIVIDIDO expression
+    (10) expression -> . PARIZQ expression PARDER
+    (11) expression -> . ENTERO
+    (12) expression -> . CADENA
+
+    PARIZQ          shift and go to state 8
+    ENTERO          shift and go to state 11
+    CADENA          shift and go to state 12
+
+    expression                     shift and go to state 22
+
+state 16
+
+    (6) expression -> expression MAS . expression
+    (6) expression -> . expression MAS expression
+    (7) expression -> . expression MENOS expression
+    (8) expression -> . expression POR expression
+    (9) expression -> . expression DIVIDIDO expression
+    (10) expression -> . PARIZQ expression PARDER
+    (11) expression -> . ENTERO
+    (12) expression -> . CADENA
+
+    PARIZQ          shift and go to state 8
+    ENTERO          shift and go to state 11
+    CADENA          shift and go to state 12
+
+    expression                     shift and go to state 23
+
+state 17
+
+    (7) expression -> expression MENOS . expression
+    (6) expression -> . expression MAS expression
+    (7) expression -> . expression MENOS expression
+    (8) expression -> . expression POR expression
+    (9) expression -> . expression DIVIDIDO expression
+    (10) expression -> . PARIZQ expression PARDER
+    (11) expression -> . ENTERO
+    (12) expression -> . CADENA
+
+    PARIZQ          shift and go to state 8
+    ENTERO          shift and go to state 11
+    CADENA          shift and go to state 12
+
+    expression                     shift and go to state 24
+
+state 18
+
+    (8) expression -> expression POR . expression
+    (6) expression -> . expression MAS expression
+    (7) expression -> . expression MENOS expression
+    (8) expression -> . expression POR expression
+    (9) expression -> . expression DIVIDIDO expression
+    (10) expression -> . PARIZQ expression PARDER
+    (11) expression -> . ENTERO
+    (12) expression -> . CADENA
+
+    PARIZQ          shift and go to state 8
+    ENTERO          shift and go to state 11
+    CADENA          shift and go to state 12
+
+    expression                     shift and go to state 25
+
+state 19
+
+    (9) expression -> expression DIVIDIDO . expression
+    (6) expression -> . expression MAS expression
+    (7) expression -> . expression MENOS expression
+    (8) expression -> . expression POR expression
+    (9) expression -> . expression DIVIDIDO expression
+    (10) expression -> . PARIZQ expression PARDER
+    (11) expression -> . ENTERO
+    (12) expression -> . CADENA
+
+    PARIZQ          shift and go to state 8
+    ENTERO          shift and go to state 11
+    CADENA          shift and go to state 12
+
+    expression                     shift and go to state 26
+
+state 20
+
+    (10) expression -> PARIZQ expression PARDER .
+
+    MAS             reduce using rule 10 (expression -> PARIZQ expression PARDER .)
+    MENOS           reduce using rule 10 (expression -> PARIZQ expression PARDER .)
+    POR             reduce using rule 10 (expression -> PARIZQ expression PARDER .)
+    DIVIDIDO        reduce using rule 10 (expression -> PARIZQ expression PARDER .)
+    PARDER          reduce using rule 10 (expression -> PARIZQ expression PARDER .)
+    COMA            reduce using rule 10 (expression -> PARIZQ expression PARDER .)
+
+
+state 21
+
+    (3) instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PUNTOCOMA .
+
+    CONSOLE         reduce using rule 3 (instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PUNTOCOMA .)
+    $end            reduce using rule 3 (instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PUNTOCOMA .)
+
+
+state 22
+
+    (4) expressionList -> expressionList COMA expression .
+    (6) expression -> expression . MAS expression
+    (7) expression -> expression . MENOS expression
+    (8) expression -> expression . POR expression
+    (9) expression -> expression . DIVIDIDO expression
+
+    PARDER          reduce using rule 4 (expressionList -> expressionList COMA expression .)
+    COMA            reduce using rule 4 (expressionList -> expressionList COMA expression .)
+    MAS             shift and go to state 16
+    MENOS           shift and go to state 17
+    POR             shift and go to state 18
+    DIVIDIDO        shift and go to state 19
+
+
+state 23
+
+    (6) expression -> expression MAS expression .
+    (6) expression -> expression . MAS expression
+    (7) expression -> expression . MENOS expression
+    (8) expression -> expression . POR expression
+    (9) expression -> expression . DIVIDIDO expression
+
+    MAS             reduce using rule 6 (expression -> expression MAS expression .)
+    MENOS           reduce using rule 6 (expression -> expression MAS expression .)
+    PARDER          reduce using rule 6 (expression -> expression MAS expression .)
+    COMA            reduce using rule 6 (expression -> expression MAS expression .)
+    POR             shift and go to state 18
+    DIVIDIDO        shift and go to state 19
+
+  ! POR             [ reduce using rule 6 (expression -> expression MAS expression .) ]
+  ! DIVIDIDO        [ reduce using rule 6 (expression -> expression MAS expression .) ]
+  ! MAS             [ shift and go to state 16 ]
+  ! MENOS           [ shift and go to state 17 ]
+
+
+state 24
+
+    (7) expression -> expression MENOS expression .
+    (6) expression -> expression . MAS expression
+    (7) expression -> expression . MENOS expression
+    (8) expression -> expression . POR expression
+    (9) expression -> expression . DIVIDIDO expression
+
+    MAS             reduce using rule 7 (expression -> expression MENOS expression .)
+    MENOS           reduce using rule 7 (expression -> expression MENOS expression .)
+    PARDER          reduce using rule 7 (expression -> expression MENOS expression .)
+    COMA            reduce using rule 7 (expression -> expression MENOS expression .)
+    POR             shift and go to state 18
+    DIVIDIDO        shift and go to state 19
+
+  ! POR             [ reduce using rule 7 (expression -> expression MENOS expression .) ]
+  ! DIVIDIDO        [ reduce using rule 7 (expression -> expression MENOS expression .) ]
+  ! MAS             [ shift and go to state 16 ]
+  ! MENOS           [ shift and go to state 17 ]
+
+
+state 25
+
+    (8) expression -> expression POR expression .
+    (6) expression -> expression . MAS expression
+    (7) expression -> expression . MENOS expression
+    (8) expression -> expression . POR expression
+    (9) expression -> expression . DIVIDIDO expression
+
+    MAS             reduce using rule 8 (expression -> expression POR expression .)
+    MENOS           reduce using rule 8 (expression -> expression POR expression .)
+    POR             reduce using rule 8 (expression -> expression POR expression .)
+    DIVIDIDO        reduce using rule 8 (expression -> expression POR expression .)
+    PARDER          reduce using rule 8 (expression -> expression POR expression .)
+    COMA            reduce using rule 8 (expression -> expression POR expression .)
+
+  ! MAS             [ shift and go to state 16 ]
+  ! MENOS           [ shift and go to state 17 ]
+  ! POR             [ shift and go to state 18 ]
+  ! DIVIDIDO        [ shift and go to state 19 ]
+
+
+state 26
+
+    (9) expression -> expression DIVIDIDO expression .
+    (6) expression -> expression . MAS expression
+    (7) expression -> expression . MENOS expression
+    (8) expression -> expression . POR expression
+    (9) expression -> expression . DIVIDIDO expression
+
+    MAS             reduce using rule 9 (expression -> expression DIVIDIDO expression .)
+    MENOS           reduce using rule 9 (expression -> expression DIVIDIDO expression .)
+    POR             reduce using rule 9 (expression -> expression DIVIDIDO expression .)
+    DIVIDIDO        reduce using rule 9 (expression -> expression DIVIDIDO expression .)
+    PARDER          reduce using rule 9 (expression -> expression DIVIDIDO expression .)
+    COMA            reduce using rule 9 (expression -> expression DIVIDIDO expression .)
+
+  ! MAS             [ shift and go to state 16 ]
+  ! MENOS           [ shift and go to state 17 ]
+  ! POR             [ shift and go to state 18 ]
+  ! DIVIDIDO        [ shift and go to state 19 ]
+
