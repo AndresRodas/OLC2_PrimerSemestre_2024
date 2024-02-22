@@ -25,7 +25,6 @@ class Operation(Expression):
         dominant_type = dominant_table[op1.type.value][op2.type.value]
         # Suma
         if self.operador == "+":
-            print("si llego hasta aca")
             symbol = Symbol(line=self.line, col=self.col, value=op1.value+op2.value, type=dominant_type)
             return symbol
         # Resta

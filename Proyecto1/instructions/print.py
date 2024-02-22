@@ -10,6 +10,5 @@ class Print(Instruction):
         outText = ""
         for exp in self.Exp:
             sym = exp.ejecutar(ast, env)
-            print(exp)
             outText += " " + str(sym.value)
-        print(outText)
+        ast.setConsole(outText)

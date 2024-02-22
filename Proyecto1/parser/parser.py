@@ -31,11 +31,13 @@ tokens = (
     'PUNTOCOMA',
     'CADENA',
     'ENTERO',
-    'FLOAT'
+    'FLOAT',
+    'VAR'
 )
 
 t_CONSOLE  = r'console'
 t_LOG  = r'log'
+t_VAR = r'var'
 t_PARIZQ    = r'\('
 t_PARDER    = r'\)'
 t_MAS       = r'\+'
@@ -83,7 +85,7 @@ def t_FLOAT(t):
         t.value = 0
     return t
 
-t_ignore = " \t"
+t_ignore = "\n\t "
 
 t_ignore_COMMENTLINE = r'\/\/.*'
 
@@ -106,7 +108,8 @@ def p_instrucciones_lista(t):
     '''instrucciones : instrucciones instruccion
                     | instruccion '''
     if 2 < len(t):
-        t[0] = t[1].append(t[2])
+        t[1].append(t[2])
+        t[0] = t[1]
     else:
         t[0] = [t[1]]
 
@@ -169,9 +172,8 @@ def get_params(t):
     return codeParams(line, column)
 
 class Parser:
-    def __init__(self, ast, env):
-        self.ast = ast
-        self.env = env
+    def __init__(self):
+        pass
 
     def interpretar(self, input):
         lexer = Lex.lex()

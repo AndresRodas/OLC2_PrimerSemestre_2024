@@ -1,5 +1,7 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from parser.parser import Parser
+from environment.ast import Ast
+from environment.environment import Environment
 
 # Se crea una instancia de la aplicación Flask
 app = Flask(__name__)
@@ -11,13 +13,21 @@ def saludo():
 
 @app.route('/interpreter', methods=['POST'])
 def recibir_datos():
+    # Obtención del código
     jsonObj = request.json
     input_data = jsonObj.get("code")
-    parser1 = Parser("ast1", "env1")
-    instructionsArr = parser1.interpretar(input_data)
+    # Creación del entorno global
+    env = Environment(None, 'GLOBAL')
+    # Creación del AST
+    ast = Ast()
+    # Creación del parser
+    parser = Parser()
+    instructionsArr = parser.interpretar(input_data)
     for inst in instructionsArr:
-        inst.ejecutar(None, None)
-    return "Codigo ejecutado"
+        inst.ejecutar(ast, env)
+    # Estructurando respuesta
+    res = {"result": True,"console":ast.getConsole(),"errors":ast.getErrors()}
+    return jsonify(res)
 
 if __name__ == '__main__':
     app.run(debug=True)
