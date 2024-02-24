@@ -19,9 +19,8 @@ class Operation(Expression):
         self.opR = opR
 
     def ejecutar(self, ast, env):
-
-        op1 = self.opL.ejecutar(ast, env)
-        op2 = self.opR.ejecutar(ast, env)
+        op1 = self.opL.ejecutar(ast, env) # simbolo
+        op2 = self.opR.ejecutar(ast, env) # simbolo
         dominant_type = dominant_table[op1.type.value][op2.type.value]
         # Suma
         if self.operador == "+":
@@ -40,7 +39,7 @@ class Operation(Expression):
         # División
         if self.operador == "/":
             if op2.value == 0:
-                print("Error: no se puede dividir por 0")
+                ast.setErrors("Error: no se puede dividir por 0")
                 return 
             if dominant_type == ExpressionType.INTEGER or dominant_type == ExpressionType.FLOAT:
                 return Symbol(line=self.line, col=self.col, value=op1.value/op2.value, type=dominant_type)

@@ -22,7 +22,9 @@ def recibir_datos():
     ast = Ast()
     # Creación del parser
     parser = Parser()
+    # [inst1, inst2, inst2]
     instructionsArr = parser.interpretar(input_data)
+    # Reconocimiento
     for inst in instructionsArr:
         inst.ejecutar(ast, env)
     # Estructurando respuesta

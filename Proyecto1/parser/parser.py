@@ -16,10 +16,13 @@ class codeParams:
         self.column = column
 
 #LEXICO
+reserved_words = {
+    'console': 'CONSOLE', 
+    'log': 'LOG', 
+    'var': 'VAR'
+}
 # Listado de tokens
-tokens = (
-    'CONSOLE',
-    'LOG',
+tokens = [
     'PARIZQ',
     'PARDER',
     'MAS',
@@ -32,12 +35,9 @@ tokens = (
     'CADENA',
     'ENTERO',
     'FLOAT',
-    'VAR'
-)
+    'ID'
+] + list(reserved_words.values())
 
-t_CONSOLE  = r'console'
-t_LOG  = r'log'
-t_VAR = r'var'
 t_PARIZQ    = r'\('
 t_PARDER    = r'\)'
 t_MAS       = r'\+'
@@ -58,7 +58,7 @@ def t_CADENA(t):
         t.value = Primitive(line, column, strValue.replace('"', ''), ExpressionType.STRING)
     except ValueError:
         print("Error al convertir string %d", t.value)
-        t.value = None
+        t.value = Primitive(0, 0, None, ExpressionType.NULL)
     return t
 
 def t_ENTERO(t):
@@ -70,7 +70,7 @@ def t_ENTERO(t):
         t.value = Primitive(line, column, intValue, ExpressionType.INTEGER)
     except ValueError:
         print("Error al convertir a entero %d", t.value)
-        t.value = 0
+        t.value = Primitive(0, 0, None, ExpressionType.NULL)
     return t
 
 def t_FLOAT(t):
@@ -82,12 +82,21 @@ def t_FLOAT(t):
         t.value = Primitive(line, column, floatValue, ExpressionType.FLOAT)
     except ValueError:
         print("Error al convertir a decimal %d", t.value)
-        t.value = 0
+        t.value = Primitive(0, 0, None, ExpressionType.NULL)
     return t
 
-t_ignore = "\n\t "
+def t_ID(t):
+     r'[a-zA-Z_][a-zA-Z_0-9]*'
+     t.type = reserved_words.get(t.value.lower(),'ID')
+     return t
+
+t_ignore = " \t"
 
 t_ignore_COMMENTLINE = r'\/\/.*'
+
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += t.value.count("\n")
 
 def t_ignore_COMMENTBLOCK(t):
     r'\/\*[^*]*\*+(?:[^/*][^*]*\*+)*\/'
@@ -100,7 +109,7 @@ def t_error(t):
 #SINTACTICO
 precedence = (
     ('left','MAS','MENOS'),
-    ('left','POR','DIVIDIDO'),
+    ('left','POR','DIVIDIDO')
 )
 
 #START
@@ -156,8 +165,12 @@ def p_expression_agrupacion(t):
 
 def p_expression_primitiva(t):
     '''expression    : ENTERO
+                    | ID
                     | CADENA'''
-    t[0] = t[1]
+    #t[0] = t[1]
+    print('CHECK')
+    print(t[1])
+    t[0] = Primitive(0, 0, "ID ENCONTRADO", ExpressionType.STRING)
 
 def p_error(p):
     if p:
@@ -178,5 +191,5 @@ class Parser:
     def interpretar(self, input):
         lexer = Lex.lex()
         parser = yacc.yacc()
-        result = parser.parse(input)
+        result = parser.parse(input) #[inst1, inst2..]
         return result
