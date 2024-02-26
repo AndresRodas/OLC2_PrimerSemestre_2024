@@ -18,7 +18,7 @@ class Ast():
         return self.instructions
     
     def setErrors(self, errors):
-        self.errors += errors
+        self.errors.append(errors)
     
     def getErrors(self):
         return self.errors

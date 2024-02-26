@@ -6,9 +6,11 @@ import parser.ply.lex as Lex
 from environment.types import ExpressionType
 from expressions.primitive import Primitive
 from expressions.operation import Operation
+from expressions.access import Access
 
 # Instructions imports
 from instructions.print import Print
+from instructions.declaration import Declaration
 
 class codeParams:
     def __init__(self, line, column):
@@ -19,8 +21,13 @@ class codeParams:
 reserved_words = {
     'console': 'CONSOLE', 
     'log': 'LOG', 
-    'var': 'VAR'
+    'var': 'VAR',
+    'float': 'FLOAT',
+    'number': 'NUMBER',
+    'string': 'STRING',
+    'bool': 'BOOL'
 }
+
 # Listado de tokens
 tokens = [
     'PARIZQ',
@@ -30,23 +37,31 @@ tokens = [
     'POR',
     'DIVIDIDO',
     'PUNTO',
+    'DOSPTS',
     'COMA',
-    'PUNTOCOMA',
+    'PYC',
     'CADENA',
     'ENTERO',
-    'FLOAT',
-    'ID'
+    'DECIMAL',
+    'IG',
+    'ID',
+    'CORIZQ',
+    'CORDER'
 ] + list(reserved_words.values())
 
-t_PARIZQ    = r'\('
-t_PARDER    = r'\)'
-t_MAS       = r'\+'
-t_MENOS     = r'-'
-t_POR       = r'\*'
-t_DIVIDIDO  = r'/'
-t_PUNTO    = r'\.'
-t_COMA    = r','
-t_PUNTOCOMA    = r';'
+t_PARIZQ        = r'\('
+t_PARDER        = r'\)'
+t_MAS           = r'\+'
+t_MENOS         = r'-'
+t_POR           = r'\*'
+t_DIVIDIDO      = r'/'
+t_PUNTO         = r'\.'
+t_DOSPTS        = r':'
+t_COMA          = r','
+t_PYC           = r';'
+t_IG            = r'='
+t_CORIZQ        = r'\['
+t_CORDER        = r'\]'
 
 #Función de reconocimiento
 def t_CADENA(t):
@@ -73,7 +88,7 @@ def t_ENTERO(t):
         t.value = Primitive(0, 0, None, ExpressionType.NULL)
     return t
 
-def t_FLOAT(t):
+def t_DECIMAL(t):
     r'\d+\.\d+'
     try:
         floatValue = float(t.value)
@@ -86,9 +101,9 @@ def t_FLOAT(t):
     return t
 
 def t_ID(t):
-     r'[a-zA-Z_][a-zA-Z_0-9]*'
-     t.type = reserved_words.get(t.value.lower(),'ID')
-     return t
+    r'[a-zA-Z_][a-zA-Z_0-9]*'
+    t.type = reserved_words.get(t.value.lower(),'ID')
+    return t
 
 t_ignore = " \t"
 
@@ -124,9 +139,30 @@ def p_instrucciones_lista(t):
 
 #Listado de instrucciones
 def p_instruccion_console(t):
-    'instruccion : CONSOLE PUNTO LOG PARIZQ expressionList PARDER PUNTOCOMA'
+    'instruccion : CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC'
     params = get_params(t)
     t[0] = Print(params.line, params.column, t[5])
+
+def p_instruccion_declaration(t):
+    'instruccion : VAR ID DOSPTS type IG expression PYC'
+    params = get_params(t)
+    t[0] = Declaration(params.line, params.column, t[2], t[4], t[6])
+
+def p_type_prod(t):
+    '''type : NUMBER
+            | FLOAT
+            | STRING
+            | BOOL'''
+    if t[1] == 'number':
+        t[0] = ExpressionType.INTEGER
+    if t[1] == 'float': 
+        t[0] = ExpressionType.FLOAT
+    if t[1] == 'string':
+        t[0] = ExpressionType.STRING
+    if t[1] == 'bool':
+        t[0] = ExpressionType.BOOLEAN
+    print('++++++++++')    
+    print(t[1])    
 
 # Expressions
 def p_expression_list(t):
@@ -165,12 +201,27 @@ def p_expression_agrupacion(t):
 
 def p_expression_primitiva(t):
     '''expression    : ENTERO
-                    | ID
-                    | CADENA'''
-    #t[0] = t[1]
-    print('CHECK')
-    print(t[1])
-    t[0] = Primitive(0, 0, "ID ENCONTRADO", ExpressionType.STRING)
+                    | CADENA
+                    | listArray'''
+    t[0] = t[1]
+
+def p_expression_list_array(t):
+    '''listArray    : listArray PUNTO ID
+                    | listArray listAccessArray
+                    | ID'''
+    params = get_params(t)
+    if len(t) > 3:
+        print('ToDo: ArrayAccess')
+    elif len(t) > 2:
+        print('ToDo: ArrayAccess')
+    else:
+        t[0] = Access(params.line, params.column, t[1])
+
+
+def p_expression_list_access_array(t):
+    '''listAccessArray : listAccessArray CORIZQ expression CORDER
+                    | CORIZQ expression CORDER'''
+    t[0] = t[1]
 
 def p_error(p):
     if p:
@@ -191,5 +242,5 @@ class Parser:
     def interpretar(self, input):
         lexer = Lex.lex()
         parser = yacc.yacc()
-        result = parser.parse(input) #[inst1, inst2..]
+        result = parser.parse(input)
         return result

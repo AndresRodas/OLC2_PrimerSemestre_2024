@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'leftMASMENOSleftPORDIVIDIDOCADENA COMA CONSOLE DIVIDIDO ENTERO FLOAT ID LOG MAS MENOS PARDER PARIZQ POR PUNTO PUNTOCOMA VARinstrucciones : instrucciones instruccion\n                    | instruccion instruccion : CONSOLE PUNTO LOG PARIZQ expressionList PARDER PUNTOCOMAexpressionList : expressionList COMA expression\n                    | expression expression : expression MAS expressionexpression : expression MENOS expressionexpression : expression POR expressionexpression : expression DIVIDIDO expressionexpression : PARIZQ expression PARDERexpression    : ENTERO\n                    | ID\n                    | CADENA'
+_lr_signature = 'leftMASMENOSleftPORDIVIDIDOBOOL CADENA COMA CONSOLE CORDER CORIZQ DECIMAL DIVIDIDO DOSPTS ENTERO FLOAT ID IG LOG MAS MENOS NUMBER PARDER PARIZQ POR PUNTO PYC STRING VARinstrucciones : instrucciones instruccion\n                    | instruccion instruccion : CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYCinstruccion : VAR ID DOSPTS type IG expression PYCtype : NUMBER\n            | FLOAT\n            | STRING\n            | BOOLexpressionList : expressionList COMA expression\n                    | expression expression : expression MAS expressionexpression : expression MENOS expressionexpression : expression POR expressionexpression : expression DIVIDIDO expressionexpression : PARIZQ expression PARDERexpression    : ENTERO\n                    | CADENA\n                    | listArraylistArray    : listArray PUNTO ID\n                    | listArray listAccessArray\n                    | IDlistAccessArray : listAccessArray CORIZQ expression CORDER\n                    | CORIZQ expression CORDER'
     
-_lr_action_items = {'CONSOLE':([0,1,2,4,22,],[3,3,-2,-1,-3,]),'$end':([1,2,4,22,],[0,-2,-1,-3,]),'PUNTO':([3,],[5,]),'LOG':([5,],[6,]),'PARIZQ':([6,7,8,16,17,18,19,20,],[7,8,8,8,8,8,8,8,]),'ENTERO':([7,8,16,17,18,19,20,],[11,11,11,11,11,11,11,]),'ID':([7,8,16,17,18,19,20,],[12,12,12,12,12,12,12,]),'CADENA':([7,8,16,17,18,19,20,],[13,13,13,13,13,13,13,]),'PARDER':([9,10,11,12,13,14,21,23,24,25,26,27,],[15,-5,-11,-12,-13,21,-10,-4,-6,-7,-8,-9,]),'COMA':([9,10,11,12,13,21,23,24,25,26,27,],[16,-5,-11,-12,-13,-10,-4,-6,-7,-8,-9,]),'MAS':([10,11,12,13,14,21,23,24,25,26,27,],[17,-11,-12,-13,17,-10,17,-6,-7,-8,-9,]),'MENOS':([10,11,12,13,14,21,23,24,25,26,27,],[18,-11,-12,-13,18,-10,18,-6,-7,-8,-9,]),'POR':([10,11,12,13,14,21,23,24,25,26,27,],[19,-11,-12,-13,19,-10,19,19,19,-8,-9,]),'DIVIDIDO':([10,11,12,13,14,21,23,24,25,26,27,],[20,-11,-12,-13,20,-10,20,20,20,-8,-9,]),'PUNTOCOMA':([15,],[22,]),}
+_lr_action_items = {'CONSOLE':([0,1,2,5,36,45,],[3,3,-2,-1,-3,-4,]),'VAR':([0,1,2,5,36,45,],[4,4,-2,-1,-3,-4,]),'$end':([1,2,5,36,45,],[0,-2,-1,-3,-4,]),'PUNTO':([3,21,22,32,42,47,48,],[6,31,-21,-20,-19,-23,-22,]),'ID':([4,10,16,23,26,27,28,29,30,31,33,43,],[7,22,22,22,22,22,22,22,22,42,22,22,]),'LOG':([6,],[8,]),'DOSPTS':([7,],[9,]),'PARIZQ':([8,10,16,23,26,27,28,29,30,33,43,],[10,16,16,16,16,16,16,16,16,16,16,]),'NUMBER':([9,],[12,]),'FLOAT':([9,],[13,]),'STRING':([9,],[14,]),'BOOL':([9,],[15,]),'ENTERO':([10,16,23,26,27,28,29,30,33,43,],[19,19,19,19,19,19,19,19,19,19,]),'CADENA':([10,16,23,26,27,28,29,30,33,43,],[20,20,20,20,20,20,20,20,20,20,]),'IG':([11,12,13,14,15,],[23,-5,-6,-7,-8,]),'PARDER':([17,18,19,20,21,22,24,32,35,37,38,39,40,41,42,47,48,],[25,-10,-16,-17,-18,-21,35,-20,-15,-9,-11,-12,-13,-14,-19,-23,-22,]),'COMA':([17,18,19,20,21,22,32,35,37,38,39,40,41,42,47,48,],[26,-10,-16,-17,-18,-21,-20,-15,-9,-11,-12,-13,-14,-19,-23,-22,]),'MAS':([18,19,20,21,22,24,32,34,35,37,38,39,40,41,42,44,46,47,48,],[27,-16,-17,-18,-21,27,-20,27,-15,27,-11,-12,-13,-14,-19,27,27,-23,-22,]),'MENOS':([18,19,20,21,22,24,32,34,35,37,38,39,40,41,42,44,46,47,48,],[28,-16,-17,-18,-21,28,-20,28,-15,28,-11,-12,-13,-14,-19,28,28,-23,-22,]),'POR':([18,19,20,21,22,24,32,34,35,37,38,39,40,41,42,44,46,47,48,],[29,-16,-17,-18,-21,29,-20,29,-15,29,29,29,-13,-14,-19,29,29,-23,-22,]),'DIVIDIDO':([18,19,20,21,22,24,32,34,35,37,38,39,40,41,42,44,46,47,48,],[30,-16,-17,-18,-21,30,-20,30,-15,30,30,30,-13,-14,-19,30,30,-23,-22,]),'PYC':([19,20,21,22,25,32,34,35,38,39,40,41,42,47,48,],[-16,-17,-18,-21,36,-20,45,-15,-11,-12,-13,-14,-19,-23,-22,]),'CORDER':([19,20,21,22,32,35,38,39,40,41,42,44,46,47,48,],[-16,-17,-18,-21,-20,-15,-11,-12,-13,-14,-19,47,48,-23,-22,]),'CORIZQ':([21,22,32,42,47,48,],[33,-21,43,-19,-23,-22,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'instrucciones':([0,],[1,]),'instruccion':([0,1,],[2,4,]),'expressionList':([7,],[9,]),'expression':([7,8,16,17,18,19,20,],[10,14,23,24,25,26,27,]),}
+_lr_goto_items = {'instrucciones':([0,],[1,]),'instruccion':([0,1,],[2,5,]),'type':([9,],[11,]),'expressionList':([10,],[17,]),'expression':([10,16,23,26,27,28,29,30,33,43,],[18,24,34,37,38,39,40,41,44,46,]),'listArray':([10,16,23,26,27,28,29,30,33,43,],[21,21,21,21,21,21,21,21,21,21,]),'listAccessArray':([21,],[32,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,17 +27,27 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> instrucciones","S'",1,None,None,None),
-  ('instrucciones -> instrucciones instruccion','instrucciones',2,'p_instrucciones_lista','parser.py',119),
-  ('instrucciones -> instruccion','instrucciones',1,'p_instrucciones_lista','parser.py',120),
-  ('instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PUNTOCOMA','instruccion',7,'p_instruccion_console','parser.py',129),
-  ('expressionList -> expressionList COMA expression','expressionList',3,'p_expression_list','parser.py',135),
-  ('expressionList -> expression','expressionList',1,'p_expression_list','parser.py',136),
-  ('expression -> expression MAS expression','expression',3,'p_expression_add','parser.py',145),
-  ('expression -> expression MENOS expression','expression',3,'p_expression_sub','parser.py',150),
-  ('expression -> expression POR expression','expression',3,'p_expression_mult','parser.py',155),
-  ('expression -> expression DIVIDIDO expression','expression',3,'p_expression_div','parser.py',160),
-  ('expression -> PARIZQ expression PARDER','expression',3,'p_expression_agrupacion','parser.py',165),
-  ('expression -> ENTERO','expression',1,'p_expression_primitiva','parser.py',169),
-  ('expression -> ID','expression',1,'p_expression_primitiva','parser.py',170),
-  ('expression -> CADENA','expression',1,'p_expression_primitiva','parser.py',171),
+  ('instrucciones -> instrucciones instruccion','instrucciones',2,'p_instrucciones_lista','parser.py',132),
+  ('instrucciones -> instruccion','instrucciones',1,'p_instrucciones_lista','parser.py',133),
+  ('instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC','instruccion',7,'p_instruccion_console','parser.py',142),
+  ('instruccion -> VAR ID DOSPTS type IG expression PYC','instruccion',7,'p_instruccion_declaration','parser.py',147),
+  ('type -> NUMBER','type',1,'p_type_prod','parser.py',152),
+  ('type -> FLOAT','type',1,'p_type_prod','parser.py',153),
+  ('type -> STRING','type',1,'p_type_prod','parser.py',154),
+  ('type -> BOOL','type',1,'p_type_prod','parser.py',155),
+  ('expressionList -> expressionList COMA expression','expressionList',3,'p_expression_list','parser.py',169),
+  ('expressionList -> expression','expressionList',1,'p_expression_list','parser.py',170),
+  ('expression -> expression MAS expression','expression',3,'p_expression_add','parser.py',179),
+  ('expression -> expression MENOS expression','expression',3,'p_expression_sub','parser.py',184),
+  ('expression -> expression POR expression','expression',3,'p_expression_mult','parser.py',189),
+  ('expression -> expression DIVIDIDO expression','expression',3,'p_expression_div','parser.py',194),
+  ('expression -> PARIZQ expression PARDER','expression',3,'p_expression_agrupacion','parser.py',199),
+  ('expression -> ENTERO','expression',1,'p_expression_primitiva','parser.py',203),
+  ('expression -> CADENA','expression',1,'p_expression_primitiva','parser.py',204),
+  ('expression -> listArray','expression',1,'p_expression_primitiva','parser.py',205),
+  ('listArray -> listArray PUNTO ID','listArray',3,'p_expression_list_array','parser.py',209),
+  ('listArray -> listArray listAccessArray','listArray',2,'p_expression_list_array','parser.py',210),
+  ('listArray -> ID','listArray',1,'p_expression_list_array','parser.py',211),
+  ('listAccessArray -> listAccessArray CORIZQ expression CORDER','listAccessArray',4,'p_expression_list_access_array','parser.py',222),
+  ('listAccessArray -> CORIZQ expression CORDER','listAccessArray',3,'p_expression_list_access_array','parser.py',223),
 ]
