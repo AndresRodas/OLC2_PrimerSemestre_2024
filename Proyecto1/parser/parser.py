@@ -11,6 +11,7 @@ from expressions.access import Access
 # Instructions imports
 from instructions.print import Print
 from instructions.declaration import Declaration
+from instructions.assignment import Assignment
 
 class codeParams:
     def __init__(self, line, column):
@@ -148,6 +149,11 @@ def p_instruccion_declaration(t):
     params = get_params(t)
     t[0] = Declaration(params.line, params.column, t[2], t[4], t[6])
 
+def p_instruccion_assignment(t):
+    'instruccion : ID IG expression PYC'
+    params = get_params(t)
+    t[0] = Assignment(params.line, params.column, t[1], t[3])
+
 def p_type_prod(t):
     '''type : NUMBER
             | FLOAT
@@ -160,9 +166,7 @@ def p_type_prod(t):
     if t[1] == 'string':
         t[0] = ExpressionType.STRING
     if t[1] == 'bool':
-        t[0] = ExpressionType.BOOLEAN
-    print('++++++++++')    
-    print(t[1])    
+        t[0] = ExpressionType.BOOLEAN  
 
 # Expressions
 def p_expression_list(t):

@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from parser.parser import Parser
 from environment.ast import Ast
 from environment.environment import Environment
 
 # Se crea una instancia de la aplicación Flask
 app = Flask(__name__)
+CORS(app)
 
 # Se define una ruta de Test
 @app.route('/ping')
@@ -13,6 +15,7 @@ def saludo():
 
 @app.route('/interpreter', methods=['POST'])
 def recibir_datos():
+    print("hola mundio")
     # Obtención del código
     jsonObj = request.json
     input_data = jsonObj.get("code")

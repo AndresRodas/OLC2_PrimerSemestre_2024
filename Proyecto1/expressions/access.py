@@ -8,7 +8,6 @@ class Access(Expression):
 
     def ejecutar(self, ast, env):
         # Realizar busqueda en entorno
-        print(self.id)
         sym = env.getVariable(ast, self.id)
         return sym
 

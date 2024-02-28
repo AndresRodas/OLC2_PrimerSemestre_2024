@@ -18,8 +18,21 @@ class Environment():
     def getVariable(self, ast, id):
         tmpEnv = self
         while True:
-            if id in self.tabla:
-                return self.tabla[id]
+            if id in tmpEnv.tabla:
+                return tmpEnv.tabla[id]
+            if tmpEnv.previous == None:
+                break
+            else:
+                tmpEnv = tmpEnv.previous
+        ast.setErrors(f"La variable {id} no existe.")
+        return Symbol(0, 0, None, ExpressionType.NULL)
+
+    def setVariable(self, ast, id, symbol):
+        tmpEnv = self
+        while True:
+            if id in tmpEnv.tabla:
+                tmpEnv.tabla[id] = symbol
+                return symbol
             if tmpEnv.previous == None:
                 break
             else:
