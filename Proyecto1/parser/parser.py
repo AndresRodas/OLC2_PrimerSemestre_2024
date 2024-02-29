@@ -7,11 +7,14 @@ from environment.types import ExpressionType
 from expressions.primitive import Primitive
 from expressions.operation import Operation
 from expressions.access import Access
+from expressions.array import Array
+from expressions.array_access import ArrayAccess
 
 # Instructions imports
 from instructions.print import Print
 from instructions.declaration import Declaration
 from instructions.assignment import Assignment
+from instructions.array_declaration import ArrayDeclaration
 
 class codeParams:
     def __init__(self, line, column):
@@ -149,6 +152,11 @@ def p_instruccion_declaration(t):
     params = get_params(t)
     t[0] = Declaration(params.line, params.column, t[2], t[4], t[6])
 
+def p_instruccion_array_declaration(t):
+    'instruccion : VAR ID DOSPTS type CORIZQ CORDER IG expression PYC'
+    params = get_params(t)
+    t[0] = ArrayDeclaration(params.line, params.column, t[2], t[4], t[8])
+
 def p_instruccion_assignment(t):
     'instruccion : ID IG expression PYC'
     params = get_params(t)
@@ -209,23 +217,22 @@ def p_expression_primitiva(t):
                     | listArray'''
     t[0] = t[1]
 
-def p_expression_list_array(t):
-    '''listArray    : listArray PUNTO ID
-                    | listArray listAccessArray
-                    | ID'''
+def p_expression_array_primitiva(t):
+    '''expression : CORIZQ expressionList CORDER'''
     params = get_params(t)
-    if len(t) > 3:
-        print('ToDo: ArrayAccess')
-    elif len(t) > 2:
-        print('ToDo: ArrayAccess')
+    t[0] = Array(params.line, params.column, t[2])
+
+def p_expression_list_array(t):
+    '''listArray : listArray CORIZQ expression CORDER
+                | listArray PUNTO ID
+                | ID'''
+    params = get_params(t)
+    if len(t) > 4:
+        t[0] = ArrayAccess(params.line, params.column, t[1], t[3])
+    elif len(t) > 3:
+        print('ToDo: InterfaceAccess')
     else:
         t[0] = Access(params.line, params.column, t[1])
-
-
-def p_expression_list_access_array(t):
-    '''listAccessArray : listAccessArray CORIZQ expression CORDER
-                    | CORIZQ expression CORDER'''
-    t[0] = t[1]
 
 def p_error(p):
     if p:

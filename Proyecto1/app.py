@@ -15,7 +15,6 @@ def saludo():
 
 @app.route('/interpreter', methods=['POST'])
 def recibir_datos():
-    print("hola mundio")
     # Obtención del código
     jsonObj = request.json
     input_data = jsonObj.get("code")

@@ -1,5 +1,4 @@
 from interfaces.instruction import Instruction
-from environment.types import ExpressionType
 
 class Assignment(Instruction):
     def __init__(self, line, col, id, exp):
