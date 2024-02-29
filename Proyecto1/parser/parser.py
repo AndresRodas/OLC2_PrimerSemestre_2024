@@ -174,7 +174,7 @@ def p_type_prod(t):
     if t[1] == 'string':
         t[0] = ExpressionType.STRING
     if t[1] == 'bool':
-        t[0] = ExpressionType.BOOLEAN  
+        t[0] = ExpressionType.BOOLEAN
 
 # Expressions
 def p_expression_list(t):

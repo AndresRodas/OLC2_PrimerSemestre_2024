@@ -23,7 +23,7 @@ const Home = () => {
                 <InputTextarea value={consoleText} rows={15} cols={60} style={{marginBottom: '5%', marginLeft: '2%'}} onChange={e => {setConsoleText(e.target.value)}}/>
             </div>
             <div style={{display: 'flex', marginBottom: '3%', justifyContent: 'center'}}>
-                <Button label="RUN INTERPRETER" onClick={CompileInterpreter} style={{marginRight: '2%'}}/>
+                <Button label="INTERPRETAR" onClick={CompileInterpreter} style={{marginRight: '2%'}}/>
             </div>
         </div>
     );

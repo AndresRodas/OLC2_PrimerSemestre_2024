@@ -13,7 +13,7 @@ class Declaration(Instruction):
         result = self.exp.ejecutar(ast, env)
         # Validar tipo
         if result.type != self.type:
-            ast.setErrors("Error: tipo incorrecto")
+            ast.setErrors("Los tipos de dato son incorrectos")
             return
         # Agregar al entorno
         env.saveVariable(ast, self.id, result)
