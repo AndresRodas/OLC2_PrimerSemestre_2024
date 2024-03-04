@@ -6,935 +6,2631 @@ Unused terminals:
 
 Grammar
 
-Rule 0     S' -> instrucciones
-Rule 1     instrucciones -> instrucciones instruccion
-Rule 2     instrucciones -> instruccion
-Rule 3     instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC
-Rule 4     instruccion -> VAR ID DOSPTS type IG expression PYC
-Rule 5     instruccion -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC
-Rule 6     instruccion -> ID IG expression PYC
-Rule 7     type -> NUMBER
-Rule 8     type -> FLOAT
-Rule 9     type -> STRING
-Rule 10    type -> BOOL
-Rule 11    expressionList -> expressionList COMA expression
-Rule 12    expressionList -> expression
-Rule 13    expression -> expression MAS expression
-Rule 14    expression -> expression MENOS expression
-Rule 15    expression -> expression POR expression
-Rule 16    expression -> expression DIVIDIDO expression
-Rule 17    expression -> PARIZQ expression PARDER
-Rule 18    expression -> ENTERO
-Rule 19    expression -> CADENA
-Rule 20    expression -> listArray
-Rule 21    expression -> CORIZQ expressionList CORDER
-Rule 22    listArray -> listArray CORIZQ expression CORDER
-Rule 23    listArray -> listArray PUNTO ID
-Rule 24    listArray -> ID
+Rule 0     S' -> s
+Rule 1     s -> block
+Rule 2     block -> block instruccion
+Rule 3     block -> instruccion
+Rule 4     instruccion -> print
+Rule 5     instruccion -> ifinstruction
+Rule 6     instruccion -> whileinstruction
+Rule 7     instruccion -> declaration
+Rule 8     instruccion -> arraydeclaration
+Rule 9     instruccion -> assignment
+Rule 10    print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC
+Rule 11    ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+Rule 12    whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+Rule 13    declaration -> VAR ID DOSPTS type IG expression PYC
+Rule 14    arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC
+Rule 15    assignment -> ID IG expression PYC
+Rule 16    type -> NUMBER
+Rule 17    type -> FLOAT
+Rule 18    type -> STRING
+Rule 19    type -> BOOL
+Rule 20    expressionList -> expressionList COMA expression
+Rule 21    expressionList -> expression
+Rule 22    expression -> expression MAS expression
+Rule 23    expression -> expression MENOS expression
+Rule 24    expression -> expression POR expression
+Rule 25    expression -> expression DIVIDIDO expression
+Rule 26    expression -> expression MAYOR expression
+Rule 27    expression -> expression MENOR expression
+Rule 28    expression -> expression MAYORIG expression
+Rule 29    expression -> expression MENORIG expression
+Rule 30    expression -> expression IGIG expression
+Rule 31    expression -> expression DIF expression
+Rule 32    expression -> expression AND expression
+Rule 33    expression -> expression OR expression
+Rule 34    expression -> NOT expression
+Rule 35    expression -> PARIZQ expression PARDER
+Rule 36    expression -> ENTERO
+Rule 37    expression -> CADENA
+Rule 38    expression -> listArray
+Rule 39    expression -> CORIZQ expressionList CORDER
+Rule 40    listArray -> listArray CORIZQ expression CORDER
+Rule 41    listArray -> listArray PUNTO ID
+Rule 42    listArray -> ID
 
 Terminals, with rules where they appear
 
-BOOL                 : 10
-CADENA               : 19
-COMA                 : 11
-CONSOLE              : 3
-CORDER               : 5 21 22
-CORIZQ               : 5 21 22
+AND                  : 32
+BOOL                 : 19
+CADENA               : 37
+COMA                 : 20
+CONSOLE              : 10
+CORDER               : 14 39 40
+CORIZQ               : 14 39 40
 DECIMAL              : 
-DIVIDIDO             : 16
-DOSPTS               : 4 5
-ENTERO               : 18
-FLOAT                : 8
-ID                   : 4 5 6 23 24
-IG                   : 4 5 6
-LOG                  : 3
-MAS                  : 13
-MENOS                : 14
-NUMBER               : 7
-PARDER               : 3 17
-PARIZQ               : 3 17
-POR                  : 15
-PUNTO                : 3 23
-PYC                  : 3 4 5 6
-STRING               : 9
-VAR                  : 4 5
+DIF                  : 31
+DIVIDIDO             : 25
+DOSPTS               : 13 14
+ENTERO               : 36
+FLOAT                : 17
+ID                   : 13 14 15 41 42
+IF                   : 11
+IG                   : 13 14 15
+IGIG                 : 30
+LLAVEDER             : 11 12
+LLAVEIZQ             : 11 12
+LOG                  : 10
+MAS                  : 22
+MAYOR                : 26
+MAYORIG              : 28
+MENOR                : 27
+MENORIG              : 29
+MENOS                : 23
+NOT                  : 34
+NUMBER               : 16
+OR                   : 33
+PARDER               : 10 11 12 35
+PARIZQ               : 10 11 12 35
+POR                  : 24
+PUNTO                : 10 41
+PYC                  : 10 13 14 15
+STRING               : 18
+VAR                  : 13 14
+WHILE                : 12
 error                : 
 
 Nonterminals, with rules where they appear
 
-expression           : 4 5 6 11 12 13 13 14 14 15 15 16 16 17 22
-expressionList       : 3 11 21
-instruccion          : 1 2
-instrucciones        : 1 0
-listArray            : 20 22 23
-type                 : 4 5
+arraydeclaration     : 8
+assignment           : 9
+block                : 1 2 11 12
+declaration          : 7
+expression           : 11 12 13 14 15 20 21 22 22 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30 30 31 31 32 32 33 33 34 35 40
+expressionList       : 10 20 39
+ifinstruction        : 5
+instruccion          : 2 3
+listArray            : 38 40 41
+print                : 4
+s                    : 0
+type                 : 13 14
+whileinstruction     : 6
 
 Parsing method: LALR
 
 state 0
 
-    (0) S' -> . instrucciones
-    (1) instrucciones -> . instrucciones instruccion
-    (2) instrucciones -> . instruccion
-    (3) instruccion -> . CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC
-    (4) instruccion -> . VAR ID DOSPTS type IG expression PYC
-    (5) instruccion -> . VAR ID DOSPTS type CORIZQ CORDER IG expression PYC
-    (6) instruccion -> . ID IG expression PYC
+    (0) S' -> . s
+    (1) s -> . block
+    (2) block -> . block instruccion
+    (3) block -> . instruccion
+    (4) instruccion -> . print
+    (5) instruccion -> . ifinstruction
+    (6) instruccion -> . whileinstruction
+    (7) instruccion -> . declaration
+    (8) instruccion -> . arraydeclaration
+    (9) instruccion -> . assignment
+    (10) print -> . CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC
+    (11) ifinstruction -> . IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+    (12) whileinstruction -> . WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+    (13) declaration -> . VAR ID DOSPTS type IG expression PYC
+    (14) arraydeclaration -> . VAR ID DOSPTS type CORIZQ CORDER IG expression PYC
+    (15) assignment -> . ID IG expression PYC
 
-    CONSOLE         shift and go to state 3
-    VAR             shift and go to state 4
-    ID              shift and go to state 5
+    CONSOLE         shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 12
+    VAR             shift and go to state 13
+    ID              shift and go to state 14
 
-    instrucciones                  shift and go to state 1
-    instruccion                    shift and go to state 2
+    s                              shift and go to state 1
+    block                          shift and go to state 2
+    instruccion                    shift and go to state 3
+    print                          shift and go to state 4
+    ifinstruction                  shift and go to state 5
+    whileinstruction               shift and go to state 6
+    declaration                    shift and go to state 7
+    arraydeclaration               shift and go to state 8
+    assignment                     shift and go to state 9
 
 state 1
 
-    (0) S' -> instrucciones .
-    (1) instrucciones -> instrucciones . instruccion
-    (3) instruccion -> . CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC
-    (4) instruccion -> . VAR ID DOSPTS type IG expression PYC
-    (5) instruccion -> . VAR ID DOSPTS type CORIZQ CORDER IG expression PYC
-    (6) instruccion -> . ID IG expression PYC
+    (0) S' -> s .
 
-    CONSOLE         shift and go to state 3
-    VAR             shift and go to state 4
-    ID              shift and go to state 5
 
-    instruccion                    shift and go to state 6
 
 state 2
 
-    (2) instrucciones -> instruccion .
+    (1) s -> block .
+    (2) block -> block . instruccion
+    (4) instruccion -> . print
+    (5) instruccion -> . ifinstruction
+    (6) instruccion -> . whileinstruction
+    (7) instruccion -> . declaration
+    (8) instruccion -> . arraydeclaration
+    (9) instruccion -> . assignment
+    (10) print -> . CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC
+    (11) ifinstruction -> . IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+    (12) whileinstruction -> . WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+    (13) declaration -> . VAR ID DOSPTS type IG expression PYC
+    (14) arraydeclaration -> . VAR ID DOSPTS type CORIZQ CORDER IG expression PYC
+    (15) assignment -> . ID IG expression PYC
 
-    CONSOLE         reduce using rule 2 (instrucciones -> instruccion .)
-    VAR             reduce using rule 2 (instrucciones -> instruccion .)
-    ID              reduce using rule 2 (instrucciones -> instruccion .)
-    $end            reduce using rule 2 (instrucciones -> instruccion .)
+    $end            reduce using rule 1 (s -> block .)
+    CONSOLE         shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 12
+    VAR             shift and go to state 13
+    ID              shift and go to state 14
 
+    instruccion                    shift and go to state 15
+    print                          shift and go to state 4
+    ifinstruction                  shift and go to state 5
+    whileinstruction               shift and go to state 6
+    declaration                    shift and go to state 7
+    arraydeclaration               shift and go to state 8
+    assignment                     shift and go to state 9
 
 state 3
 
-    (3) instruccion -> CONSOLE . PUNTO LOG PARIZQ expressionList PARDER PYC
+    (3) block -> instruccion .
 
-    PUNTO           shift and go to state 7
+    CONSOLE         reduce using rule 3 (block -> instruccion .)
+    IF              reduce using rule 3 (block -> instruccion .)
+    WHILE           reduce using rule 3 (block -> instruccion .)
+    VAR             reduce using rule 3 (block -> instruccion .)
+    ID              reduce using rule 3 (block -> instruccion .)
+    $end            reduce using rule 3 (block -> instruccion .)
+    LLAVEDER        reduce using rule 3 (block -> instruccion .)
 
 
 state 4
 
-    (4) instruccion -> VAR . ID DOSPTS type IG expression PYC
-    (5) instruccion -> VAR . ID DOSPTS type CORIZQ CORDER IG expression PYC
+    (4) instruccion -> print .
 
-    ID              shift and go to state 8
+    CONSOLE         reduce using rule 4 (instruccion -> print .)
+    IF              reduce using rule 4 (instruccion -> print .)
+    WHILE           reduce using rule 4 (instruccion -> print .)
+    VAR             reduce using rule 4 (instruccion -> print .)
+    ID              reduce using rule 4 (instruccion -> print .)
+    $end            reduce using rule 4 (instruccion -> print .)
+    LLAVEDER        reduce using rule 4 (instruccion -> print .)
 
 
 state 5
 
-    (6) instruccion -> ID . IG expression PYC
+    (5) instruccion -> ifinstruction .
 
-    IG              shift and go to state 9
+    CONSOLE         reduce using rule 5 (instruccion -> ifinstruction .)
+    IF              reduce using rule 5 (instruccion -> ifinstruction .)
+    WHILE           reduce using rule 5 (instruccion -> ifinstruction .)
+    VAR             reduce using rule 5 (instruccion -> ifinstruction .)
+    ID              reduce using rule 5 (instruccion -> ifinstruction .)
+    $end            reduce using rule 5 (instruccion -> ifinstruction .)
+    LLAVEDER        reduce using rule 5 (instruccion -> ifinstruction .)
 
 
 state 6
 
-    (1) instrucciones -> instrucciones instruccion .
+    (6) instruccion -> whileinstruction .
 
-    CONSOLE         reduce using rule 1 (instrucciones -> instrucciones instruccion .)
-    VAR             reduce using rule 1 (instrucciones -> instrucciones instruccion .)
-    ID              reduce using rule 1 (instrucciones -> instrucciones instruccion .)
-    $end            reduce using rule 1 (instrucciones -> instrucciones instruccion .)
+    CONSOLE         reduce using rule 6 (instruccion -> whileinstruction .)
+    IF              reduce using rule 6 (instruccion -> whileinstruction .)
+    WHILE           reduce using rule 6 (instruccion -> whileinstruction .)
+    VAR             reduce using rule 6 (instruccion -> whileinstruction .)
+    ID              reduce using rule 6 (instruccion -> whileinstruction .)
+    $end            reduce using rule 6 (instruccion -> whileinstruction .)
+    LLAVEDER        reduce using rule 6 (instruccion -> whileinstruction .)
 
 
 state 7
 
-    (3) instruccion -> CONSOLE PUNTO . LOG PARIZQ expressionList PARDER PYC
+    (7) instruccion -> declaration .
 
-    LOG             shift and go to state 10
+    CONSOLE         reduce using rule 7 (instruccion -> declaration .)
+    IF              reduce using rule 7 (instruccion -> declaration .)
+    WHILE           reduce using rule 7 (instruccion -> declaration .)
+    VAR             reduce using rule 7 (instruccion -> declaration .)
+    ID              reduce using rule 7 (instruccion -> declaration .)
+    $end            reduce using rule 7 (instruccion -> declaration .)
+    LLAVEDER        reduce using rule 7 (instruccion -> declaration .)
 
 
 state 8
 
-    (4) instruccion -> VAR ID . DOSPTS type IG expression PYC
-    (5) instruccion -> VAR ID . DOSPTS type CORIZQ CORDER IG expression PYC
+    (8) instruccion -> arraydeclaration .
 
-    DOSPTS          shift and go to state 11
+    CONSOLE         reduce using rule 8 (instruccion -> arraydeclaration .)
+    IF              reduce using rule 8 (instruccion -> arraydeclaration .)
+    WHILE           reduce using rule 8 (instruccion -> arraydeclaration .)
+    VAR             reduce using rule 8 (instruccion -> arraydeclaration .)
+    ID              reduce using rule 8 (instruccion -> arraydeclaration .)
+    $end            reduce using rule 8 (instruccion -> arraydeclaration .)
+    LLAVEDER        reduce using rule 8 (instruccion -> arraydeclaration .)
 
 
 state 9
 
-    (6) instruccion -> ID IG . expression PYC
-    (13) expression -> . expression MAS expression
-    (14) expression -> . expression MENOS expression
-    (15) expression -> . expression POR expression
-    (16) expression -> . expression DIVIDIDO expression
-    (17) expression -> . PARIZQ expression PARDER
-    (18) expression -> . ENTERO
-    (19) expression -> . CADENA
-    (20) expression -> . listArray
-    (21) expression -> . CORIZQ expressionList CORDER
-    (22) listArray -> . listArray CORIZQ expression CORDER
-    (23) listArray -> . listArray PUNTO ID
-    (24) listArray -> . ID
+    (9) instruccion -> assignment .
 
-    PARIZQ          shift and go to state 14
-    ENTERO          shift and go to state 15
-    CADENA          shift and go to state 16
-    CORIZQ          shift and go to state 18
-    ID              shift and go to state 12
+    CONSOLE         reduce using rule 9 (instruccion -> assignment .)
+    IF              reduce using rule 9 (instruccion -> assignment .)
+    WHILE           reduce using rule 9 (instruccion -> assignment .)
+    VAR             reduce using rule 9 (instruccion -> assignment .)
+    ID              reduce using rule 9 (instruccion -> assignment .)
+    $end            reduce using rule 9 (instruccion -> assignment .)
+    LLAVEDER        reduce using rule 9 (instruccion -> assignment .)
 
-    expression                     shift and go to state 13
-    listArray                      shift and go to state 17
 
 state 10
 
-    (3) instruccion -> CONSOLE PUNTO LOG . PARIZQ expressionList PARDER PYC
+    (10) print -> CONSOLE . PUNTO LOG PARIZQ expressionList PARDER PYC
 
-    PARIZQ          shift and go to state 19
+    PUNTO           shift and go to state 16
 
 
 state 11
 
-    (4) instruccion -> VAR ID DOSPTS . type IG expression PYC
-    (5) instruccion -> VAR ID DOSPTS . type CORIZQ CORDER IG expression PYC
-    (7) type -> . NUMBER
-    (8) type -> . FLOAT
-    (9) type -> . STRING
-    (10) type -> . BOOL
+    (11) ifinstruction -> IF . PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
 
-    NUMBER          shift and go to state 21
-    FLOAT           shift and go to state 22
-    STRING          shift and go to state 23
-    BOOL            shift and go to state 24
+    PARIZQ          shift and go to state 17
 
-    type                           shift and go to state 20
 
 state 12
 
-    (24) listArray -> ID .
+    (12) whileinstruction -> WHILE . PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
 
-    CORIZQ          reduce using rule 24 (listArray -> ID .)
-    PUNTO           reduce using rule 24 (listArray -> ID .)
-    PYC             reduce using rule 24 (listArray -> ID .)
-    MAS             reduce using rule 24 (listArray -> ID .)
-    MENOS           reduce using rule 24 (listArray -> ID .)
-    POR             reduce using rule 24 (listArray -> ID .)
-    DIVIDIDO        reduce using rule 24 (listArray -> ID .)
-    PARDER          reduce using rule 24 (listArray -> ID .)
-    CORDER          reduce using rule 24 (listArray -> ID .)
-    COMA            reduce using rule 24 (listArray -> ID .)
+    PARIZQ          shift and go to state 18
 
 
 state 13
 
-    (6) instruccion -> ID IG expression . PYC
-    (13) expression -> expression . MAS expression
-    (14) expression -> expression . MENOS expression
-    (15) expression -> expression . POR expression
-    (16) expression -> expression . DIVIDIDO expression
+    (13) declaration -> VAR . ID DOSPTS type IG expression PYC
+    (14) arraydeclaration -> VAR . ID DOSPTS type CORIZQ CORDER IG expression PYC
 
-    PYC             shift and go to state 25
-    MAS             shift and go to state 26
-    MENOS           shift and go to state 27
-    POR             shift and go to state 28
-    DIVIDIDO        shift and go to state 29
+    ID              shift and go to state 19
 
 
 state 14
 
-    (17) expression -> PARIZQ . expression PARDER
-    (13) expression -> . expression MAS expression
-    (14) expression -> . expression MENOS expression
-    (15) expression -> . expression POR expression
-    (16) expression -> . expression DIVIDIDO expression
-    (17) expression -> . PARIZQ expression PARDER
-    (18) expression -> . ENTERO
-    (19) expression -> . CADENA
-    (20) expression -> . listArray
-    (21) expression -> . CORIZQ expressionList CORDER
-    (22) listArray -> . listArray CORIZQ expression CORDER
-    (23) listArray -> . listArray PUNTO ID
-    (24) listArray -> . ID
+    (15) assignment -> ID . IG expression PYC
 
-    PARIZQ          shift and go to state 14
-    ENTERO          shift and go to state 15
-    CADENA          shift and go to state 16
-    CORIZQ          shift and go to state 18
-    ID              shift and go to state 12
+    IG              shift and go to state 20
 
-    expression                     shift and go to state 30
-    listArray                      shift and go to state 17
 
 state 15
 
-    (18) expression -> ENTERO .
+    (2) block -> block instruccion .
 
-    PYC             reduce using rule 18 (expression -> ENTERO .)
-    MAS             reduce using rule 18 (expression -> ENTERO .)
-    MENOS           reduce using rule 18 (expression -> ENTERO .)
-    POR             reduce using rule 18 (expression -> ENTERO .)
-    DIVIDIDO        reduce using rule 18 (expression -> ENTERO .)
-    PARDER          reduce using rule 18 (expression -> ENTERO .)
-    CORDER          reduce using rule 18 (expression -> ENTERO .)
-    COMA            reduce using rule 18 (expression -> ENTERO .)
+    CONSOLE         reduce using rule 2 (block -> block instruccion .)
+    IF              reduce using rule 2 (block -> block instruccion .)
+    WHILE           reduce using rule 2 (block -> block instruccion .)
+    VAR             reduce using rule 2 (block -> block instruccion .)
+    ID              reduce using rule 2 (block -> block instruccion .)
+    $end            reduce using rule 2 (block -> block instruccion .)
+    LLAVEDER        reduce using rule 2 (block -> block instruccion .)
 
 
 state 16
 
-    (19) expression -> CADENA .
+    (10) print -> CONSOLE PUNTO . LOG PARIZQ expressionList PARDER PYC
 
-    PYC             reduce using rule 19 (expression -> CADENA .)
-    MAS             reduce using rule 19 (expression -> CADENA .)
-    MENOS           reduce using rule 19 (expression -> CADENA .)
-    POR             reduce using rule 19 (expression -> CADENA .)
-    DIVIDIDO        reduce using rule 19 (expression -> CADENA .)
-    PARDER          reduce using rule 19 (expression -> CADENA .)
-    CORDER          reduce using rule 19 (expression -> CADENA .)
-    COMA            reduce using rule 19 (expression -> CADENA .)
+    LOG             shift and go to state 21
 
 
 state 17
 
-    (20) expression -> listArray .
-    (22) listArray -> listArray . CORIZQ expression CORDER
-    (23) listArray -> listArray . PUNTO ID
+    (11) ifinstruction -> IF PARIZQ . expression PARDER LLAVEIZQ block LLAVEDER
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    PYC             reduce using rule 20 (expression -> listArray .)
-    MAS             reduce using rule 20 (expression -> listArray .)
-    MENOS           reduce using rule 20 (expression -> listArray .)
-    POR             reduce using rule 20 (expression -> listArray .)
-    DIVIDIDO        reduce using rule 20 (expression -> listArray .)
-    PARDER          reduce using rule 20 (expression -> listArray .)
-    CORDER          reduce using rule 20 (expression -> listArray .)
-    COMA            reduce using rule 20 (expression -> listArray .)
-    CORIZQ          shift and go to state 31
-    PUNTO           shift and go to state 32
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
+    expression                     shift and go to state 23
+    listArray                      shift and go to state 27
 
 state 18
 
-    (21) expression -> CORIZQ . expressionList CORDER
-    (11) expressionList -> . expressionList COMA expression
-    (12) expressionList -> . expression
-    (13) expression -> . expression MAS expression
-    (14) expression -> . expression MENOS expression
-    (15) expression -> . expression POR expression
-    (16) expression -> . expression DIVIDIDO expression
-    (17) expression -> . PARIZQ expression PARDER
-    (18) expression -> . ENTERO
-    (19) expression -> . CADENA
-    (20) expression -> . listArray
-    (21) expression -> . CORIZQ expressionList CORDER
-    (22) listArray -> . listArray CORIZQ expression CORDER
-    (23) listArray -> . listArray PUNTO ID
-    (24) listArray -> . ID
+    (12) whileinstruction -> WHILE PARIZQ . expression PARDER LLAVEIZQ block LLAVEDER
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    PARIZQ          shift and go to state 14
-    ENTERO          shift and go to state 15
-    CADENA          shift and go to state 16
-    CORIZQ          shift and go to state 18
-    ID              shift and go to state 12
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
-    expressionList                 shift and go to state 33
-    expression                     shift and go to state 34
-    listArray                      shift and go to state 17
+    expression                     shift and go to state 30
+    listArray                      shift and go to state 27
 
 state 19
 
-    (3) instruccion -> CONSOLE PUNTO LOG PARIZQ . expressionList PARDER PYC
-    (11) expressionList -> . expressionList COMA expression
-    (12) expressionList -> . expression
-    (13) expression -> . expression MAS expression
-    (14) expression -> . expression MENOS expression
-    (15) expression -> . expression POR expression
-    (16) expression -> . expression DIVIDIDO expression
-    (17) expression -> . PARIZQ expression PARDER
-    (18) expression -> . ENTERO
-    (19) expression -> . CADENA
-    (20) expression -> . listArray
-    (21) expression -> . CORIZQ expressionList CORDER
-    (22) listArray -> . listArray CORIZQ expression CORDER
-    (23) listArray -> . listArray PUNTO ID
-    (24) listArray -> . ID
+    (13) declaration -> VAR ID . DOSPTS type IG expression PYC
+    (14) arraydeclaration -> VAR ID . DOSPTS type CORIZQ CORDER IG expression PYC
 
-    PARIZQ          shift and go to state 14
-    ENTERO          shift and go to state 15
-    CADENA          shift and go to state 16
-    CORIZQ          shift and go to state 18
-    ID              shift and go to state 12
+    DOSPTS          shift and go to state 31
 
-    expressionList                 shift and go to state 35
-    expression                     shift and go to state 34
-    listArray                      shift and go to state 17
 
 state 20
 
-    (4) instruccion -> VAR ID DOSPTS type . IG expression PYC
-    (5) instruccion -> VAR ID DOSPTS type . CORIZQ CORDER IG expression PYC
+    (15) assignment -> ID IG . expression PYC
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    IG              shift and go to state 36
-    CORIZQ          shift and go to state 37
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
+    expression                     shift and go to state 32
+    listArray                      shift and go to state 27
 
 state 21
 
-    (7) type -> NUMBER .
+    (10) print -> CONSOLE PUNTO LOG . PARIZQ expressionList PARDER PYC
 
-    IG              reduce using rule 7 (type -> NUMBER .)
-    CORIZQ          reduce using rule 7 (type -> NUMBER .)
+    PARIZQ          shift and go to state 33
 
 
 state 22
 
-    (8) type -> FLOAT .
+    (35) expression -> PARIZQ . expression PARDER
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    IG              reduce using rule 8 (type -> FLOAT .)
-    CORIZQ          reduce using rule 8 (type -> FLOAT .)
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
+    expression                     shift and go to state 34
+    listArray                      shift and go to state 27
 
 state 23
 
-    (9) type -> STRING .
+    (11) ifinstruction -> IF PARIZQ expression . PARDER LLAVEIZQ block LLAVEDER
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
 
-    IG              reduce using rule 9 (type -> STRING .)
-    CORIZQ          reduce using rule 9 (type -> STRING .)
+    PARDER          shift and go to state 35
+    MAS             shift and go to state 36
+    MENOS           shift and go to state 37
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    IGIG            shift and go to state 44
+    DIF             shift and go to state 45
+    AND             shift and go to state 46
+    OR              shift and go to state 47
 
 
 state 24
 
-    (10) type -> BOOL .
+    (34) expression -> NOT . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    IG              reduce using rule 10 (type -> BOOL .)
-    CORIZQ          reduce using rule 10 (type -> BOOL .)
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
+    expression                     shift and go to state 48
+    listArray                      shift and go to state 27
 
 state 25
 
-    (6) instruccion -> ID IG expression PYC .
+    (36) expression -> ENTERO .
 
-    CONSOLE         reduce using rule 6 (instruccion -> ID IG expression PYC .)
-    VAR             reduce using rule 6 (instruccion -> ID IG expression PYC .)
-    ID              reduce using rule 6 (instruccion -> ID IG expression PYC .)
-    $end            reduce using rule 6 (instruccion -> ID IG expression PYC .)
+    PARDER          reduce using rule 36 (expression -> ENTERO .)
+    MAS             reduce using rule 36 (expression -> ENTERO .)
+    MENOS           reduce using rule 36 (expression -> ENTERO .)
+    POR             reduce using rule 36 (expression -> ENTERO .)
+    DIVIDIDO        reduce using rule 36 (expression -> ENTERO .)
+    MAYOR           reduce using rule 36 (expression -> ENTERO .)
+    MENOR           reduce using rule 36 (expression -> ENTERO .)
+    MAYORIG         reduce using rule 36 (expression -> ENTERO .)
+    MENORIG         reduce using rule 36 (expression -> ENTERO .)
+    IGIG            reduce using rule 36 (expression -> ENTERO .)
+    DIF             reduce using rule 36 (expression -> ENTERO .)
+    AND             reduce using rule 36 (expression -> ENTERO .)
+    OR              reduce using rule 36 (expression -> ENTERO .)
+    PYC             reduce using rule 36 (expression -> ENTERO .)
+    CORDER          reduce using rule 36 (expression -> ENTERO .)
+    COMA            reduce using rule 36 (expression -> ENTERO .)
 
 
 state 26
 
-    (13) expression -> expression MAS . expression
-    (13) expression -> . expression MAS expression
-    (14) expression -> . expression MENOS expression
-    (15) expression -> . expression POR expression
-    (16) expression -> . expression DIVIDIDO expression
-    (17) expression -> . PARIZQ expression PARDER
-    (18) expression -> . ENTERO
-    (19) expression -> . CADENA
-    (20) expression -> . listArray
-    (21) expression -> . CORIZQ expressionList CORDER
-    (22) listArray -> . listArray CORIZQ expression CORDER
-    (23) listArray -> . listArray PUNTO ID
-    (24) listArray -> . ID
+    (37) expression -> CADENA .
 
-    PARIZQ          shift and go to state 14
-    ENTERO          shift and go to state 15
-    CADENA          shift and go to state 16
-    CORIZQ          shift and go to state 18
-    ID              shift and go to state 12
+    PARDER          reduce using rule 37 (expression -> CADENA .)
+    MAS             reduce using rule 37 (expression -> CADENA .)
+    MENOS           reduce using rule 37 (expression -> CADENA .)
+    POR             reduce using rule 37 (expression -> CADENA .)
+    DIVIDIDO        reduce using rule 37 (expression -> CADENA .)
+    MAYOR           reduce using rule 37 (expression -> CADENA .)
+    MENOR           reduce using rule 37 (expression -> CADENA .)
+    MAYORIG         reduce using rule 37 (expression -> CADENA .)
+    MENORIG         reduce using rule 37 (expression -> CADENA .)
+    IGIG            reduce using rule 37 (expression -> CADENA .)
+    DIF             reduce using rule 37 (expression -> CADENA .)
+    AND             reduce using rule 37 (expression -> CADENA .)
+    OR              reduce using rule 37 (expression -> CADENA .)
+    PYC             reduce using rule 37 (expression -> CADENA .)
+    CORDER          reduce using rule 37 (expression -> CADENA .)
+    COMA            reduce using rule 37 (expression -> CADENA .)
 
-    expression                     shift and go to state 38
-    listArray                      shift and go to state 17
 
 state 27
 
-    (14) expression -> expression MENOS . expression
-    (13) expression -> . expression MAS expression
-    (14) expression -> . expression MENOS expression
-    (15) expression -> . expression POR expression
-    (16) expression -> . expression DIVIDIDO expression
-    (17) expression -> . PARIZQ expression PARDER
-    (18) expression -> . ENTERO
-    (19) expression -> . CADENA
-    (20) expression -> . listArray
-    (21) expression -> . CORIZQ expressionList CORDER
-    (22) listArray -> . listArray CORIZQ expression CORDER
-    (23) listArray -> . listArray PUNTO ID
-    (24) listArray -> . ID
+    (38) expression -> listArray .
+    (40) listArray -> listArray . CORIZQ expression CORDER
+    (41) listArray -> listArray . PUNTO ID
 
-    PARIZQ          shift and go to state 14
-    ENTERO          shift and go to state 15
-    CADENA          shift and go to state 16
-    CORIZQ          shift and go to state 18
-    ID              shift and go to state 12
+    PARDER          reduce using rule 38 (expression -> listArray .)
+    MAS             reduce using rule 38 (expression -> listArray .)
+    MENOS           reduce using rule 38 (expression -> listArray .)
+    POR             reduce using rule 38 (expression -> listArray .)
+    DIVIDIDO        reduce using rule 38 (expression -> listArray .)
+    MAYOR           reduce using rule 38 (expression -> listArray .)
+    MENOR           reduce using rule 38 (expression -> listArray .)
+    MAYORIG         reduce using rule 38 (expression -> listArray .)
+    MENORIG         reduce using rule 38 (expression -> listArray .)
+    IGIG            reduce using rule 38 (expression -> listArray .)
+    DIF             reduce using rule 38 (expression -> listArray .)
+    AND             reduce using rule 38 (expression -> listArray .)
+    OR              reduce using rule 38 (expression -> listArray .)
+    PYC             reduce using rule 38 (expression -> listArray .)
+    CORDER          reduce using rule 38 (expression -> listArray .)
+    COMA            reduce using rule 38 (expression -> listArray .)
+    CORIZQ          shift and go to state 49
+    PUNTO           shift and go to state 50
 
-    expression                     shift and go to state 39
-    listArray                      shift and go to state 17
 
 state 28
 
-    (15) expression -> expression POR . expression
-    (13) expression -> . expression MAS expression
-    (14) expression -> . expression MENOS expression
-    (15) expression -> . expression POR expression
-    (16) expression -> . expression DIVIDIDO expression
-    (17) expression -> . PARIZQ expression PARDER
-    (18) expression -> . ENTERO
-    (19) expression -> . CADENA
-    (20) expression -> . listArray
-    (21) expression -> . CORIZQ expressionList CORDER
-    (22) listArray -> . listArray CORIZQ expression CORDER
-    (23) listArray -> . listArray PUNTO ID
-    (24) listArray -> . ID
+    (39) expression -> CORIZQ . expressionList CORDER
+    (20) expressionList -> . expressionList COMA expression
+    (21) expressionList -> . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    PARIZQ          shift and go to state 14
-    ENTERO          shift and go to state 15
-    CADENA          shift and go to state 16
-    CORIZQ          shift and go to state 18
-    ID              shift and go to state 12
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
-    expression                     shift and go to state 40
-    listArray                      shift and go to state 17
+    expressionList                 shift and go to state 51
+    expression                     shift and go to state 52
+    listArray                      shift and go to state 27
 
 state 29
 
-    (16) expression -> expression DIVIDIDO . expression
-    (13) expression -> . expression MAS expression
-    (14) expression -> . expression MENOS expression
-    (15) expression -> . expression POR expression
-    (16) expression -> . expression DIVIDIDO expression
-    (17) expression -> . PARIZQ expression PARDER
-    (18) expression -> . ENTERO
-    (19) expression -> . CADENA
-    (20) expression -> . listArray
-    (21) expression -> . CORIZQ expressionList CORDER
-    (22) listArray -> . listArray CORIZQ expression CORDER
-    (23) listArray -> . listArray PUNTO ID
-    (24) listArray -> . ID
+    (42) listArray -> ID .
 
-    PARIZQ          shift and go to state 14
-    ENTERO          shift and go to state 15
-    CADENA          shift and go to state 16
-    CORIZQ          shift and go to state 18
-    ID              shift and go to state 12
+    CORIZQ          reduce using rule 42 (listArray -> ID .)
+    PUNTO           reduce using rule 42 (listArray -> ID .)
+    PARDER          reduce using rule 42 (listArray -> ID .)
+    MAS             reduce using rule 42 (listArray -> ID .)
+    MENOS           reduce using rule 42 (listArray -> ID .)
+    POR             reduce using rule 42 (listArray -> ID .)
+    DIVIDIDO        reduce using rule 42 (listArray -> ID .)
+    MAYOR           reduce using rule 42 (listArray -> ID .)
+    MENOR           reduce using rule 42 (listArray -> ID .)
+    MAYORIG         reduce using rule 42 (listArray -> ID .)
+    MENORIG         reduce using rule 42 (listArray -> ID .)
+    IGIG            reduce using rule 42 (listArray -> ID .)
+    DIF             reduce using rule 42 (listArray -> ID .)
+    AND             reduce using rule 42 (listArray -> ID .)
+    OR              reduce using rule 42 (listArray -> ID .)
+    PYC             reduce using rule 42 (listArray -> ID .)
+    CORDER          reduce using rule 42 (listArray -> ID .)
+    COMA            reduce using rule 42 (listArray -> ID .)
 
-    expression                     shift and go to state 41
-    listArray                      shift and go to state 17
 
 state 30
 
-    (17) expression -> PARIZQ expression . PARDER
-    (13) expression -> expression . MAS expression
-    (14) expression -> expression . MENOS expression
-    (15) expression -> expression . POR expression
-    (16) expression -> expression . DIVIDIDO expression
+    (12) whileinstruction -> WHILE PARIZQ expression . PARDER LLAVEIZQ block LLAVEDER
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
 
-    PARDER          shift and go to state 42
-    MAS             shift and go to state 26
-    MENOS           shift and go to state 27
-    POR             shift and go to state 28
-    DIVIDIDO        shift and go to state 29
+    PARDER          shift and go to state 53
+    MAS             shift and go to state 36
+    MENOS           shift and go to state 37
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    IGIG            shift and go to state 44
+    DIF             shift and go to state 45
+    AND             shift and go to state 46
+    OR              shift and go to state 47
 
 
 state 31
 
-    (22) listArray -> listArray CORIZQ . expression CORDER
-    (13) expression -> . expression MAS expression
-    (14) expression -> . expression MENOS expression
-    (15) expression -> . expression POR expression
-    (16) expression -> . expression DIVIDIDO expression
-    (17) expression -> . PARIZQ expression PARDER
-    (18) expression -> . ENTERO
-    (19) expression -> . CADENA
-    (20) expression -> . listArray
-    (21) expression -> . CORIZQ expressionList CORDER
-    (22) listArray -> . listArray CORIZQ expression CORDER
-    (23) listArray -> . listArray PUNTO ID
-    (24) listArray -> . ID
+    (13) declaration -> VAR ID DOSPTS . type IG expression PYC
+    (14) arraydeclaration -> VAR ID DOSPTS . type CORIZQ CORDER IG expression PYC
+    (16) type -> . NUMBER
+    (17) type -> . FLOAT
+    (18) type -> . STRING
+    (19) type -> . BOOL
 
-    PARIZQ          shift and go to state 14
-    ENTERO          shift and go to state 15
-    CADENA          shift and go to state 16
-    CORIZQ          shift and go to state 18
-    ID              shift and go to state 12
+    NUMBER          shift and go to state 55
+    FLOAT           shift and go to state 56
+    STRING          shift and go to state 57
+    BOOL            shift and go to state 58
 
-    listArray                      shift and go to state 17
-    expression                     shift and go to state 43
+    type                           shift and go to state 54
 
 state 32
 
-    (23) listArray -> listArray PUNTO . ID
+    (15) assignment -> ID IG expression . PYC
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
 
-    ID              shift and go to state 44
+    PYC             shift and go to state 59
+    MAS             shift and go to state 36
+    MENOS           shift and go to state 37
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    IGIG            shift and go to state 44
+    DIF             shift and go to state 45
+    AND             shift and go to state 46
+    OR              shift and go to state 47
 
 
 state 33
 
-    (21) expression -> CORIZQ expressionList . CORDER
-    (11) expressionList -> expressionList . COMA expression
+    (10) print -> CONSOLE PUNTO LOG PARIZQ . expressionList PARDER PYC
+    (20) expressionList -> . expressionList COMA expression
+    (21) expressionList -> . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    CORDER          shift and go to state 45
-    COMA            shift and go to state 46
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
+    expressionList                 shift and go to state 60
+    expression                     shift and go to state 52
+    listArray                      shift and go to state 27
 
 state 34
 
-    (12) expressionList -> expression .
-    (13) expression -> expression . MAS expression
-    (14) expression -> expression . MENOS expression
-    (15) expression -> expression . POR expression
-    (16) expression -> expression . DIVIDIDO expression
+    (35) expression -> PARIZQ expression . PARDER
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
 
-    CORDER          reduce using rule 12 (expressionList -> expression .)
-    COMA            reduce using rule 12 (expressionList -> expression .)
-    PARDER          reduce using rule 12 (expressionList -> expression .)
-    MAS             shift and go to state 26
-    MENOS           shift and go to state 27
-    POR             shift and go to state 28
-    DIVIDIDO        shift and go to state 29
+    PARDER          shift and go to state 61
+    MAS             shift and go to state 36
+    MENOS           shift and go to state 37
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    IGIG            shift and go to state 44
+    DIF             shift and go to state 45
+    AND             shift and go to state 46
+    OR              shift and go to state 47
 
 
 state 35
 
-    (3) instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList . PARDER PYC
-    (11) expressionList -> expressionList . COMA expression
+    (11) ifinstruction -> IF PARIZQ expression PARDER . LLAVEIZQ block LLAVEDER
 
-    PARDER          shift and go to state 47
-    COMA            shift and go to state 46
+    LLAVEIZQ        shift and go to state 62
 
 
 state 36
 
-    (4) instruccion -> VAR ID DOSPTS type IG . expression PYC
-    (13) expression -> . expression MAS expression
-    (14) expression -> . expression MENOS expression
-    (15) expression -> . expression POR expression
-    (16) expression -> . expression DIVIDIDO expression
-    (17) expression -> . PARIZQ expression PARDER
-    (18) expression -> . ENTERO
-    (19) expression -> . CADENA
-    (20) expression -> . listArray
-    (21) expression -> . CORIZQ expressionList CORDER
-    (22) listArray -> . listArray CORIZQ expression CORDER
-    (23) listArray -> . listArray PUNTO ID
-    (24) listArray -> . ID
+    (22) expression -> expression MAS . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    PARIZQ          shift and go to state 14
-    ENTERO          shift and go to state 15
-    CADENA          shift and go to state 16
-    CORIZQ          shift and go to state 18
-    ID              shift and go to state 12
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
-    expression                     shift and go to state 48
-    listArray                      shift and go to state 17
+    expression                     shift and go to state 63
+    listArray                      shift and go to state 27
 
 state 37
 
-    (5) instruccion -> VAR ID DOSPTS type CORIZQ . CORDER IG expression PYC
+    (23) expression -> expression MENOS . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    CORDER          shift and go to state 49
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
+    expression                     shift and go to state 64
+    listArray                      shift and go to state 27
 
 state 38
 
-    (13) expression -> expression MAS expression .
-    (13) expression -> expression . MAS expression
-    (14) expression -> expression . MENOS expression
-    (15) expression -> expression . POR expression
-    (16) expression -> expression . DIVIDIDO expression
+    (24) expression -> expression POR . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    PYC             reduce using rule 13 (expression -> expression MAS expression .)
-    MAS             reduce using rule 13 (expression -> expression MAS expression .)
-    MENOS           reduce using rule 13 (expression -> expression MAS expression .)
-    PARDER          reduce using rule 13 (expression -> expression MAS expression .)
-    CORDER          reduce using rule 13 (expression -> expression MAS expression .)
-    COMA            reduce using rule 13 (expression -> expression MAS expression .)
-    POR             shift and go to state 28
-    DIVIDIDO        shift and go to state 29
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
-  ! POR             [ reduce using rule 13 (expression -> expression MAS expression .) ]
-  ! DIVIDIDO        [ reduce using rule 13 (expression -> expression MAS expression .) ]
-  ! MAS             [ shift and go to state 26 ]
-  ! MENOS           [ shift and go to state 27 ]
-
+    expression                     shift and go to state 65
+    listArray                      shift and go to state 27
 
 state 39
 
-    (14) expression -> expression MENOS expression .
-    (13) expression -> expression . MAS expression
-    (14) expression -> expression . MENOS expression
-    (15) expression -> expression . POR expression
-    (16) expression -> expression . DIVIDIDO expression
+    (25) expression -> expression DIVIDIDO . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    PYC             reduce using rule 14 (expression -> expression MENOS expression .)
-    MAS             reduce using rule 14 (expression -> expression MENOS expression .)
-    MENOS           reduce using rule 14 (expression -> expression MENOS expression .)
-    PARDER          reduce using rule 14 (expression -> expression MENOS expression .)
-    CORDER          reduce using rule 14 (expression -> expression MENOS expression .)
-    COMA            reduce using rule 14 (expression -> expression MENOS expression .)
-    POR             shift and go to state 28
-    DIVIDIDO        shift and go to state 29
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
-  ! POR             [ reduce using rule 14 (expression -> expression MENOS expression .) ]
-  ! DIVIDIDO        [ reduce using rule 14 (expression -> expression MENOS expression .) ]
-  ! MAS             [ shift and go to state 26 ]
-  ! MENOS           [ shift and go to state 27 ]
-
+    expression                     shift and go to state 66
+    listArray                      shift and go to state 27
 
 state 40
 
-    (15) expression -> expression POR expression .
-    (13) expression -> expression . MAS expression
-    (14) expression -> expression . MENOS expression
-    (15) expression -> expression . POR expression
-    (16) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression MAYOR . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    PYC             reduce using rule 15 (expression -> expression POR expression .)
-    MAS             reduce using rule 15 (expression -> expression POR expression .)
-    MENOS           reduce using rule 15 (expression -> expression POR expression .)
-    POR             reduce using rule 15 (expression -> expression POR expression .)
-    DIVIDIDO        reduce using rule 15 (expression -> expression POR expression .)
-    PARDER          reduce using rule 15 (expression -> expression POR expression .)
-    CORDER          reduce using rule 15 (expression -> expression POR expression .)
-    COMA            reduce using rule 15 (expression -> expression POR expression .)
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
-  ! MAS             [ shift and go to state 26 ]
-  ! MENOS           [ shift and go to state 27 ]
-  ! POR             [ shift and go to state 28 ]
-  ! DIVIDIDO        [ shift and go to state 29 ]
-
+    expression                     shift and go to state 67
+    listArray                      shift and go to state 27
 
 state 41
 
-    (16) expression -> expression DIVIDIDO expression .
-    (13) expression -> expression . MAS expression
-    (14) expression -> expression . MENOS expression
-    (15) expression -> expression . POR expression
-    (16) expression -> expression . DIVIDIDO expression
+    (27) expression -> expression MENOR . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    PYC             reduce using rule 16 (expression -> expression DIVIDIDO expression .)
-    MAS             reduce using rule 16 (expression -> expression DIVIDIDO expression .)
-    MENOS           reduce using rule 16 (expression -> expression DIVIDIDO expression .)
-    POR             reduce using rule 16 (expression -> expression DIVIDIDO expression .)
-    DIVIDIDO        reduce using rule 16 (expression -> expression DIVIDIDO expression .)
-    PARDER          reduce using rule 16 (expression -> expression DIVIDIDO expression .)
-    CORDER          reduce using rule 16 (expression -> expression DIVIDIDO expression .)
-    COMA            reduce using rule 16 (expression -> expression DIVIDIDO expression .)
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
-  ! MAS             [ shift and go to state 26 ]
-  ! MENOS           [ shift and go to state 27 ]
-  ! POR             [ shift and go to state 28 ]
-  ! DIVIDIDO        [ shift and go to state 29 ]
-
+    expression                     shift and go to state 68
+    listArray                      shift and go to state 27
 
 state 42
 
-    (17) expression -> PARIZQ expression PARDER .
+    (28) expression -> expression MAYORIG . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    PYC             reduce using rule 17 (expression -> PARIZQ expression PARDER .)
-    MAS             reduce using rule 17 (expression -> PARIZQ expression PARDER .)
-    MENOS           reduce using rule 17 (expression -> PARIZQ expression PARDER .)
-    POR             reduce using rule 17 (expression -> PARIZQ expression PARDER .)
-    DIVIDIDO        reduce using rule 17 (expression -> PARIZQ expression PARDER .)
-    PARDER          reduce using rule 17 (expression -> PARIZQ expression PARDER .)
-    CORDER          reduce using rule 17 (expression -> PARIZQ expression PARDER .)
-    COMA            reduce using rule 17 (expression -> PARIZQ expression PARDER .)
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
+    expression                     shift and go to state 69
+    listArray                      shift and go to state 27
 
 state 43
 
-    (22) listArray -> listArray CORIZQ expression . CORDER
-    (13) expression -> expression . MAS expression
-    (14) expression -> expression . MENOS expression
-    (15) expression -> expression . POR expression
-    (16) expression -> expression . DIVIDIDO expression
+    (29) expression -> expression MENORIG . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    CORDER          shift and go to state 50
-    MAS             shift and go to state 26
-    MENOS           shift and go to state 27
-    POR             shift and go to state 28
-    DIVIDIDO        shift and go to state 29
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
+    expression                     shift and go to state 70
+    listArray                      shift and go to state 27
 
 state 44
 
-    (23) listArray -> listArray PUNTO ID .
+    (30) expression -> expression IGIG . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    CORIZQ          reduce using rule 23 (listArray -> listArray PUNTO ID .)
-    PUNTO           reduce using rule 23 (listArray -> listArray PUNTO ID .)
-    PYC             reduce using rule 23 (listArray -> listArray PUNTO ID .)
-    MAS             reduce using rule 23 (listArray -> listArray PUNTO ID .)
-    MENOS           reduce using rule 23 (listArray -> listArray PUNTO ID .)
-    POR             reduce using rule 23 (listArray -> listArray PUNTO ID .)
-    DIVIDIDO        reduce using rule 23 (listArray -> listArray PUNTO ID .)
-    PARDER          reduce using rule 23 (listArray -> listArray PUNTO ID .)
-    CORDER          reduce using rule 23 (listArray -> listArray PUNTO ID .)
-    COMA            reduce using rule 23 (listArray -> listArray PUNTO ID .)
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
+    expression                     shift and go to state 71
+    listArray                      shift and go to state 27
 
 state 45
 
-    (21) expression -> CORIZQ expressionList CORDER .
+    (31) expression -> expression DIF . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    PYC             reduce using rule 21 (expression -> CORIZQ expressionList CORDER .)
-    MAS             reduce using rule 21 (expression -> CORIZQ expressionList CORDER .)
-    MENOS           reduce using rule 21 (expression -> CORIZQ expressionList CORDER .)
-    POR             reduce using rule 21 (expression -> CORIZQ expressionList CORDER .)
-    DIVIDIDO        reduce using rule 21 (expression -> CORIZQ expressionList CORDER .)
-    PARDER          reduce using rule 21 (expression -> CORIZQ expressionList CORDER .)
-    CORDER          reduce using rule 21 (expression -> CORIZQ expressionList CORDER .)
-    COMA            reduce using rule 21 (expression -> CORIZQ expressionList CORDER .)
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
+    expression                     shift and go to state 72
+    listArray                      shift and go to state 27
 
 state 46
 
-    (11) expressionList -> expressionList COMA . expression
-    (13) expression -> . expression MAS expression
-    (14) expression -> . expression MENOS expression
-    (15) expression -> . expression POR expression
-    (16) expression -> . expression DIVIDIDO expression
-    (17) expression -> . PARIZQ expression PARDER
-    (18) expression -> . ENTERO
-    (19) expression -> . CADENA
-    (20) expression -> . listArray
-    (21) expression -> . CORIZQ expressionList CORDER
-    (22) listArray -> . listArray CORIZQ expression CORDER
-    (23) listArray -> . listArray PUNTO ID
-    (24) listArray -> . ID
+    (32) expression -> expression AND . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    PARIZQ          shift and go to state 14
-    ENTERO          shift and go to state 15
-    CADENA          shift and go to state 16
-    CORIZQ          shift and go to state 18
-    ID              shift and go to state 12
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
-    expression                     shift and go to state 51
-    listArray                      shift and go to state 17
+    expression                     shift and go to state 73
+    listArray                      shift and go to state 27
 
 state 47
 
-    (3) instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER . PYC
+    (33) expression -> expression OR . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    PYC             shift and go to state 52
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
+    expression                     shift and go to state 74
+    listArray                      shift and go to state 27
 
 state 48
 
-    (4) instruccion -> VAR ID DOSPTS type IG expression . PYC
-    (13) expression -> expression . MAS expression
-    (14) expression -> expression . MENOS expression
-    (15) expression -> expression . POR expression
-    (16) expression -> expression . DIVIDIDO expression
+    (34) expression -> NOT expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
 
-    PYC             shift and go to state 53
-    MAS             shift and go to state 26
-    MENOS           shift and go to state 27
-    POR             shift and go to state 28
-    DIVIDIDO        shift and go to state 29
+  ! shift/reduce conflict for MAS resolved as shift
+  ! shift/reduce conflict for MENOS resolved as shift
+  ! shift/reduce conflict for POR resolved as shift
+  ! shift/reduce conflict for DIVIDIDO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MAYORIG resolved as shift
+  ! shift/reduce conflict for MENORIG resolved as shift
+  ! shift/reduce conflict for IGIG resolved as shift
+  ! shift/reduce conflict for DIF resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PARDER          reduce using rule 34 (expression -> NOT expression .)
+    PYC             reduce using rule 34 (expression -> NOT expression .)
+    CORDER          reduce using rule 34 (expression -> NOT expression .)
+    COMA            reduce using rule 34 (expression -> NOT expression .)
+    MAS             shift and go to state 36
+    MENOS           shift and go to state 37
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    IGIG            shift and go to state 44
+    DIF             shift and go to state 45
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+  ! MAS             [ reduce using rule 34 (expression -> NOT expression .) ]
+  ! MENOS           [ reduce using rule 34 (expression -> NOT expression .) ]
+  ! POR             [ reduce using rule 34 (expression -> NOT expression .) ]
+  ! DIVIDIDO        [ reduce using rule 34 (expression -> NOT expression .) ]
+  ! MAYOR           [ reduce using rule 34 (expression -> NOT expression .) ]
+  ! MENOR           [ reduce using rule 34 (expression -> NOT expression .) ]
+  ! MAYORIG         [ reduce using rule 34 (expression -> NOT expression .) ]
+  ! MENORIG         [ reduce using rule 34 (expression -> NOT expression .) ]
+  ! IGIG            [ reduce using rule 34 (expression -> NOT expression .) ]
+  ! DIF             [ reduce using rule 34 (expression -> NOT expression .) ]
+  ! AND             [ reduce using rule 34 (expression -> NOT expression .) ]
+  ! OR              [ reduce using rule 34 (expression -> NOT expression .) ]
 
 
 state 49
 
-    (5) instruccion -> VAR ID DOSPTS type CORIZQ CORDER . IG expression PYC
+    (40) listArray -> listArray CORIZQ . expression CORDER
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
 
-    IG              shift and go to state 54
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
 
+    listArray                      shift and go to state 27
+    expression                     shift and go to state 75
 
 state 50
 
-    (22) listArray -> listArray CORIZQ expression CORDER .
+    (41) listArray -> listArray PUNTO . ID
 
-    CORIZQ          reduce using rule 22 (listArray -> listArray CORIZQ expression CORDER .)
-    PUNTO           reduce using rule 22 (listArray -> listArray CORIZQ expression CORDER .)
-    PYC             reduce using rule 22 (listArray -> listArray CORIZQ expression CORDER .)
-    MAS             reduce using rule 22 (listArray -> listArray CORIZQ expression CORDER .)
-    MENOS           reduce using rule 22 (listArray -> listArray CORIZQ expression CORDER .)
-    POR             reduce using rule 22 (listArray -> listArray CORIZQ expression CORDER .)
-    DIVIDIDO        reduce using rule 22 (listArray -> listArray CORIZQ expression CORDER .)
-    PARDER          reduce using rule 22 (listArray -> listArray CORIZQ expression CORDER .)
-    CORDER          reduce using rule 22 (listArray -> listArray CORIZQ expression CORDER .)
-    COMA            reduce using rule 22 (listArray -> listArray CORIZQ expression CORDER .)
+    ID              shift and go to state 76
 
 
 state 51
 
-    (11) expressionList -> expressionList COMA expression .
-    (13) expression -> expression . MAS expression
-    (14) expression -> expression . MENOS expression
-    (15) expression -> expression . POR expression
-    (16) expression -> expression . DIVIDIDO expression
+    (39) expression -> CORIZQ expressionList . CORDER
+    (20) expressionList -> expressionList . COMA expression
 
-    CORDER          reduce using rule 11 (expressionList -> expressionList COMA expression .)
-    COMA            reduce using rule 11 (expressionList -> expressionList COMA expression .)
-    PARDER          reduce using rule 11 (expressionList -> expressionList COMA expression .)
-    MAS             shift and go to state 26
-    MENOS           shift and go to state 27
-    POR             shift and go to state 28
-    DIVIDIDO        shift and go to state 29
+    CORDER          shift and go to state 77
+    COMA            shift and go to state 78
 
 
 state 52
 
-    (3) instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .
+    (21) expressionList -> expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
 
-    CONSOLE         reduce using rule 3 (instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .)
-    VAR             reduce using rule 3 (instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .)
-    ID              reduce using rule 3 (instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .)
-    $end            reduce using rule 3 (instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .)
+    CORDER          reduce using rule 21 (expressionList -> expression .)
+    COMA            reduce using rule 21 (expressionList -> expression .)
+    PARDER          reduce using rule 21 (expressionList -> expression .)
+    MAS             shift and go to state 36
+    MENOS           shift and go to state 37
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    IGIG            shift and go to state 44
+    DIF             shift and go to state 45
+    AND             shift and go to state 46
+    OR              shift and go to state 47
 
 
 state 53
 
-    (4) instruccion -> VAR ID DOSPTS type IG expression PYC .
+    (12) whileinstruction -> WHILE PARIZQ expression PARDER . LLAVEIZQ block LLAVEDER
 
-    CONSOLE         reduce using rule 4 (instruccion -> VAR ID DOSPTS type IG expression PYC .)
-    VAR             reduce using rule 4 (instruccion -> VAR ID DOSPTS type IG expression PYC .)
-    ID              reduce using rule 4 (instruccion -> VAR ID DOSPTS type IG expression PYC .)
-    $end            reduce using rule 4 (instruccion -> VAR ID DOSPTS type IG expression PYC .)
+    LLAVEIZQ        shift and go to state 79
 
 
 state 54
 
-    (5) instruccion -> VAR ID DOSPTS type CORIZQ CORDER IG . expression PYC
-    (13) expression -> . expression MAS expression
-    (14) expression -> . expression MENOS expression
-    (15) expression -> . expression POR expression
-    (16) expression -> . expression DIVIDIDO expression
-    (17) expression -> . PARIZQ expression PARDER
-    (18) expression -> . ENTERO
-    (19) expression -> . CADENA
-    (20) expression -> . listArray
-    (21) expression -> . CORIZQ expressionList CORDER
-    (22) listArray -> . listArray CORIZQ expression CORDER
-    (23) listArray -> . listArray PUNTO ID
-    (24) listArray -> . ID
+    (13) declaration -> VAR ID DOSPTS type . IG expression PYC
+    (14) arraydeclaration -> VAR ID DOSPTS type . CORIZQ CORDER IG expression PYC
 
-    PARIZQ          shift and go to state 14
-    ENTERO          shift and go to state 15
-    CADENA          shift and go to state 16
-    CORIZQ          shift and go to state 18
-    ID              shift and go to state 12
+    IG              shift and go to state 80
+    CORIZQ          shift and go to state 81
 
-    expression                     shift and go to state 55
-    listArray                      shift and go to state 17
 
 state 55
 
-    (5) instruccion -> VAR ID DOSPTS type CORIZQ CORDER IG expression . PYC
-    (13) expression -> expression . MAS expression
-    (14) expression -> expression . MENOS expression
-    (15) expression -> expression . POR expression
-    (16) expression -> expression . DIVIDIDO expression
+    (16) type -> NUMBER .
 
-    PYC             shift and go to state 56
-    MAS             shift and go to state 26
-    MENOS           shift and go to state 27
-    POR             shift and go to state 28
-    DIVIDIDO        shift and go to state 29
+    IG              reduce using rule 16 (type -> NUMBER .)
+    CORIZQ          reduce using rule 16 (type -> NUMBER .)
 
 
 state 56
 
-    (5) instruccion -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .
+    (17) type -> FLOAT .
 
-    CONSOLE         reduce using rule 5 (instruccion -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .)
-    VAR             reduce using rule 5 (instruccion -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .)
-    ID              reduce using rule 5 (instruccion -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .)
-    $end            reduce using rule 5 (instruccion -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .)
+    IG              reduce using rule 17 (type -> FLOAT .)
+    CORIZQ          reduce using rule 17 (type -> FLOAT .)
 
+
+state 57
+
+    (18) type -> STRING .
+
+    IG              reduce using rule 18 (type -> STRING .)
+    CORIZQ          reduce using rule 18 (type -> STRING .)
+
+
+state 58
+
+    (19) type -> BOOL .
+
+    IG              reduce using rule 19 (type -> BOOL .)
+    CORIZQ          reduce using rule 19 (type -> BOOL .)
+
+
+state 59
+
+    (15) assignment -> ID IG expression PYC .
+
+    CONSOLE         reduce using rule 15 (assignment -> ID IG expression PYC .)
+    IF              reduce using rule 15 (assignment -> ID IG expression PYC .)
+    WHILE           reduce using rule 15 (assignment -> ID IG expression PYC .)
+    VAR             reduce using rule 15 (assignment -> ID IG expression PYC .)
+    ID              reduce using rule 15 (assignment -> ID IG expression PYC .)
+    $end            reduce using rule 15 (assignment -> ID IG expression PYC .)
+    LLAVEDER        reduce using rule 15 (assignment -> ID IG expression PYC .)
+
+
+state 60
+
+    (10) print -> CONSOLE PUNTO LOG PARIZQ expressionList . PARDER PYC
+    (20) expressionList -> expressionList . COMA expression
+
+    PARDER          shift and go to state 82
+    COMA            shift and go to state 78
+
+
+state 61
+
+    (35) expression -> PARIZQ expression PARDER .
+
+    PARDER          reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    MAS             reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    MENOS           reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    POR             reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    DIVIDIDO        reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    MAYOR           reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    MENOR           reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    MAYORIG         reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    MENORIG         reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    IGIG            reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    DIF             reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    AND             reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    OR              reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    PYC             reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    CORDER          reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+    COMA            reduce using rule 35 (expression -> PARIZQ expression PARDER .)
+
+
+state 62
+
+    (11) ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ . block LLAVEDER
+    (2) block -> . block instruccion
+    (3) block -> . instruccion
+    (4) instruccion -> . print
+    (5) instruccion -> . ifinstruction
+    (6) instruccion -> . whileinstruction
+    (7) instruccion -> . declaration
+    (8) instruccion -> . arraydeclaration
+    (9) instruccion -> . assignment
+    (10) print -> . CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC
+    (11) ifinstruction -> . IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+    (12) whileinstruction -> . WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+    (13) declaration -> . VAR ID DOSPTS type IG expression PYC
+    (14) arraydeclaration -> . VAR ID DOSPTS type CORIZQ CORDER IG expression PYC
+    (15) assignment -> . ID IG expression PYC
+
+    CONSOLE         shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 12
+    VAR             shift and go to state 13
+    ID              shift and go to state 14
+
+    block                          shift and go to state 83
+    instruccion                    shift and go to state 3
+    print                          shift and go to state 4
+    ifinstruction                  shift and go to state 5
+    whileinstruction               shift and go to state 6
+    declaration                    shift and go to state 7
+    arraydeclaration               shift and go to state 8
+    assignment                     shift and go to state 9
+
+state 63
+
+    (22) expression -> expression MAS expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    PARDER          reduce using rule 22 (expression -> expression MAS expression .)
+    MAS             reduce using rule 22 (expression -> expression MAS expression .)
+    MENOS           reduce using rule 22 (expression -> expression MAS expression .)
+    IGIG            reduce using rule 22 (expression -> expression MAS expression .)
+    DIF             reduce using rule 22 (expression -> expression MAS expression .)
+    PYC             reduce using rule 22 (expression -> expression MAS expression .)
+    CORDER          reduce using rule 22 (expression -> expression MAS expression .)
+    COMA            reduce using rule 22 (expression -> expression MAS expression .)
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+  ! POR             [ reduce using rule 22 (expression -> expression MAS expression .) ]
+  ! DIVIDIDO        [ reduce using rule 22 (expression -> expression MAS expression .) ]
+  ! MAYOR           [ reduce using rule 22 (expression -> expression MAS expression .) ]
+  ! MENOR           [ reduce using rule 22 (expression -> expression MAS expression .) ]
+  ! MAYORIG         [ reduce using rule 22 (expression -> expression MAS expression .) ]
+  ! MENORIG         [ reduce using rule 22 (expression -> expression MAS expression .) ]
+  ! AND             [ reduce using rule 22 (expression -> expression MAS expression .) ]
+  ! OR              [ reduce using rule 22 (expression -> expression MAS expression .) ]
+  ! MAS             [ shift and go to state 36 ]
+  ! MENOS           [ shift and go to state 37 ]
+  ! IGIG            [ shift and go to state 44 ]
+  ! DIF             [ shift and go to state 45 ]
+
+
+state 64
+
+    (23) expression -> expression MENOS expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    PARDER          reduce using rule 23 (expression -> expression MENOS expression .)
+    MAS             reduce using rule 23 (expression -> expression MENOS expression .)
+    MENOS           reduce using rule 23 (expression -> expression MENOS expression .)
+    IGIG            reduce using rule 23 (expression -> expression MENOS expression .)
+    DIF             reduce using rule 23 (expression -> expression MENOS expression .)
+    PYC             reduce using rule 23 (expression -> expression MENOS expression .)
+    CORDER          reduce using rule 23 (expression -> expression MENOS expression .)
+    COMA            reduce using rule 23 (expression -> expression MENOS expression .)
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+  ! POR             [ reduce using rule 23 (expression -> expression MENOS expression .) ]
+  ! DIVIDIDO        [ reduce using rule 23 (expression -> expression MENOS expression .) ]
+  ! MAYOR           [ reduce using rule 23 (expression -> expression MENOS expression .) ]
+  ! MENOR           [ reduce using rule 23 (expression -> expression MENOS expression .) ]
+  ! MAYORIG         [ reduce using rule 23 (expression -> expression MENOS expression .) ]
+  ! MENORIG         [ reduce using rule 23 (expression -> expression MENOS expression .) ]
+  ! AND             [ reduce using rule 23 (expression -> expression MENOS expression .) ]
+  ! OR              [ reduce using rule 23 (expression -> expression MENOS expression .) ]
+  ! MAS             [ shift and go to state 36 ]
+  ! MENOS           [ shift and go to state 37 ]
+  ! IGIG            [ shift and go to state 44 ]
+  ! DIF             [ shift and go to state 45 ]
+
+
+state 65
+
+    (24) expression -> expression POR expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    PARDER          reduce using rule 24 (expression -> expression POR expression .)
+    MAS             reduce using rule 24 (expression -> expression POR expression .)
+    MENOS           reduce using rule 24 (expression -> expression POR expression .)
+    POR             reduce using rule 24 (expression -> expression POR expression .)
+    DIVIDIDO        reduce using rule 24 (expression -> expression POR expression .)
+    IGIG            reduce using rule 24 (expression -> expression POR expression .)
+    DIF             reduce using rule 24 (expression -> expression POR expression .)
+    PYC             reduce using rule 24 (expression -> expression POR expression .)
+    CORDER          reduce using rule 24 (expression -> expression POR expression .)
+    COMA            reduce using rule 24 (expression -> expression POR expression .)
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+  ! MAYOR           [ reduce using rule 24 (expression -> expression POR expression .) ]
+  ! MENOR           [ reduce using rule 24 (expression -> expression POR expression .) ]
+  ! MAYORIG         [ reduce using rule 24 (expression -> expression POR expression .) ]
+  ! MENORIG         [ reduce using rule 24 (expression -> expression POR expression .) ]
+  ! AND             [ reduce using rule 24 (expression -> expression POR expression .) ]
+  ! OR              [ reduce using rule 24 (expression -> expression POR expression .) ]
+  ! MAS             [ shift and go to state 36 ]
+  ! MENOS           [ shift and go to state 37 ]
+  ! POR             [ shift and go to state 38 ]
+  ! DIVIDIDO        [ shift and go to state 39 ]
+  ! IGIG            [ shift and go to state 44 ]
+  ! DIF             [ shift and go to state 45 ]
+
+
+state 66
+
+    (25) expression -> expression DIVIDIDO expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    PARDER          reduce using rule 25 (expression -> expression DIVIDIDO expression .)
+    MAS             reduce using rule 25 (expression -> expression DIVIDIDO expression .)
+    MENOS           reduce using rule 25 (expression -> expression DIVIDIDO expression .)
+    POR             reduce using rule 25 (expression -> expression DIVIDIDO expression .)
+    DIVIDIDO        reduce using rule 25 (expression -> expression DIVIDIDO expression .)
+    IGIG            reduce using rule 25 (expression -> expression DIVIDIDO expression .)
+    DIF             reduce using rule 25 (expression -> expression DIVIDIDO expression .)
+    PYC             reduce using rule 25 (expression -> expression DIVIDIDO expression .)
+    CORDER          reduce using rule 25 (expression -> expression DIVIDIDO expression .)
+    COMA            reduce using rule 25 (expression -> expression DIVIDIDO expression .)
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+  ! MAYOR           [ reduce using rule 25 (expression -> expression DIVIDIDO expression .) ]
+  ! MENOR           [ reduce using rule 25 (expression -> expression DIVIDIDO expression .) ]
+  ! MAYORIG         [ reduce using rule 25 (expression -> expression DIVIDIDO expression .) ]
+  ! MENORIG         [ reduce using rule 25 (expression -> expression DIVIDIDO expression .) ]
+  ! AND             [ reduce using rule 25 (expression -> expression DIVIDIDO expression .) ]
+  ! OR              [ reduce using rule 25 (expression -> expression DIVIDIDO expression .) ]
+  ! MAS             [ shift and go to state 36 ]
+  ! MENOS           [ shift and go to state 37 ]
+  ! POR             [ shift and go to state 38 ]
+  ! DIVIDIDO        [ shift and go to state 39 ]
+  ! IGIG            [ shift and go to state 44 ]
+  ! DIF             [ shift and go to state 45 ]
+
+
+state 67
+
+    (26) expression -> expression MAYOR expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    PARDER          reduce using rule 26 (expression -> expression MAYOR expression .)
+    MAS             reduce using rule 26 (expression -> expression MAYOR expression .)
+    MENOS           reduce using rule 26 (expression -> expression MAYOR expression .)
+    POR             reduce using rule 26 (expression -> expression MAYOR expression .)
+    DIVIDIDO        reduce using rule 26 (expression -> expression MAYOR expression .)
+    MAYOR           reduce using rule 26 (expression -> expression MAYOR expression .)
+    MENOR           reduce using rule 26 (expression -> expression MAYOR expression .)
+    IGIG            reduce using rule 26 (expression -> expression MAYOR expression .)
+    DIF             reduce using rule 26 (expression -> expression MAYOR expression .)
+    PYC             reduce using rule 26 (expression -> expression MAYOR expression .)
+    CORDER          reduce using rule 26 (expression -> expression MAYOR expression .)
+    COMA            reduce using rule 26 (expression -> expression MAYOR expression .)
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+  ! MAYORIG         [ reduce using rule 26 (expression -> expression MAYOR expression .) ]
+  ! MENORIG         [ reduce using rule 26 (expression -> expression MAYOR expression .) ]
+  ! AND             [ reduce using rule 26 (expression -> expression MAYOR expression .) ]
+  ! OR              [ reduce using rule 26 (expression -> expression MAYOR expression .) ]
+  ! MAS             [ shift and go to state 36 ]
+  ! MENOS           [ shift and go to state 37 ]
+  ! POR             [ shift and go to state 38 ]
+  ! DIVIDIDO        [ shift and go to state 39 ]
+  ! MAYOR           [ shift and go to state 40 ]
+  ! MENOR           [ shift and go to state 41 ]
+  ! IGIG            [ shift and go to state 44 ]
+  ! DIF             [ shift and go to state 45 ]
+
+
+state 68
+
+    (27) expression -> expression MENOR expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    PARDER          reduce using rule 27 (expression -> expression MENOR expression .)
+    MAS             reduce using rule 27 (expression -> expression MENOR expression .)
+    MENOS           reduce using rule 27 (expression -> expression MENOR expression .)
+    POR             reduce using rule 27 (expression -> expression MENOR expression .)
+    DIVIDIDO        reduce using rule 27 (expression -> expression MENOR expression .)
+    MAYOR           reduce using rule 27 (expression -> expression MENOR expression .)
+    MENOR           reduce using rule 27 (expression -> expression MENOR expression .)
+    IGIG            reduce using rule 27 (expression -> expression MENOR expression .)
+    DIF             reduce using rule 27 (expression -> expression MENOR expression .)
+    PYC             reduce using rule 27 (expression -> expression MENOR expression .)
+    CORDER          reduce using rule 27 (expression -> expression MENOR expression .)
+    COMA            reduce using rule 27 (expression -> expression MENOR expression .)
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+  ! MAYORIG         [ reduce using rule 27 (expression -> expression MENOR expression .) ]
+  ! MENORIG         [ reduce using rule 27 (expression -> expression MENOR expression .) ]
+  ! AND             [ reduce using rule 27 (expression -> expression MENOR expression .) ]
+  ! OR              [ reduce using rule 27 (expression -> expression MENOR expression .) ]
+  ! MAS             [ shift and go to state 36 ]
+  ! MENOS           [ shift and go to state 37 ]
+  ! POR             [ shift and go to state 38 ]
+  ! DIVIDIDO        [ shift and go to state 39 ]
+  ! MAYOR           [ shift and go to state 40 ]
+  ! MENOR           [ shift and go to state 41 ]
+  ! IGIG            [ shift and go to state 44 ]
+  ! DIF             [ shift and go to state 45 ]
+
+
+state 69
+
+    (28) expression -> expression MAYORIG expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    PARDER          reduce using rule 28 (expression -> expression MAYORIG expression .)
+    MAS             reduce using rule 28 (expression -> expression MAYORIG expression .)
+    MENOS           reduce using rule 28 (expression -> expression MAYORIG expression .)
+    POR             reduce using rule 28 (expression -> expression MAYORIG expression .)
+    DIVIDIDO        reduce using rule 28 (expression -> expression MAYORIG expression .)
+    MAYOR           reduce using rule 28 (expression -> expression MAYORIG expression .)
+    MENOR           reduce using rule 28 (expression -> expression MAYORIG expression .)
+    MAYORIG         reduce using rule 28 (expression -> expression MAYORIG expression .)
+    MENORIG         reduce using rule 28 (expression -> expression MAYORIG expression .)
+    IGIG            reduce using rule 28 (expression -> expression MAYORIG expression .)
+    DIF             reduce using rule 28 (expression -> expression MAYORIG expression .)
+    PYC             reduce using rule 28 (expression -> expression MAYORIG expression .)
+    CORDER          reduce using rule 28 (expression -> expression MAYORIG expression .)
+    COMA            reduce using rule 28 (expression -> expression MAYORIG expression .)
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+  ! AND             [ reduce using rule 28 (expression -> expression MAYORIG expression .) ]
+  ! OR              [ reduce using rule 28 (expression -> expression MAYORIG expression .) ]
+  ! MAS             [ shift and go to state 36 ]
+  ! MENOS           [ shift and go to state 37 ]
+  ! POR             [ shift and go to state 38 ]
+  ! DIVIDIDO        [ shift and go to state 39 ]
+  ! MAYOR           [ shift and go to state 40 ]
+  ! MENOR           [ shift and go to state 41 ]
+  ! MAYORIG         [ shift and go to state 42 ]
+  ! MENORIG         [ shift and go to state 43 ]
+  ! IGIG            [ shift and go to state 44 ]
+  ! DIF             [ shift and go to state 45 ]
+
+
+state 70
+
+    (29) expression -> expression MENORIG expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    PARDER          reduce using rule 29 (expression -> expression MENORIG expression .)
+    MAS             reduce using rule 29 (expression -> expression MENORIG expression .)
+    MENOS           reduce using rule 29 (expression -> expression MENORIG expression .)
+    POR             reduce using rule 29 (expression -> expression MENORIG expression .)
+    DIVIDIDO        reduce using rule 29 (expression -> expression MENORIG expression .)
+    MAYOR           reduce using rule 29 (expression -> expression MENORIG expression .)
+    MENOR           reduce using rule 29 (expression -> expression MENORIG expression .)
+    MAYORIG         reduce using rule 29 (expression -> expression MENORIG expression .)
+    MENORIG         reduce using rule 29 (expression -> expression MENORIG expression .)
+    IGIG            reduce using rule 29 (expression -> expression MENORIG expression .)
+    DIF             reduce using rule 29 (expression -> expression MENORIG expression .)
+    PYC             reduce using rule 29 (expression -> expression MENORIG expression .)
+    CORDER          reduce using rule 29 (expression -> expression MENORIG expression .)
+    COMA            reduce using rule 29 (expression -> expression MENORIG expression .)
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+  ! AND             [ reduce using rule 29 (expression -> expression MENORIG expression .) ]
+  ! OR              [ reduce using rule 29 (expression -> expression MENORIG expression .) ]
+  ! MAS             [ shift and go to state 36 ]
+  ! MENOS           [ shift and go to state 37 ]
+  ! POR             [ shift and go to state 38 ]
+  ! DIVIDIDO        [ shift and go to state 39 ]
+  ! MAYOR           [ shift and go to state 40 ]
+  ! MENOR           [ shift and go to state 41 ]
+  ! MAYORIG         [ shift and go to state 42 ]
+  ! MENORIG         [ shift and go to state 43 ]
+  ! IGIG            [ shift and go to state 44 ]
+  ! DIF             [ shift and go to state 45 ]
+
+
+state 71
+
+    (30) expression -> expression IGIG expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+  ! shift/reduce conflict for MAS resolved as shift
+  ! shift/reduce conflict for MENOS resolved as shift
+  ! shift/reduce conflict for POR resolved as shift
+  ! shift/reduce conflict for DIVIDIDO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MAYORIG resolved as shift
+  ! shift/reduce conflict for MENORIG resolved as shift
+  ! shift/reduce conflict for IGIG resolved as shift
+  ! shift/reduce conflict for DIF resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PARDER          reduce using rule 30 (expression -> expression IGIG expression .)
+    PYC             reduce using rule 30 (expression -> expression IGIG expression .)
+    CORDER          reduce using rule 30 (expression -> expression IGIG expression .)
+    COMA            reduce using rule 30 (expression -> expression IGIG expression .)
+    MAS             shift and go to state 36
+    MENOS           shift and go to state 37
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    IGIG            shift and go to state 44
+    DIF             shift and go to state 45
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+  ! MAS             [ reduce using rule 30 (expression -> expression IGIG expression .) ]
+  ! MENOS           [ reduce using rule 30 (expression -> expression IGIG expression .) ]
+  ! POR             [ reduce using rule 30 (expression -> expression IGIG expression .) ]
+  ! DIVIDIDO        [ reduce using rule 30 (expression -> expression IGIG expression .) ]
+  ! MAYOR           [ reduce using rule 30 (expression -> expression IGIG expression .) ]
+  ! MENOR           [ reduce using rule 30 (expression -> expression IGIG expression .) ]
+  ! MAYORIG         [ reduce using rule 30 (expression -> expression IGIG expression .) ]
+  ! MENORIG         [ reduce using rule 30 (expression -> expression IGIG expression .) ]
+  ! IGIG            [ reduce using rule 30 (expression -> expression IGIG expression .) ]
+  ! DIF             [ reduce using rule 30 (expression -> expression IGIG expression .) ]
+  ! AND             [ reduce using rule 30 (expression -> expression IGIG expression .) ]
+  ! OR              [ reduce using rule 30 (expression -> expression IGIG expression .) ]
+
+
+state 72
+
+    (31) expression -> expression DIF expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+  ! shift/reduce conflict for MAS resolved as shift
+  ! shift/reduce conflict for MENOS resolved as shift
+  ! shift/reduce conflict for POR resolved as shift
+  ! shift/reduce conflict for DIVIDIDO resolved as shift
+  ! shift/reduce conflict for MAYOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for MAYORIG resolved as shift
+  ! shift/reduce conflict for MENORIG resolved as shift
+  ! shift/reduce conflict for IGIG resolved as shift
+  ! shift/reduce conflict for DIF resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    PARDER          reduce using rule 31 (expression -> expression DIF expression .)
+    PYC             reduce using rule 31 (expression -> expression DIF expression .)
+    CORDER          reduce using rule 31 (expression -> expression DIF expression .)
+    COMA            reduce using rule 31 (expression -> expression DIF expression .)
+    MAS             shift and go to state 36
+    MENOS           shift and go to state 37
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    IGIG            shift and go to state 44
+    DIF             shift and go to state 45
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+  ! MAS             [ reduce using rule 31 (expression -> expression DIF expression .) ]
+  ! MENOS           [ reduce using rule 31 (expression -> expression DIF expression .) ]
+  ! POR             [ reduce using rule 31 (expression -> expression DIF expression .) ]
+  ! DIVIDIDO        [ reduce using rule 31 (expression -> expression DIF expression .) ]
+  ! MAYOR           [ reduce using rule 31 (expression -> expression DIF expression .) ]
+  ! MENOR           [ reduce using rule 31 (expression -> expression DIF expression .) ]
+  ! MAYORIG         [ reduce using rule 31 (expression -> expression DIF expression .) ]
+  ! MENORIG         [ reduce using rule 31 (expression -> expression DIF expression .) ]
+  ! IGIG            [ reduce using rule 31 (expression -> expression DIF expression .) ]
+  ! DIF             [ reduce using rule 31 (expression -> expression DIF expression .) ]
+  ! AND             [ reduce using rule 31 (expression -> expression DIF expression .) ]
+  ! OR              [ reduce using rule 31 (expression -> expression DIF expression .) ]
+
+
+state 73
+
+    (32) expression -> expression AND expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    PARDER          reduce using rule 32 (expression -> expression AND expression .)
+    MAS             reduce using rule 32 (expression -> expression AND expression .)
+    MENOS           reduce using rule 32 (expression -> expression AND expression .)
+    POR             reduce using rule 32 (expression -> expression AND expression .)
+    DIVIDIDO        reduce using rule 32 (expression -> expression AND expression .)
+    MAYOR           reduce using rule 32 (expression -> expression AND expression .)
+    MENOR           reduce using rule 32 (expression -> expression AND expression .)
+    MAYORIG         reduce using rule 32 (expression -> expression AND expression .)
+    MENORIG         reduce using rule 32 (expression -> expression AND expression .)
+    IGIG            reduce using rule 32 (expression -> expression AND expression .)
+    DIF             reduce using rule 32 (expression -> expression AND expression .)
+    AND             reduce using rule 32 (expression -> expression AND expression .)
+    OR              reduce using rule 32 (expression -> expression AND expression .)
+    PYC             reduce using rule 32 (expression -> expression AND expression .)
+    CORDER          reduce using rule 32 (expression -> expression AND expression .)
+    COMA            reduce using rule 32 (expression -> expression AND expression .)
+
+  ! MAS             [ shift and go to state 36 ]
+  ! MENOS           [ shift and go to state 37 ]
+  ! POR             [ shift and go to state 38 ]
+  ! DIVIDIDO        [ shift and go to state 39 ]
+  ! MAYOR           [ shift and go to state 40 ]
+  ! MENOR           [ shift and go to state 41 ]
+  ! MAYORIG         [ shift and go to state 42 ]
+  ! MENORIG         [ shift and go to state 43 ]
+  ! IGIG            [ shift and go to state 44 ]
+  ! DIF             [ shift and go to state 45 ]
+  ! AND             [ shift and go to state 46 ]
+  ! OR              [ shift and go to state 47 ]
+
+
+state 74
+
+    (33) expression -> expression OR expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    PARDER          reduce using rule 33 (expression -> expression OR expression .)
+    MAS             reduce using rule 33 (expression -> expression OR expression .)
+    MENOS           reduce using rule 33 (expression -> expression OR expression .)
+    POR             reduce using rule 33 (expression -> expression OR expression .)
+    DIVIDIDO        reduce using rule 33 (expression -> expression OR expression .)
+    MAYOR           reduce using rule 33 (expression -> expression OR expression .)
+    MENOR           reduce using rule 33 (expression -> expression OR expression .)
+    MAYORIG         reduce using rule 33 (expression -> expression OR expression .)
+    MENORIG         reduce using rule 33 (expression -> expression OR expression .)
+    IGIG            reduce using rule 33 (expression -> expression OR expression .)
+    DIF             reduce using rule 33 (expression -> expression OR expression .)
+    AND             reduce using rule 33 (expression -> expression OR expression .)
+    OR              reduce using rule 33 (expression -> expression OR expression .)
+    PYC             reduce using rule 33 (expression -> expression OR expression .)
+    CORDER          reduce using rule 33 (expression -> expression OR expression .)
+    COMA            reduce using rule 33 (expression -> expression OR expression .)
+
+  ! MAS             [ shift and go to state 36 ]
+  ! MENOS           [ shift and go to state 37 ]
+  ! POR             [ shift and go to state 38 ]
+  ! DIVIDIDO        [ shift and go to state 39 ]
+  ! MAYOR           [ shift and go to state 40 ]
+  ! MENOR           [ shift and go to state 41 ]
+  ! MAYORIG         [ shift and go to state 42 ]
+  ! MENORIG         [ shift and go to state 43 ]
+  ! IGIG            [ shift and go to state 44 ]
+  ! DIF             [ shift and go to state 45 ]
+  ! AND             [ shift and go to state 46 ]
+  ! OR              [ shift and go to state 47 ]
+
+
+state 75
+
+    (40) listArray -> listArray CORIZQ expression . CORDER
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    CORDER          shift and go to state 84
+    MAS             shift and go to state 36
+    MENOS           shift and go to state 37
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    IGIG            shift and go to state 44
+    DIF             shift and go to state 45
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+
+state 76
+
+    (41) listArray -> listArray PUNTO ID .
+
+    CORIZQ          reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    PUNTO           reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    PARDER          reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    MAS             reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    MENOS           reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    POR             reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    DIVIDIDO        reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    MAYOR           reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    MENOR           reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    MAYORIG         reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    MENORIG         reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    IGIG            reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    DIF             reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    AND             reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    OR              reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    PYC             reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    CORDER          reduce using rule 41 (listArray -> listArray PUNTO ID .)
+    COMA            reduce using rule 41 (listArray -> listArray PUNTO ID .)
+
+
+state 77
+
+    (39) expression -> CORIZQ expressionList CORDER .
+
+    PARDER          reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    MAS             reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    MENOS           reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    POR             reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    DIVIDIDO        reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    MAYOR           reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    MENOR           reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    MAYORIG         reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    MENORIG         reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    IGIG            reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    DIF             reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    AND             reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    OR              reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    PYC             reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    CORDER          reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+    COMA            reduce using rule 39 (expression -> CORIZQ expressionList CORDER .)
+
+
+state 78
+
+    (20) expressionList -> expressionList COMA . expression
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
+
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
+
+    expression                     shift and go to state 85
+    listArray                      shift and go to state 27
+
+state 79
+
+    (12) whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ . block LLAVEDER
+    (2) block -> . block instruccion
+    (3) block -> . instruccion
+    (4) instruccion -> . print
+    (5) instruccion -> . ifinstruction
+    (6) instruccion -> . whileinstruction
+    (7) instruccion -> . declaration
+    (8) instruccion -> . arraydeclaration
+    (9) instruccion -> . assignment
+    (10) print -> . CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC
+    (11) ifinstruction -> . IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+    (12) whileinstruction -> . WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+    (13) declaration -> . VAR ID DOSPTS type IG expression PYC
+    (14) arraydeclaration -> . VAR ID DOSPTS type CORIZQ CORDER IG expression PYC
+    (15) assignment -> . ID IG expression PYC
+
+    CONSOLE         shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 12
+    VAR             shift and go to state 13
+    ID              shift and go to state 14
+
+    block                          shift and go to state 86
+    instruccion                    shift and go to state 3
+    print                          shift and go to state 4
+    ifinstruction                  shift and go to state 5
+    whileinstruction               shift and go to state 6
+    declaration                    shift and go to state 7
+    arraydeclaration               shift and go to state 8
+    assignment                     shift and go to state 9
+
+state 80
+
+    (13) declaration -> VAR ID DOSPTS type IG . expression PYC
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
+
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
+
+    expression                     shift and go to state 87
+    listArray                      shift and go to state 27
+
+state 81
+
+    (14) arraydeclaration -> VAR ID DOSPTS type CORIZQ . CORDER IG expression PYC
+
+    CORDER          shift and go to state 88
+
+
+state 82
+
+    (10) print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER . PYC
+
+    PYC             shift and go to state 89
+
+
+state 83
+
+    (11) ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block . LLAVEDER
+    (2) block -> block . instruccion
+    (4) instruccion -> . print
+    (5) instruccion -> . ifinstruction
+    (6) instruccion -> . whileinstruction
+    (7) instruccion -> . declaration
+    (8) instruccion -> . arraydeclaration
+    (9) instruccion -> . assignment
+    (10) print -> . CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC
+    (11) ifinstruction -> . IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+    (12) whileinstruction -> . WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+    (13) declaration -> . VAR ID DOSPTS type IG expression PYC
+    (14) arraydeclaration -> . VAR ID DOSPTS type CORIZQ CORDER IG expression PYC
+    (15) assignment -> . ID IG expression PYC
+
+    LLAVEDER        shift and go to state 90
+    CONSOLE         shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 12
+    VAR             shift and go to state 13
+    ID              shift and go to state 14
+
+    instruccion                    shift and go to state 15
+    print                          shift and go to state 4
+    ifinstruction                  shift and go to state 5
+    whileinstruction               shift and go to state 6
+    declaration                    shift and go to state 7
+    arraydeclaration               shift and go to state 8
+    assignment                     shift and go to state 9
+
+state 84
+
+    (40) listArray -> listArray CORIZQ expression CORDER .
+
+    CORIZQ          reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    PUNTO           reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    PARDER          reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    MAS             reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    MENOS           reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    POR             reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    DIVIDIDO        reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    MAYOR           reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    MENOR           reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    MAYORIG         reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    MENORIG         reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    IGIG            reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    DIF             reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    AND             reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    OR              reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    PYC             reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    CORDER          reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+    COMA            reduce using rule 40 (listArray -> listArray CORIZQ expression CORDER .)
+
+
+state 85
+
+    (20) expressionList -> expressionList COMA expression .
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    CORDER          reduce using rule 20 (expressionList -> expressionList COMA expression .)
+    COMA            reduce using rule 20 (expressionList -> expressionList COMA expression .)
+    PARDER          reduce using rule 20 (expressionList -> expressionList COMA expression .)
+    MAS             shift and go to state 36
+    MENOS           shift and go to state 37
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    IGIG            shift and go to state 44
+    DIF             shift and go to state 45
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+
+state 86
+
+    (12) whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block . LLAVEDER
+    (2) block -> block . instruccion
+    (4) instruccion -> . print
+    (5) instruccion -> . ifinstruction
+    (6) instruccion -> . whileinstruction
+    (7) instruccion -> . declaration
+    (8) instruccion -> . arraydeclaration
+    (9) instruccion -> . assignment
+    (10) print -> . CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC
+    (11) ifinstruction -> . IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+    (12) whileinstruction -> . WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER
+    (13) declaration -> . VAR ID DOSPTS type IG expression PYC
+    (14) arraydeclaration -> . VAR ID DOSPTS type CORIZQ CORDER IG expression PYC
+    (15) assignment -> . ID IG expression PYC
+
+    LLAVEDER        shift and go to state 91
+    CONSOLE         shift and go to state 10
+    IF              shift and go to state 11
+    WHILE           shift and go to state 12
+    VAR             shift and go to state 13
+    ID              shift and go to state 14
+
+    instruccion                    shift and go to state 15
+    print                          shift and go to state 4
+    ifinstruction                  shift and go to state 5
+    whileinstruction               shift and go to state 6
+    declaration                    shift and go to state 7
+    arraydeclaration               shift and go to state 8
+    assignment                     shift and go to state 9
+
+state 87
+
+    (13) declaration -> VAR ID DOSPTS type IG expression . PYC
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    PYC             shift and go to state 92
+    MAS             shift and go to state 36
+    MENOS           shift and go to state 37
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    IGIG            shift and go to state 44
+    DIF             shift and go to state 45
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+
+state 88
+
+    (14) arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER . IG expression PYC
+
+    IG              shift and go to state 93
+
+
+state 89
+
+    (10) print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .
+
+    CONSOLE         reduce using rule 10 (print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .)
+    IF              reduce using rule 10 (print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .)
+    WHILE           reduce using rule 10 (print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .)
+    VAR             reduce using rule 10 (print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .)
+    ID              reduce using rule 10 (print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .)
+    $end            reduce using rule 10 (print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .)
+    LLAVEDER        reduce using rule 10 (print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .)
+
+
+state 90
+
+    (11) ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .
+
+    CONSOLE         reduce using rule 11 (ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+    IF              reduce using rule 11 (ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+    WHILE           reduce using rule 11 (ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+    VAR             reduce using rule 11 (ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+    ID              reduce using rule 11 (ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+    $end            reduce using rule 11 (ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+    LLAVEDER        reduce using rule 11 (ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+
+
+state 91
+
+    (12) whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .
+
+    CONSOLE         reduce using rule 12 (whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+    IF              reduce using rule 12 (whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+    WHILE           reduce using rule 12 (whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+    VAR             reduce using rule 12 (whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+    ID              reduce using rule 12 (whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+    $end            reduce using rule 12 (whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+    LLAVEDER        reduce using rule 12 (whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
+
+
+state 92
+
+    (13) declaration -> VAR ID DOSPTS type IG expression PYC .
+
+    CONSOLE         reduce using rule 13 (declaration -> VAR ID DOSPTS type IG expression PYC .)
+    IF              reduce using rule 13 (declaration -> VAR ID DOSPTS type IG expression PYC .)
+    WHILE           reduce using rule 13 (declaration -> VAR ID DOSPTS type IG expression PYC .)
+    VAR             reduce using rule 13 (declaration -> VAR ID DOSPTS type IG expression PYC .)
+    ID              reduce using rule 13 (declaration -> VAR ID DOSPTS type IG expression PYC .)
+    $end            reduce using rule 13 (declaration -> VAR ID DOSPTS type IG expression PYC .)
+    LLAVEDER        reduce using rule 13 (declaration -> VAR ID DOSPTS type IG expression PYC .)
+
+
+state 93
+
+    (14) arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG . expression PYC
+    (22) expression -> . expression MAS expression
+    (23) expression -> . expression MENOS expression
+    (24) expression -> . expression POR expression
+    (25) expression -> . expression DIVIDIDO expression
+    (26) expression -> . expression MAYOR expression
+    (27) expression -> . expression MENOR expression
+    (28) expression -> . expression MAYORIG expression
+    (29) expression -> . expression MENORIG expression
+    (30) expression -> . expression IGIG expression
+    (31) expression -> . expression DIF expression
+    (32) expression -> . expression AND expression
+    (33) expression -> . expression OR expression
+    (34) expression -> . NOT expression
+    (35) expression -> . PARIZQ expression PARDER
+    (36) expression -> . ENTERO
+    (37) expression -> . CADENA
+    (38) expression -> . listArray
+    (39) expression -> . CORIZQ expressionList CORDER
+    (40) listArray -> . listArray CORIZQ expression CORDER
+    (41) listArray -> . listArray PUNTO ID
+    (42) listArray -> . ID
+
+    NOT             shift and go to state 24
+    PARIZQ          shift and go to state 22
+    ENTERO          shift and go to state 25
+    CADENA          shift and go to state 26
+    CORIZQ          shift and go to state 28
+    ID              shift and go to state 29
+
+    expression                     shift and go to state 94
+    listArray                      shift and go to state 27
+
+state 94
+
+    (14) arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression . PYC
+    (22) expression -> expression . MAS expression
+    (23) expression -> expression . MENOS expression
+    (24) expression -> expression . POR expression
+    (25) expression -> expression . DIVIDIDO expression
+    (26) expression -> expression . MAYOR expression
+    (27) expression -> expression . MENOR expression
+    (28) expression -> expression . MAYORIG expression
+    (29) expression -> expression . MENORIG expression
+    (30) expression -> expression . IGIG expression
+    (31) expression -> expression . DIF expression
+    (32) expression -> expression . AND expression
+    (33) expression -> expression . OR expression
+
+    PYC             shift and go to state 95
+    MAS             shift and go to state 36
+    MENOS           shift and go to state 37
+    POR             shift and go to state 38
+    DIVIDIDO        shift and go to state 39
+    MAYOR           shift and go to state 40
+    MENOR           shift and go to state 41
+    MAYORIG         shift and go to state 42
+    MENORIG         shift and go to state 43
+    IGIG            shift and go to state 44
+    DIF             shift and go to state 45
+    AND             shift and go to state 46
+    OR              shift and go to state 47
+
+
+state 95
+
+    (14) arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .
+
+    CONSOLE         reduce using rule 14 (arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .)
+    IF              reduce using rule 14 (arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .)
+    WHILE           reduce using rule 14 (arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .)
+    VAR             reduce using rule 14 (arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .)
+    ID              reduce using rule 14 (arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .)
+    $end            reduce using rule 14 (arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .)
+    LLAVEDER        reduce using rule 14 (arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for MAS in state 48 resolved as shift
+WARNING: shift/reduce conflict for MENOS in state 48 resolved as shift
+WARNING: shift/reduce conflict for POR in state 48 resolved as shift
+WARNING: shift/reduce conflict for DIVIDIDO in state 48 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 48 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 48 resolved as shift
+WARNING: shift/reduce conflict for MAYORIG in state 48 resolved as shift
+WARNING: shift/reduce conflict for MENORIG in state 48 resolved as shift
+WARNING: shift/reduce conflict for IGIG in state 48 resolved as shift
+WARNING: shift/reduce conflict for DIF in state 48 resolved as shift
+WARNING: shift/reduce conflict for AND in state 48 resolved as shift
+WARNING: shift/reduce conflict for OR in state 48 resolved as shift
+WARNING: shift/reduce conflict for MAS in state 71 resolved as shift
+WARNING: shift/reduce conflict for MENOS in state 71 resolved as shift
+WARNING: shift/reduce conflict for POR in state 71 resolved as shift
+WARNING: shift/reduce conflict for DIVIDIDO in state 71 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 71 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 71 resolved as shift
+WARNING: shift/reduce conflict for MAYORIG in state 71 resolved as shift
+WARNING: shift/reduce conflict for MENORIG in state 71 resolved as shift
+WARNING: shift/reduce conflict for IGIG in state 71 resolved as shift
+WARNING: shift/reduce conflict for DIF in state 71 resolved as shift
+WARNING: shift/reduce conflict for AND in state 71 resolved as shift
+WARNING: shift/reduce conflict for OR in state 71 resolved as shift
+WARNING: shift/reduce conflict for MAS in state 72 resolved as shift
+WARNING: shift/reduce conflict for MENOS in state 72 resolved as shift
+WARNING: shift/reduce conflict for POR in state 72 resolved as shift
+WARNING: shift/reduce conflict for DIVIDIDO in state 72 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 72 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 72 resolved as shift
+WARNING: shift/reduce conflict for MAYORIG in state 72 resolved as shift
+WARNING: shift/reduce conflict for MENORIG in state 72 resolved as shift
+WARNING: shift/reduce conflict for IGIG in state 72 resolved as shift
+WARNING: shift/reduce conflict for DIF in state 72 resolved as shift
+WARNING: shift/reduce conflict for AND in state 72 resolved as shift
+WARNING: shift/reduce conflict for OR in state 72 resolved as shift

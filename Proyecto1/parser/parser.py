@@ -15,6 +15,8 @@ from instructions.print import Print
 from instructions.declaration import Declaration
 from instructions.assignment import Assignment
 from instructions.array_declaration import ArrayDeclaration
+from instructions.if_instruction import If
+from instructions.while_instruction import While
 
 class codeParams:
     def __init__(self, line, column):
@@ -29,7 +31,9 @@ reserved_words = {
     'float': 'FLOAT',
     'number': 'NUMBER',
     'string': 'STRING',
-    'bool': 'BOOL'
+    'bool': 'BOOL',
+    'if' : 'IF',
+    'while' : 'WHILE'
 }
 
 # Listado de tokens
@@ -48,11 +52,26 @@ tokens = [
     'ENTERO',
     'DECIMAL',
     'IG',
-    'ID',
+    'IGIG',
+    'DIF',
     'CORIZQ',
-    'CORDER'
+    'CORDER',
+    'LLAVEIZQ',
+    'LLAVEDER',
+    'MAYOR',
+    'MENOR',
+    'MAYORIG',
+    'MENORIG',
+    'AND',
+    'OR',
+    'NOT',
+    'ID'
 ] + list(reserved_words.values())
 
+t_MAYOR         = r'>'
+t_MENOR         = r'<'
+t_MAYORIG       = r'>='
+t_MENORIG       = r'<='
 t_PARIZQ        = r'\('
 t_PARDER        = r'\)'
 t_MAS           = r'\+'
@@ -63,9 +82,16 @@ t_PUNTO         = r'\.'
 t_DOSPTS        = r':'
 t_COMA          = r','
 t_PYC           = r';'
+t_IGIG          = r'=='
 t_IG            = r'='
+t_DIF           = r'!='
 t_CORIZQ        = r'\['
 t_CORDER        = r'\]'
+t_LLAVEIZQ      = r'\{'
+t_LLAVEDER      = r'\}'
+t_AND           = r'&&'
+t_OR            = r'\|\|'
+t_NOT           = r'!'
 
 #Función de reconocimiento
 def t_CADENA(t):
@@ -128,13 +154,20 @@ def t_error(t):
 #SINTACTICO
 precedence = (
     ('left','MAS','MENOS'),
-    ('left','POR','DIVIDIDO')
+    ('left','POR','DIVIDIDO'),
+    ('left','MAYOR','MENOR'),
+    ('left','MAYORIG','MENORIG'),
+    ('left','AND', 'OR')
 )
 
 #START
-def p_instrucciones_lista(t):
-    '''instrucciones : instrucciones instruccion
-                    | instruccion '''
+def p_start(t):
+    '''s : block'''
+    t[0] = t[1]
+
+def p_instruction_block(t):
+    '''block : block instruccion
+            | instruccion '''
     if 2 < len(t):
         t[1].append(t[2])
         t[0] = t[1]
@@ -142,23 +175,42 @@ def p_instrucciones_lista(t):
         t[0] = [t[1]]
 
 #Listado de instrucciones
-def p_instruccion_console(t):
-    'instruccion : CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC'
+def p_instruction_list(t):
+    '''instruccion : print
+                | ifinstruction 
+                | whileinstruction 
+                | declaration
+                | arraydeclaration
+                | assignment'''
+    t[0] = t[1]
+
+def p_instruction_console(t):
+    'print : CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC'
     params = get_params(t)
     t[0] = Print(params.line, params.column, t[5])
 
-def p_instruccion_declaration(t):
-    'instruccion : VAR ID DOSPTS type IG expression PYC'
+def p_instruction_if(t):
+    'ifinstruction : IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER'
+    params = get_params(t)
+    t[0] = If(params.line, params.column, t[3], t[6])
+
+def p_instruction_while(t):
+    'whileinstruction : WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER'
+    params = get_params(t)
+    t[0] = While(params.line, params.column, t[3], t[6])
+
+def p_instruction_declaration(t):
+    'declaration : VAR ID DOSPTS type IG expression PYC'
     params = get_params(t)
     t[0] = Declaration(params.line, params.column, t[2], t[4], t[6])
 
-def p_instruccion_array_declaration(t):
-    'instruccion : VAR ID DOSPTS type CORIZQ CORDER IG expression PYC'
+def p_instruction_array_declaration(t):
+    'arraydeclaration : VAR ID DOSPTS type CORIZQ CORDER IG expression PYC'
     params = get_params(t)
     t[0] = ArrayDeclaration(params.line, params.column, t[2], t[4], t[8])
 
-def p_instruccion_assignment(t):
-    'instruccion : ID IG expression PYC'
+def p_instruction_assignment(t):
+    'assignment : ID IG expression PYC'
     params = get_params(t)
     t[0] = Assignment(params.line, params.column, t[1], t[3])
 
@@ -176,7 +228,6 @@ def p_type_prod(t):
     if t[1] == 'bool':
         t[0] = ExpressionType.BOOLEAN
 
-# Expressions
 def p_expression_list(t):
     '''expressionList : expressionList COMA expression
                     | expression '''
@@ -187,6 +238,7 @@ def p_expression_list(t):
         arr.append(t[1])
     t[0] = arr
 
+# Expresiones aritmeticas, relacionales y lógicas
 def p_expression_add(t):
     'expression : expression MAS expression'
     params = get_params(t)
@@ -206,6 +258,51 @@ def p_expression_div(t):
     'expression : expression DIVIDIDO expression'
     params = get_params(t)
     t[0] = Operation(params.line, params.column, "/", t[1], t[3])
+
+def p_expression_mayor(t):
+    'expression : expression MAYOR expression'
+    params = get_params(t)
+    t[0] = Operation(params.line, params.column, ">", t[1], t[3])
+
+def p_expression_menor(t):
+    'expression : expression MENOR expression'
+    params = get_params(t)
+    t[0] = Operation(params.line, params.column, "<", t[1], t[3])
+
+def p_expression_mayor_igual(t):
+    'expression : expression MAYORIG expression'
+    params = get_params(t)
+    t[0] = Operation(params.line, params.column, ">=", t[1], t[3])
+
+def p_expression_menor_igual(t):
+    'expression : expression MENORIG expression'
+    params = get_params(t)
+    t[0] = Operation(params.line, params.column, "<=", t[1], t[3])
+
+def p_expression_igual(t):
+    'expression : expression IGIG expression'
+    params = get_params(t)
+    t[0] = Operation(params.line, params.column, "==", t[1], t[3])
+
+def p_expression_diferente(t):
+    'expression : expression DIF expression'
+    params = get_params(t)
+    t[0] = Operation(params.line, params.column, "!=", t[1], t[3])
+
+def p_expression_and(t):
+    'expression : expression AND expression'
+    params = get_params(t)
+    t[0] = Operation(params.line, params.column, "&&", t[1], t[3])
+
+def p_expression_or(t):
+    'expression : expression OR expression'
+    params = get_params(t)
+    t[0] = Operation(params.line, params.column, "||", t[1], t[3])
+
+def p_expression_not(t):
+    'expression : NOT expression'
+    params = get_params(t)
+    t[0] = Operation(params.line, params.column, "!", t[2], None)
 
 def p_expression_agrupacion(t):
     'expression : PARIZQ expression PARDER'

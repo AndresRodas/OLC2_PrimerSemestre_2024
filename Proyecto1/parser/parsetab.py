@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'leftMASMENOSleftPORDIVIDIDOBOOL CADENA COMA CONSOLE CORDER CORIZQ DECIMAL DIVIDIDO DOSPTS ENTERO FLOAT ID IG LOG MAS MENOS NUMBER PARDER PARIZQ POR PUNTO PYC STRING VARinstrucciones : instrucciones instruccion\n                    | instruccion instruccion : CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYCinstruccion : VAR ID DOSPTS type IG expression PYCinstruccion : VAR ID DOSPTS type CORIZQ CORDER IG expression PYCinstruccion : ID IG expression PYCtype : NUMBER\n            | FLOAT\n            | STRING\n            | BOOLexpressionList : expressionList COMA expression\n                    | expression expression : expression MAS expressionexpression : expression MENOS expressionexpression : expression POR expressionexpression : expression DIVIDIDO expressionexpression : PARIZQ expression PARDERexpression    : ENTERO\n                    | CADENA\n                    | listArrayexpression : CORIZQ expressionList CORDERlistArray : listArray CORIZQ expression CORDER\n                | listArray PUNTO ID\n                | ID'
+_lr_signature = 'leftMASMENOSleftPORDIVIDIDOleftMAYORMENORleftMAYORIGMENORIGleftANDORAND BOOL CADENA COMA CONSOLE CORDER CORIZQ DECIMAL DIF DIVIDIDO DOSPTS ENTERO FLOAT ID IF IG IGIG LLAVEDER LLAVEIZQ LOG MAS MAYOR MAYORIG MENOR MENORIG MENOS NOT NUMBER OR PARDER PARIZQ POR PUNTO PYC STRING VAR WHILEs : blockblock : block instruccion\n            | instruccion instruccion : print\n                | ifinstruction \n                | whileinstruction \n                | declaration\n                | arraydeclaration\n                | assignmentprint : CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYCifinstruction : IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDERwhileinstruction : WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDERdeclaration : VAR ID DOSPTS type IG expression PYCarraydeclaration : VAR ID DOSPTS type CORIZQ CORDER IG expression PYCassignment : ID IG expression PYCtype : NUMBER\n            | FLOAT\n            | STRING\n            | BOOLexpressionList : expressionList COMA expression\n                    | expression expression : expression MAS expressionexpression : expression MENOS expressionexpression : expression POR expressionexpression : expression DIVIDIDO expressionexpression : expression MAYOR expressionexpression : expression MENOR expressionexpression : expression MAYORIG expressionexpression : expression MENORIG expressionexpression : expression IGIG expressionexpression : expression DIF expressionexpression : expression AND expressionexpression : expression OR expressionexpression : NOT expressionexpression : PARIZQ expression PARDERexpression    : ENTERO\n                    | CADENA\n                    | listArrayexpression : CORIZQ expressionList CORDERlistArray : listArray CORIZQ expression CORDER\n                | listArray PUNTO ID\n                | ID'
     
-_lr_action_items = {'CONSOLE':([0,1,2,6,25,52,53,56,],[3,3,-2,-1,-6,-3,-4,-5,]),'VAR':([0,1,2,6,25,52,53,56,],[4,4,-2,-1,-6,-3,-4,-5,]),'ID':([0,1,2,4,6,9,14,18,19,25,26,27,28,29,31,32,36,46,52,53,54,56,],[5,5,-2,8,-1,12,12,12,12,-6,12,12,12,12,12,44,12,12,-3,-4,12,-5,]),'$end':([1,2,6,25,52,53,56,],[0,-2,-1,-6,-3,-4,-5,]),'PUNTO':([3,12,17,44,50,],[7,-24,32,-23,-22,]),'IG':([5,20,21,22,23,24,49,],[9,36,-7,-8,-9,-10,54,]),'LOG':([7,],[10,]),'DOSPTS':([8,],[11,]),'PARIZQ':([9,10,14,18,19,26,27,28,29,31,36,46,54,],[14,19,14,14,14,14,14,14,14,14,14,14,14,]),'ENTERO':([9,14,18,19,26,27,28,29,31,36,46,54,],[15,15,15,15,15,15,15,15,15,15,15,15,]),'CADENA':([9,14,18,19,26,27,28,29,31,36,46,54,],[16,16,16,16,16,16,16,16,16,16,16,16,]),'CORIZQ':([9,12,14,17,18,19,20,21,22,23,24,26,27,28,29,31,36,44,46,50,54,],[18,-24,18,31,18,18,37,-7,-8,-9,-10,18,18,18,18,18,18,-23,18,-22,18,]),'NUMBER':([11,],[21,]),'FLOAT':([11,],[22,]),'STRING':([11,],[23,]),'BOOL':([11,],[24,]),'PYC':([12,13,15,16,17,38,39,40,41,42,44,45,47,48,50,55,],[-24,25,-18,-19,-20,-13,-14,-15,-16,-17,-23,-21,52,53,-22,56,]),'MAS':([12,13,15,16,17,30,34,38,39,40,41,42,43,44,45,48,50,51,55,],[-24,26,-18,-19,-20,26,26,-13,-14,-15,-16,-17,26,-23,-21,26,-22,26,26,]),'MENOS':([12,13,15,16,17,30,34,38,39,40,41,42,43,44,45,48,50,51,55,],[-24,27,-18,-19,-20,27,27,-13,-14,-15,-16,-17,27,-23,-21,27,-22,27,27,]),'POR':([12,13,15,16,17,30,34,38,39,40,41,42,43,44,45,48,50,51,55,],[-24,28,-18,-19,-20,28,28,28,28,-15,-16,-17,28,-23,-21,28,-22,28,28,]),'DIVIDIDO':([12,13,15,16,17,30,34,38,39,40,41,42,43,44,45,48,50,51,55,],[-24,29,-18,-19,-20,29,29,29,29,-15,-16,-17,29,-23,-21,29,-22,29,29,]),'PARDER':([12,15,16,17,30,34,35,38,39,40,41,42,44,45,50,51,],[-24,-18,-19,-20,42,-12,47,-13,-14,-15,-16,-17,-23,-21,-22,-11,]),'CORDER':([12,15,16,17,33,34,37,38,39,40,41,42,43,44,45,50,51,],[-24,-18,-19,-20,45,-12,49,-13,-14,-15,-16,-17,50,-23,-21,-22,-11,]),'COMA':([12,15,16,17,33,34,35,38,39,40,41,42,44,45,50,51,],[-24,-18,-19,-20,46,-12,46,-13,-14,-15,-16,-17,-23,-21,-22,-11,]),}
+_lr_action_items = {'CONSOLE':([0,2,3,4,5,6,7,8,9,15,59,62,79,83,86,89,90,91,92,95,],[10,10,-3,-4,-5,-6,-7,-8,-9,-2,-15,10,10,10,10,-10,-11,-12,-13,-14,]),'IF':([0,2,3,4,5,6,7,8,9,15,59,62,79,83,86,89,90,91,92,95,],[11,11,-3,-4,-5,-6,-7,-8,-9,-2,-15,11,11,11,11,-10,-11,-12,-13,-14,]),'WHILE':([0,2,3,4,5,6,7,8,9,15,59,62,79,83,86,89,90,91,92,95,],[12,12,-3,-4,-5,-6,-7,-8,-9,-2,-15,12,12,12,12,-10,-11,-12,-13,-14,]),'VAR':([0,2,3,4,5,6,7,8,9,15,59,62,79,83,86,89,90,91,92,95,],[13,13,-3,-4,-5,-6,-7,-8,-9,-2,-15,13,13,13,13,-10,-11,-12,-13,-14,]),'ID':([0,2,3,4,5,6,7,8,9,13,15,17,18,20,22,24,28,33,36,37,38,39,40,41,42,43,44,45,46,47,49,50,59,62,78,79,80,83,86,89,90,91,92,93,95,],[14,14,-3,-4,-5,-6,-7,-8,-9,19,-2,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,29,76,-15,14,29,14,29,14,14,-10,-11,-12,-13,29,-14,]),'$end':([1,2,3,4,5,6,7,8,9,15,59,89,90,91,92,95,],[0,-1,-3,-4,-5,-6,-7,-8,-9,-2,-15,-10,-11,-12,-13,-14,]),'LLAVEDER':([3,4,5,6,7,8,9,15,59,83,86,89,90,91,92,95,],[-3,-4,-5,-6,-7,-8,-9,-2,-15,90,91,-10,-11,-12,-13,-14,]),'PUNTO':([10,27,29,76,84,],[16,50,-42,-41,-40,]),'PARIZQ':([11,12,17,18,20,21,22,24,28,33,36,37,38,39,40,41,42,43,44,45,46,47,49,78,80,93,],[17,18,22,22,22,33,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,]),'IG':([14,54,55,56,57,58,88,],[20,80,-16,-17,-18,-19,93,]),'LOG':([16,],[21,]),'NOT':([17,18,20,22,24,28,33,36,37,38,39,40,41,42,43,44,45,46,47,49,78,80,93,],[24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,]),'ENTERO':([17,18,20,22,24,28,33,36,37,38,39,40,41,42,43,44,45,46,47,49,78,80,93,],[25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,25,]),'CADENA':([17,18,20,22,24,28,33,36,37,38,39,40,41,42,43,44,45,46,47,49,78,80,93,],[26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,]),'CORIZQ':([17,18,20,22,24,27,28,29,33,36,37,38,39,40,41,42,43,44,45,46,47,49,54,55,56,57,58,76,78,80,84,93,],[28,28,28,28,28,49,28,-42,28,28,28,28,28,28,28,28,28,28,28,28,28,28,81,-16,-17,-18,-19,-41,28,28,-40,28,]),'DOSPTS':([19,],[31,]),'PARDER':([23,25,26,27,29,30,34,48,52,60,61,63,64,65,66,67,68,69,70,71,72,73,74,76,77,84,85,],[35,-36,-37,-38,-42,53,61,-34,-21,82,-35,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-41,-39,-40,-20,]),'MAS':([23,25,26,27,29,30,32,34,48,52,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,84,85,87,94,],[36,-36,-37,-38,-42,36,36,36,36,36,-35,-22,-23,-24,-25,-26,-27,-28,-29,36,36,-32,-33,36,-41,-39,-40,36,36,36,]),'MENOS':([23,25,26,27,29,30,32,34,48,52,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,84,85,87,94,],[37,-36,-37,-38,-42,37,37,37,37,37,-35,-22,-23,-24,-25,-26,-27,-28,-29,37,37,-32,-33,37,-41,-39,-40,37,37,37,]),'POR':([23,25,26,27,29,30,32,34,48,52,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,84,85,87,94,],[38,-36,-37,-38,-42,38,38,38,38,38,-35,38,38,-24,-25,-26,-27,-28,-29,38,38,-32,-33,38,-41,-39,-40,38,38,38,]),'DIVIDIDO':([23,25,26,27,29,30,32,34,48,52,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,84,85,87,94,],[39,-36,-37,-38,-42,39,39,39,39,39,-35,39,39,-24,-25,-26,-27,-28,-29,39,39,-32,-33,39,-41,-39,-40,39,39,39,]),'MAYOR':([23,25,26,27,29,30,32,34,48,52,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,84,85,87,94,],[40,-36,-37,-38,-42,40,40,40,40,40,-35,40,40,40,40,-26,-27,-28,-29,40,40,-32,-33,40,-41,-39,-40,40,40,40,]),'MENOR':([23,25,26,27,29,30,32,34,48,52,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,84,85,87,94,],[41,-36,-37,-38,-42,41,41,41,41,41,-35,41,41,41,41,-26,-27,-28,-29,41,41,-32,-33,41,-41,-39,-40,41,41,41,]),'MAYORIG':([23,25,26,27,29,30,32,34,48,52,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,84,85,87,94,],[42,-36,-37,-38,-42,42,42,42,42,42,-35,42,42,42,42,42,42,-28,-29,42,42,-32,-33,42,-41,-39,-40,42,42,42,]),'MENORIG':([23,25,26,27,29,30,32,34,48,52,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,84,85,87,94,],[43,-36,-37,-38,-42,43,43,43,43,43,-35,43,43,43,43,43,43,-28,-29,43,43,-32,-33,43,-41,-39,-40,43,43,43,]),'IGIG':([23,25,26,27,29,30,32,34,48,52,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,84,85,87,94,],[44,-36,-37,-38,-42,44,44,44,44,44,-35,-22,-23,-24,-25,-26,-27,-28,-29,44,44,-32,-33,44,-41,-39,-40,44,44,44,]),'DIF':([23,25,26,27,29,30,32,34,48,52,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,84,85,87,94,],[45,-36,-37,-38,-42,45,45,45,45,45,-35,-22,-23,-24,-25,-26,-27,-28,-29,45,45,-32,-33,45,-41,-39,-40,45,45,45,]),'AND':([23,25,26,27,29,30,32,34,48,52,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,84,85,87,94,],[46,-36,-37,-38,-42,46,46,46,46,46,-35,46,46,46,46,46,46,46,46,46,46,-32,-33,46,-41,-39,-40,46,46,46,]),'OR':([23,25,26,27,29,30,32,34,48,52,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,84,85,87,94,],[47,-36,-37,-38,-42,47,47,47,47,47,-35,47,47,47,47,47,47,47,47,47,47,-32,-33,47,-41,-39,-40,47,47,47,]),'PYC':([25,26,27,29,32,48,61,63,64,65,66,67,68,69,70,71,72,73,74,76,77,82,84,87,94,],[-36,-37,-38,-42,59,-34,-35,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-41,-39,89,-40,92,95,]),'CORDER':([25,26,27,29,48,51,52,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,81,84,85,],[-36,-37,-38,-42,-34,77,-21,-35,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,84,-41,-39,88,-40,-20,]),'COMA':([25,26,27,29,48,51,52,60,61,63,64,65,66,67,68,69,70,71,72,73,74,76,77,84,85,],[-36,-37,-38,-42,-34,78,-21,78,-35,-22,-23,-24,-25,-26,-27,-28,-29,-30,-31,-32,-33,-41,-39,-40,-20,]),'NUMBER':([31,],[55,]),'FLOAT':([31,],[56,]),'STRING':([31,],[57,]),'BOOL':([31,],[58,]),'LLAVEIZQ':([35,53,],[62,79,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'instrucciones':([0,],[1,]),'instruccion':([0,1,],[2,6,]),'expression':([9,14,18,19,26,27,28,29,31,36,46,54,],[13,30,34,34,38,39,40,41,43,48,51,55,]),'listArray':([9,14,18,19,26,27,28,29,31,36,46,54,],[17,17,17,17,17,17,17,17,17,17,17,17,]),'type':([11,],[20,]),'expressionList':([18,19,],[33,35,]),}
+_lr_goto_items = {'s':([0,],[1,]),'block':([0,62,79,],[2,83,86,]),'instruccion':([0,2,62,79,83,86,],[3,15,3,3,15,15,]),'print':([0,2,62,79,83,86,],[4,4,4,4,4,4,]),'ifinstruction':([0,2,62,79,83,86,],[5,5,5,5,5,5,]),'whileinstruction':([0,2,62,79,83,86,],[6,6,6,6,6,6,]),'declaration':([0,2,62,79,83,86,],[7,7,7,7,7,7,]),'arraydeclaration':([0,2,62,79,83,86,],[8,8,8,8,8,8,]),'assignment':([0,2,62,79,83,86,],[9,9,9,9,9,9,]),'expression':([17,18,20,22,24,28,33,36,37,38,39,40,41,42,43,44,45,46,47,49,78,80,93,],[23,30,32,34,48,52,52,63,64,65,66,67,68,69,70,71,72,73,74,75,85,87,94,]),'listArray':([17,18,20,22,24,28,33,36,37,38,39,40,41,42,43,44,45,46,47,49,78,80,93,],[27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,27,]),'expressionList':([28,33,],[51,60,]),'type':([31,],[54,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,29 +26,47 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> instrucciones","S'",1,None,None,None),
-  ('instrucciones -> instrucciones instruccion','instrucciones',2,'p_instrucciones_lista','parser.py',136),
-  ('instrucciones -> instruccion','instrucciones',1,'p_instrucciones_lista','parser.py',137),
-  ('instruccion -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC','instruccion',7,'p_instruccion_console','parser.py',146),
-  ('instruccion -> VAR ID DOSPTS type IG expression PYC','instruccion',7,'p_instruccion_declaration','parser.py',151),
-  ('instruccion -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC','instruccion',9,'p_instruccion_array_declaration','parser.py',156),
-  ('instruccion -> ID IG expression PYC','instruccion',4,'p_instruccion_assignment','parser.py',161),
-  ('type -> NUMBER','type',1,'p_type_prod','parser.py',166),
-  ('type -> FLOAT','type',1,'p_type_prod','parser.py',167),
-  ('type -> STRING','type',1,'p_type_prod','parser.py',168),
-  ('type -> BOOL','type',1,'p_type_prod','parser.py',169),
-  ('expressionList -> expressionList COMA expression','expressionList',3,'p_expression_list','parser.py',181),
-  ('expressionList -> expression','expressionList',1,'p_expression_list','parser.py',182),
-  ('expression -> expression MAS expression','expression',3,'p_expression_add','parser.py',191),
-  ('expression -> expression MENOS expression','expression',3,'p_expression_sub','parser.py',196),
-  ('expression -> expression POR expression','expression',3,'p_expression_mult','parser.py',201),
-  ('expression -> expression DIVIDIDO expression','expression',3,'p_expression_div','parser.py',206),
-  ('expression -> PARIZQ expression PARDER','expression',3,'p_expression_agrupacion','parser.py',211),
-  ('expression -> ENTERO','expression',1,'p_expression_primitiva','parser.py',215),
-  ('expression -> CADENA','expression',1,'p_expression_primitiva','parser.py',216),
-  ('expression -> listArray','expression',1,'p_expression_primitiva','parser.py',217),
-  ('expression -> CORIZQ expressionList CORDER','expression',3,'p_expression_array_primitiva','parser.py',221),
-  ('listArray -> listArray CORIZQ expression CORDER','listArray',4,'p_expression_list_array','parser.py',226),
-  ('listArray -> listArray PUNTO ID','listArray',3,'p_expression_list_array','parser.py',227),
-  ('listArray -> ID','listArray',1,'p_expression_list_array','parser.py',228),
+  ("S' -> s","S'",1,None,None,None),
+  ('s -> block','s',1,'p_start','parser.py',165),
+  ('block -> block instruccion','block',2,'p_instruction_block','parser.py',169),
+  ('block -> instruccion','block',1,'p_instruction_block','parser.py',170),
+  ('instruccion -> print','instruccion',1,'p_instruction_list','parser.py',179),
+  ('instruccion -> ifinstruction','instruccion',1,'p_instruction_list','parser.py',180),
+  ('instruccion -> whileinstruction','instruccion',1,'p_instruction_list','parser.py',181),
+  ('instruccion -> declaration','instruccion',1,'p_instruction_list','parser.py',182),
+  ('instruccion -> arraydeclaration','instruccion',1,'p_instruction_list','parser.py',183),
+  ('instruccion -> assignment','instruccion',1,'p_instruction_list','parser.py',184),
+  ('print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC','print',7,'p_instruction_console','parser.py',188),
+  ('ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER','ifinstruction',7,'p_instruction_if','parser.py',193),
+  ('whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER','whileinstruction',7,'p_instruction_while','parser.py',198),
+  ('declaration -> VAR ID DOSPTS type IG expression PYC','declaration',7,'p_instruction_declaration','parser.py',203),
+  ('arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC','arraydeclaration',9,'p_instruction_array_declaration','parser.py',208),
+  ('assignment -> ID IG expression PYC','assignment',4,'p_instruction_assignment','parser.py',213),
+  ('type -> NUMBER','type',1,'p_type_prod','parser.py',218),
+  ('type -> FLOAT','type',1,'p_type_prod','parser.py',219),
+  ('type -> STRING','type',1,'p_type_prod','parser.py',220),
+  ('type -> BOOL','type',1,'p_type_prod','parser.py',221),
+  ('expressionList -> expressionList COMA expression','expressionList',3,'p_expression_list','parser.py',232),
+  ('expressionList -> expression','expressionList',1,'p_expression_list','parser.py',233),
+  ('expression -> expression MAS expression','expression',3,'p_expression_add','parser.py',243),
+  ('expression -> expression MENOS expression','expression',3,'p_expression_sub','parser.py',248),
+  ('expression -> expression POR expression','expression',3,'p_expression_mult','parser.py',253),
+  ('expression -> expression DIVIDIDO expression','expression',3,'p_expression_div','parser.py',258),
+  ('expression -> expression MAYOR expression','expression',3,'p_expression_mayor','parser.py',263),
+  ('expression -> expression MENOR expression','expression',3,'p_expression_menor','parser.py',268),
+  ('expression -> expression MAYORIG expression','expression',3,'p_expression_mayor_igual','parser.py',273),
+  ('expression -> expression MENORIG expression','expression',3,'p_expression_menor_igual','parser.py',278),
+  ('expression -> expression IGIG expression','expression',3,'p_expression_igual','parser.py',283),
+  ('expression -> expression DIF expression','expression',3,'p_expression_diferente','parser.py',288),
+  ('expression -> expression AND expression','expression',3,'p_expression_and','parser.py',293),
+  ('expression -> expression OR expression','expression',3,'p_expression_or','parser.py',298),
+  ('expression -> NOT expression','expression',2,'p_expression_not','parser.py',303),
+  ('expression -> PARIZQ expression PARDER','expression',3,'p_expression_agrupacion','parser.py',308),
+  ('expression -> ENTERO','expression',1,'p_expression_primitiva','parser.py',312),
+  ('expression -> CADENA','expression',1,'p_expression_primitiva','parser.py',313),
+  ('expression -> listArray','expression',1,'p_expression_primitiva','parser.py',314),
+  ('expression -> CORIZQ expressionList CORDER','expression',3,'p_expression_array_primitiva','parser.py',318),
+  ('listArray -> listArray CORIZQ expression CORDER','listArray',4,'p_expression_list_array','parser.py',323),
+  ('listArray -> listArray PUNTO ID','listArray',3,'p_expression_list_array','parser.py',324),
+  ('listArray -> ID','listArray',1,'p_expression_list_array','parser.py',325),
 ]
