@@ -1,5 +1,7 @@
 from interfaces.instruction import Instruction
 from environment.environment import Environment
+from environment.types import ExpressionType
+from environment.execute import LoopExecuter
 
 class While(Instruction):
     def __init__(self, line, col, exp, block):
@@ -11,6 +13,7 @@ class While(Instruction):
     def ejecutar(self, ast, env):
         # Variables de iteración
         safe_cont = 0
+        breakFlag = False
         result = None
         # Ciclo
         while True:
@@ -20,8 +23,9 @@ class While(Instruction):
             # Validación
             if result.value:
                 while_env = Environment(env, "WHILE")
-                for s in self.block:
-                    s.ejecutar(ast, while_env)
+                breakFlag = LoopExecuter(self.block, ast, while_env)
+                if breakFlag:
+                    break
             else:
                 break
             # Validar limite de seguridad

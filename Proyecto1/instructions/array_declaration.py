@@ -18,7 +18,7 @@ class ArrayDeclaration(Instruction):
             return
         # Validar tipos
         for res in result.value:
-            if res.type != self.type:
+            if res.type != self.type and res.type != ExpressionType.ARRAY:
                 ast.setErrors('El arreglo contiene tipos incorrectos')
                 return
         # Agregar al entorno

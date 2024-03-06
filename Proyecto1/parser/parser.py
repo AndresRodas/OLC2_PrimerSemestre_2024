@@ -9,6 +9,8 @@ from expressions.operation import Operation
 from expressions.access import Access
 from expressions.array import Array
 from expressions.array_access import ArrayAccess
+from expressions.break_statement import Break
+from expressions.continue_statement import Continue
 
 # Instructions imports
 from instructions.print import Print
@@ -33,7 +35,10 @@ reserved_words = {
     'string': 'STRING',
     'bool': 'BOOL',
     'if' : 'IF',
-    'while' : 'WHILE'
+    'while' : 'WHILE',
+    'break' : 'BREAK',
+    'continue' : 'CONTINUE',
+    'return' : 'RETURN'
 }
 
 # Listado de tokens
@@ -181,7 +186,9 @@ def p_instruction_list(t):
                 | whileinstruction 
                 | declaration
                 | arraydeclaration
-                | assignment'''
+                | assignment
+                | breakstmt
+                | continuestmt'''
     t[0] = t[1]
 
 def p_instruction_console(t):
@@ -213,6 +220,16 @@ def p_instruction_assignment(t):
     'assignment : ID IG expression PYC'
     params = get_params(t)
     t[0] = Assignment(params.line, params.column, t[1], t[3])
+
+def p_instruction_break(t):
+    'breakstmt : BREAK PYC'
+    params = get_params(t)
+    t[0] = Break(params.line, params.column)
+
+def p_instruction_continue(t):
+    'continuestmt : CONTINUE PYC'
+    params = get_params(t)
+    t[0] = Continue(params.line, params.column)
 
 def p_type_prod(t):
     '''type : NUMBER

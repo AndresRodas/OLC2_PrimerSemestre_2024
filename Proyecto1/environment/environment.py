@@ -39,3 +39,14 @@ class Environment():
                 tmpEnv = tmpEnv.previous
         ast.setErrors(f"La variable {id} no existe.")
         return Symbol(0, 0, None, ExpressionType.NULL)
+
+    def LoopValidation(self):
+        tmpEnv = self
+        while True:
+            if tmpEnv.id == 'WHILE' or tmpEnv.id == 'FOR':
+                return True
+            if tmpEnv.previous == None:
+                break
+            else:
+                tmpEnv = tmpEnv.previous
+        return False

@@ -3,6 +3,7 @@ from flask_cors import CORS
 from parser.parser import Parser
 from environment.ast import Ast
 from environment.environment import Environment
+from environment.execute import RootExecuter
 
 # Se crea una instancia de la aplicación Flask
 app = Flask(__name__)
@@ -26,9 +27,8 @@ def recibir_datos():
     parser = Parser()
     # [inst1, inst2, inst2]
     instructionsArr = parser.interpretar(input_data)
-    # Reconocimiento
-    for inst in instructionsArr:
-        inst.ejecutar(ast, env)
+    # Ejecución
+    RootExecuter(instructionsArr, ast, env)
     # Estructurando respuesta
     res = {"result": True,"console":ast.getConsole(),"errors":ast.getErrors()}
     return jsonify(res)
