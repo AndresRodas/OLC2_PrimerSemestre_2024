@@ -12,6 +12,7 @@ from expressions.array_access import ArrayAccess
 from expressions.break_statement import Break
 from expressions.continue_statement import Continue
 from expressions.ternario import Ternario
+from expressions.call import Call
 
 # Instructions imports
 from instructions.print import Print
@@ -20,6 +21,7 @@ from instructions.assignment import Assignment
 from instructions.array_declaration import ArrayDeclaration
 from instructions.if_instruction import If
 from instructions.while_instruction import While
+from instructions.function import Function
 
 class codeParams:
     def __init__(self, line, column):
@@ -39,7 +41,8 @@ reserved_words = {
     'while' : 'WHILE',
     'break' : 'BREAK',
     'continue' : 'CONTINUE',
-    'return' : 'RETURN'
+    'return' : 'RETURN',
+    'function' : 'FUNC'
 }
 
 # Listado de tokens
@@ -181,7 +184,6 @@ def p_instruction_block(t):
         t[0] = t[1]
     else:
         t[0] = [t[1]]
-    print('HOLA')
 
 #Listado de instrucciones
 def p_instruction_list(t):
@@ -192,7 +194,9 @@ def p_instruction_list(t):
                 | arraydeclaration
                 | assignment
                 | breakstmt
-                | continuestmt'''
+                | continuestmt
+                | functionstmt
+                | call'''
     t[0] = t[1]
 
 def p_instruction_console(t):
@@ -224,6 +228,48 @@ def p_instruction_assignment(t):
     'assignment : ID IG expression PYC'
     params = get_params(t)
     t[0] = Assignment(params.line, params.column, t[1], t[3])
+
+def p_instruction_call_function(t):
+    '''call : ID PARIZQ expressionList PARDER PYC
+            | ID PARIZQ PARDER PYC'''
+    params = get_params(t)
+    if len(t) > 5:
+        t[0] = Call(params.line, params.column, t[1], t[3])
+    else:
+        t[0] = Call(params.line, params.column, t[1], [])
+    
+def p_instruction_function(t):
+    'functionstmt : FUNC ID funcparams functype LLAVEIZQ block LLAVEDER'
+    params = get_params(t)
+    t[0] = Function(params.line, params.column, t[2], t[3], t[4], t[6])
+
+def p_instruction_function_params_list(t):
+    '''funcparams : PARIZQ paramsList PARDER
+                |  PARIZQ PARDER'''
+    if len(t) > 3:
+        t[0] = t[2]
+    else:
+        t[0] = []
+
+def p_expression_param_list(t):
+    '''paramsList : paramsList COMA ID DOSPTS type
+                | ID DOSPTS type'''
+    arr = []
+    if len(t) > 5:
+        param = {t[3] : t[5]}
+        arr = t[1] + [param]
+    else:
+        param = {t[1] : t[3]}
+        arr.append(param)
+    t[0] = arr
+
+def p_instruction_function_type(t):
+    '''functype : DOSPTS type
+                | '''
+    if len(t) > 2:
+        t[0] = t[2]
+    else:
+        t[0] = ExpressionType.NULL
 
 def p_instruction_break(t):
     'breakstmt : BREAK PYC'
@@ -344,6 +390,15 @@ def p_expression_array_primitiva(t):
     '''expression : CORIZQ expressionList CORDER'''
     params = get_params(t)
     t[0] = Array(params.line, params.column, t[2])
+
+def p_expression_call_function(t):
+    '''expression : ID PARIZQ expressionList PARDER
+            | ID PARIZQ PARDER'''
+    params = get_params(t)
+    if len(t) > 4:
+        t[0] = Call(params.line, params.column, t[1], t[3])
+    else:
+        t[0] = Call(params.line, params.column, t[1], [])
 
 def p_expression_list_array(t):
     '''listArray : listArray CORIZQ expression CORDER

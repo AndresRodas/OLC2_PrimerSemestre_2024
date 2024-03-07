@@ -40,6 +40,24 @@ class Environment():
         ast.setErrors(f"La variable {id} no existe.")
         return Symbol(0, 0, None, ExpressionType.NULL)
 
+    def saveFunction(self, ast, id, function):
+        if id in self.functions:
+            ast.setErrors(f"Ya existe una función con el nombre {id}")
+            return
+        self.functions[id] = function
+
+    def getFunction(self, ast, id):
+        tmpEnv = self
+        while True:
+            if id in tmpEnv.functions:
+                return tmpEnv.functions[id]
+            if tmpEnv.previous == None:
+                break
+            else:
+                tmpEnv = tmpEnv.previous
+        ast.setErrors(f"La función {id} no existe.")
+        return {}
+
     def LoopValidation(self):
         tmpEnv = self
         while True:
@@ -50,3 +68,11 @@ class Environment():
             else:
                 tmpEnv = tmpEnv.previous
         return False
+    
+    def getGlobalEnvironment(self):
+        tmpEnv = self
+        while True:
+            if tmpEnv.previous == None:
+                return tmpEnv
+            else:
+                tmpEnv = tmpEnv.previous

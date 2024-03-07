@@ -20,3 +20,7 @@ def LoopExecuter(instructionList, ast, env):
             if res.type == ExpressionType.CONTINUE:
                 break
     return False
+
+def FunctionExecuter(instructionList, ast, env):
+    for inst in instructionList:
+        inst.ejecutar(ast, env)
