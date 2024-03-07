@@ -11,9 +11,9 @@ class If(Instruction):
     def ejecutar(self, ast, env):
         # Obtener simbolo
         validate = self.exp.ejecutar(ast, env)
-        # Crear entorno del If
-        if_env = Environment(env, "IF")
         # Evaluar
         if validate.value:
+            # Crear entorno del If
+            if_env = Environment(env, "IF")
             return BlockExecuter(self.block, ast, if_env)
         return None

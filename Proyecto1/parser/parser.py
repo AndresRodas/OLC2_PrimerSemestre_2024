@@ -11,6 +11,7 @@ from expressions.array import Array
 from expressions.array_access import ArrayAccess
 from expressions.break_statement import Break
 from expressions.continue_statement import Continue
+from expressions.ternario import Ternario
 
 # Instructions imports
 from instructions.print import Print
@@ -70,6 +71,7 @@ tokens = [
     'AND',
     'OR',
     'NOT',
+    'TERN',
     'ID'
 ] + list(reserved_words.values())
 
@@ -97,6 +99,7 @@ t_LLAVEDER      = r'\}'
 t_AND           = r'&&'
 t_OR            = r'\|\|'
 t_NOT           = r'!'
+t_TERN          = r'\?'
 
 #Función de reconocimiento
 def t_CADENA(t):
@@ -178,6 +181,7 @@ def p_instruction_block(t):
         t[0] = t[1]
     else:
         t[0] = [t[1]]
+    print('HOLA')
 
 #Listado de instrucciones
 def p_instruction_list(t):
@@ -324,6 +328,11 @@ def p_expression_not(t):
 def p_expression_agrupacion(t):
     'expression : PARIZQ expression PARDER'
     t[0] = t[2]
+
+def p_expression_ternario(t):
+    'expression : expression TERN expression DOSPTS expression'
+    params = get_params(t)
+    t[0] = Ternario(params.line, params.column, t[1], t[3], t[5])
 
 def p_expression_primitiva(t):
     '''expression    : ENTERO
