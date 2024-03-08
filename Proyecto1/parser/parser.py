@@ -13,6 +13,7 @@ from expressions.break_statement import Break
 from expressions.continue_statement import Continue
 from expressions.ternario import Ternario
 from expressions.call import Call
+from expressions.return_statement import Return
 
 # Instructions imports
 from instructions.print import Print
@@ -196,7 +197,8 @@ def p_instruction_list(t):
                 | breakstmt
                 | continuestmt
                 | functionstmt
-                | call'''
+                | call
+                | returnstmt'''
     t[0] = t[1]
 
 def p_instruction_console(t):
@@ -228,6 +230,15 @@ def p_instruction_assignment(t):
     'assignment : ID IG expression PYC'
     params = get_params(t)
     t[0] = Assignment(params.line, params.column, t[1], t[3])
+
+def p_instruction_return(t):
+    '''returnstmt : RETURN expression PYC
+                | RETURN PYC'''
+    params = get_params(t)
+    if len(t) > 3:
+        t[0] = Return(params.line, params.column, t[2])
+    else:
+        t[0] = Return(params.line, params.column, None)
 
 def p_instruction_call_function(t):
     '''call : ID PARIZQ expressionList PARDER PYC

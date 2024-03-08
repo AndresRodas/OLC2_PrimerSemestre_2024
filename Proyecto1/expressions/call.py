@@ -2,7 +2,8 @@ from interfaces.expression import Expression
 from environment.symbol import Symbol
 from environment.types import ExpressionType
 from environment.environment import Environment
-from environment.execute import FunctionExecuter
+from environment.execute import StatementExecuter
+from expressions.continue_statement import Continue
 
 class Call(Expression):
     def __init__(self, line, col, id, params):
@@ -40,4 +41,11 @@ class Call(Expression):
                 # Agregar parámetros al entorno
                 function_env.saveVariable(ast, id_param, symParam)
         # Ejecutar bloque
-        FunctionExecuter(func['block'], ast, function_env)
+        returnValue = StatementExecuter(func['block'], ast, function_env)
+        if returnValue != None:
+            if returnValue.type != func['type']:
+                ast.setErrors('El tipo de retorno es incorrecto')
+                return Symbol(line=self.line, col=self.col, value=None, type=ExpressionType.NULL)  
+            return returnValue        
+        return None
+

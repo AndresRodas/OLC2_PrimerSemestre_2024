@@ -69,6 +69,17 @@ class Environment():
                 tmpEnv = tmpEnv.previous
         return False
     
+    def FunctionValidation(self):
+        tmpEnv = self
+        while True:
+            if 'FUNCTION_' in tmpEnv.id:
+                return True
+            if tmpEnv.previous == None:
+                break
+            else:
+                tmpEnv = tmpEnv.previous
+        return False
+    
     def getGlobalEnvironment(self):
         tmpEnv = self
         while True:

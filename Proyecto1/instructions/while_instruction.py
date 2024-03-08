@@ -1,8 +1,8 @@
 from interfaces.instruction import Instruction
 from environment.environment import Environment
+from environment.execute import StatementExecuter
 from environment.types import ExpressionType
-from environment.execute import LoopExecuter
-
+from expressions.continue_statement import Continue
 class While(Instruction):
     def __init__(self, line, col, exp, block):
         self.line = line
@@ -13,7 +13,7 @@ class While(Instruction):
     def ejecutar(self, ast, env):
         # Variables de iteración
         safe_cont = 0
-        breakFlag = False
+        Flag = None
         result = None
         # Ciclo
         while True:
@@ -23,14 +23,20 @@ class While(Instruction):
             # Validación
             if result.value:
                 while_env = Environment(env, "WHILE")
-                breakFlag = LoopExecuter(self.block, ast, while_env)
-                if breakFlag:
-                    break
+                Flag = StatementExecuter(self.block, ast, while_env)
+                # Validar si es sentencia de transferencia
+                if Flag != None:
+                    if Flag.type == ExpressionType.BREAK:
+                        break
+                    if Flag.type == ExpressionType.CONTINUE:
+                        continue
+                    if Flag.type == ExpressionType.RETURN:
+                        return Flag
             else:
                 break
             # Validar limite de seguridad
             if safe_cont >= 1000:
                 ast.setErrors('Se ha excedido el máximo de ciclos permitidos')
                 break
-
+        return None
 

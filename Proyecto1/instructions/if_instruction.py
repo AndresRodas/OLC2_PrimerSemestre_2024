@@ -1,6 +1,7 @@
 from interfaces.instruction import Instruction
-from environment.execute import BlockExecuter
+from environment.execute import StatementExecuter
 from environment.environment import Environment
+from expressions.continue_statement import Continue
 class If(Instruction):
     def __init__(self, line, col, exp, block):
         self.line = line
@@ -15,5 +16,7 @@ class If(Instruction):
         if validate.value:
             # Crear entorno del If
             if_env = Environment(env, "IF")
-            return BlockExecuter(self.block, ast, if_env)
+            returnValue = StatementExecuter(self.block, ast, if_env)
+            if returnValue != None:
+                return returnValue
         return None
