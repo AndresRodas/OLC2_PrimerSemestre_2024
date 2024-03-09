@@ -2221,8 +2221,14 @@ state 90
     PYC             reduce using rule 40 (expression -> expression MAS expression .)
     MAS             reduce using rule 40 (expression -> expression MAS expression .)
     MENOS           reduce using rule 40 (expression -> expression MAS expression .)
+    MAYOR           reduce using rule 40 (expression -> expression MAS expression .)
+    MENOR           reduce using rule 40 (expression -> expression MAS expression .)
+    MAYORIG         reduce using rule 40 (expression -> expression MAS expression .)
+    MENORIG         reduce using rule 40 (expression -> expression MAS expression .)
     IGIG            reduce using rule 40 (expression -> expression MAS expression .)
     DIF             reduce using rule 40 (expression -> expression MAS expression .)
+    AND             reduce using rule 40 (expression -> expression MAS expression .)
+    OR              reduce using rule 40 (expression -> expression MAS expression .)
     TERN            reduce using rule 40 (expression -> expression MAS expression .)
     PARDER          reduce using rule 40 (expression -> expression MAS expression .)
     COMA            reduce using rule 40 (expression -> expression MAS expression .)
@@ -2230,25 +2236,19 @@ state 90
     DOSPTS          reduce using rule 40 (expression -> expression MAS expression .)
     POR             shift and go to state 56
     DIVIDIDO        shift and go to state 57
-    MAYOR           shift and go to state 58
-    MENOR           shift and go to state 59
-    MAYORIG         shift and go to state 60
-    MENORIG         shift and go to state 61
-    AND             shift and go to state 64
-    OR              shift and go to state 65
 
   ! POR             [ reduce using rule 40 (expression -> expression MAS expression .) ]
   ! DIVIDIDO        [ reduce using rule 40 (expression -> expression MAS expression .) ]
-  ! MAYOR           [ reduce using rule 40 (expression -> expression MAS expression .) ]
-  ! MENOR           [ reduce using rule 40 (expression -> expression MAS expression .) ]
-  ! MAYORIG         [ reduce using rule 40 (expression -> expression MAS expression .) ]
-  ! MENORIG         [ reduce using rule 40 (expression -> expression MAS expression .) ]
-  ! AND             [ reduce using rule 40 (expression -> expression MAS expression .) ]
-  ! OR              [ reduce using rule 40 (expression -> expression MAS expression .) ]
   ! MAS             [ shift and go to state 54 ]
   ! MENOS           [ shift and go to state 55 ]
+  ! MAYOR           [ shift and go to state 58 ]
+  ! MENOR           [ shift and go to state 59 ]
+  ! MAYORIG         [ shift and go to state 60 ]
+  ! MENORIG         [ shift and go to state 61 ]
   ! IGIG            [ shift and go to state 62 ]
   ! DIF             [ shift and go to state 63 ]
+  ! AND             [ shift and go to state 64 ]
+  ! OR              [ shift and go to state 65 ]
   ! TERN            [ shift and go to state 66 ]
 
 
@@ -2272,8 +2272,14 @@ state 91
     PYC             reduce using rule 41 (expression -> expression MENOS expression .)
     MAS             reduce using rule 41 (expression -> expression MENOS expression .)
     MENOS           reduce using rule 41 (expression -> expression MENOS expression .)
+    MAYOR           reduce using rule 41 (expression -> expression MENOS expression .)
+    MENOR           reduce using rule 41 (expression -> expression MENOS expression .)
+    MAYORIG         reduce using rule 41 (expression -> expression MENOS expression .)
+    MENORIG         reduce using rule 41 (expression -> expression MENOS expression .)
     IGIG            reduce using rule 41 (expression -> expression MENOS expression .)
     DIF             reduce using rule 41 (expression -> expression MENOS expression .)
+    AND             reduce using rule 41 (expression -> expression MENOS expression .)
+    OR              reduce using rule 41 (expression -> expression MENOS expression .)
     TERN            reduce using rule 41 (expression -> expression MENOS expression .)
     PARDER          reduce using rule 41 (expression -> expression MENOS expression .)
     COMA            reduce using rule 41 (expression -> expression MENOS expression .)
@@ -2281,25 +2287,19 @@ state 91
     DOSPTS          reduce using rule 41 (expression -> expression MENOS expression .)
     POR             shift and go to state 56
     DIVIDIDO        shift and go to state 57
-    MAYOR           shift and go to state 58
-    MENOR           shift and go to state 59
-    MAYORIG         shift and go to state 60
-    MENORIG         shift and go to state 61
-    AND             shift and go to state 64
-    OR              shift and go to state 65
 
   ! POR             [ reduce using rule 41 (expression -> expression MENOS expression .) ]
   ! DIVIDIDO        [ reduce using rule 41 (expression -> expression MENOS expression .) ]
-  ! MAYOR           [ reduce using rule 41 (expression -> expression MENOS expression .) ]
-  ! MENOR           [ reduce using rule 41 (expression -> expression MENOS expression .) ]
-  ! MAYORIG         [ reduce using rule 41 (expression -> expression MENOS expression .) ]
-  ! MENORIG         [ reduce using rule 41 (expression -> expression MENOS expression .) ]
-  ! AND             [ reduce using rule 41 (expression -> expression MENOS expression .) ]
-  ! OR              [ reduce using rule 41 (expression -> expression MENOS expression .) ]
   ! MAS             [ shift and go to state 54 ]
   ! MENOS           [ shift and go to state 55 ]
+  ! MAYOR           [ shift and go to state 58 ]
+  ! MENOR           [ shift and go to state 59 ]
+  ! MAYORIG         [ shift and go to state 60 ]
+  ! MENORIG         [ shift and go to state 61 ]
   ! IGIG            [ shift and go to state 62 ]
   ! DIF             [ shift and go to state 63 ]
+  ! AND             [ shift and go to state 64 ]
+  ! OR              [ shift and go to state 65 ]
   ! TERN            [ shift and go to state 66 ]
 
 
@@ -2325,32 +2325,32 @@ state 92
     MENOS           reduce using rule 42 (expression -> expression POR expression .)
     POR             reduce using rule 42 (expression -> expression POR expression .)
     DIVIDIDO        reduce using rule 42 (expression -> expression POR expression .)
+    MAYOR           reduce using rule 42 (expression -> expression POR expression .)
+    MENOR           reduce using rule 42 (expression -> expression POR expression .)
+    MAYORIG         reduce using rule 42 (expression -> expression POR expression .)
+    MENORIG         reduce using rule 42 (expression -> expression POR expression .)
     IGIG            reduce using rule 42 (expression -> expression POR expression .)
     DIF             reduce using rule 42 (expression -> expression POR expression .)
+    AND             reduce using rule 42 (expression -> expression POR expression .)
+    OR              reduce using rule 42 (expression -> expression POR expression .)
     TERN            reduce using rule 42 (expression -> expression POR expression .)
     PARDER          reduce using rule 42 (expression -> expression POR expression .)
     COMA            reduce using rule 42 (expression -> expression POR expression .)
     CORDER          reduce using rule 42 (expression -> expression POR expression .)
     DOSPTS          reduce using rule 42 (expression -> expression POR expression .)
-    MAYOR           shift and go to state 58
-    MENOR           shift and go to state 59
-    MAYORIG         shift and go to state 60
-    MENORIG         shift and go to state 61
-    AND             shift and go to state 64
-    OR              shift and go to state 65
 
-  ! MAYOR           [ reduce using rule 42 (expression -> expression POR expression .) ]
-  ! MENOR           [ reduce using rule 42 (expression -> expression POR expression .) ]
-  ! MAYORIG         [ reduce using rule 42 (expression -> expression POR expression .) ]
-  ! MENORIG         [ reduce using rule 42 (expression -> expression POR expression .) ]
-  ! AND             [ reduce using rule 42 (expression -> expression POR expression .) ]
-  ! OR              [ reduce using rule 42 (expression -> expression POR expression .) ]
   ! MAS             [ shift and go to state 54 ]
   ! MENOS           [ shift and go to state 55 ]
   ! POR             [ shift and go to state 56 ]
   ! DIVIDIDO        [ shift and go to state 57 ]
+  ! MAYOR           [ shift and go to state 58 ]
+  ! MENOR           [ shift and go to state 59 ]
+  ! MAYORIG         [ shift and go to state 60 ]
+  ! MENORIG         [ shift and go to state 61 ]
   ! IGIG            [ shift and go to state 62 ]
   ! DIF             [ shift and go to state 63 ]
+  ! AND             [ shift and go to state 64 ]
+  ! OR              [ shift and go to state 65 ]
   ! TERN            [ shift and go to state 66 ]
 
 
@@ -2376,32 +2376,32 @@ state 93
     MENOS           reduce using rule 43 (expression -> expression DIVIDIDO expression .)
     POR             reduce using rule 43 (expression -> expression DIVIDIDO expression .)
     DIVIDIDO        reduce using rule 43 (expression -> expression DIVIDIDO expression .)
+    MAYOR           reduce using rule 43 (expression -> expression DIVIDIDO expression .)
+    MENOR           reduce using rule 43 (expression -> expression DIVIDIDO expression .)
+    MAYORIG         reduce using rule 43 (expression -> expression DIVIDIDO expression .)
+    MENORIG         reduce using rule 43 (expression -> expression DIVIDIDO expression .)
     IGIG            reduce using rule 43 (expression -> expression DIVIDIDO expression .)
     DIF             reduce using rule 43 (expression -> expression DIVIDIDO expression .)
+    AND             reduce using rule 43 (expression -> expression DIVIDIDO expression .)
+    OR              reduce using rule 43 (expression -> expression DIVIDIDO expression .)
     TERN            reduce using rule 43 (expression -> expression DIVIDIDO expression .)
     PARDER          reduce using rule 43 (expression -> expression DIVIDIDO expression .)
     COMA            reduce using rule 43 (expression -> expression DIVIDIDO expression .)
     CORDER          reduce using rule 43 (expression -> expression DIVIDIDO expression .)
     DOSPTS          reduce using rule 43 (expression -> expression DIVIDIDO expression .)
-    MAYOR           shift and go to state 58
-    MENOR           shift and go to state 59
-    MAYORIG         shift and go to state 60
-    MENORIG         shift and go to state 61
-    AND             shift and go to state 64
-    OR              shift and go to state 65
 
-  ! MAYOR           [ reduce using rule 43 (expression -> expression DIVIDIDO expression .) ]
-  ! MENOR           [ reduce using rule 43 (expression -> expression DIVIDIDO expression .) ]
-  ! MAYORIG         [ reduce using rule 43 (expression -> expression DIVIDIDO expression .) ]
-  ! MENORIG         [ reduce using rule 43 (expression -> expression DIVIDIDO expression .) ]
-  ! AND             [ reduce using rule 43 (expression -> expression DIVIDIDO expression .) ]
-  ! OR              [ reduce using rule 43 (expression -> expression DIVIDIDO expression .) ]
   ! MAS             [ shift and go to state 54 ]
   ! MENOS           [ shift and go to state 55 ]
   ! POR             [ shift and go to state 56 ]
   ! DIVIDIDO        [ shift and go to state 57 ]
+  ! MAYOR           [ shift and go to state 58 ]
+  ! MENOR           [ shift and go to state 59 ]
+  ! MAYORIG         [ shift and go to state 60 ]
+  ! MENORIG         [ shift and go to state 61 ]
   ! IGIG            [ shift and go to state 62 ]
   ! DIF             [ shift and go to state 63 ]
+  ! AND             [ shift and go to state 64 ]
+  ! OR              [ shift and go to state 65 ]
   ! TERN            [ shift and go to state 66 ]
 
 
@@ -2423,36 +2423,36 @@ state 94
     (54) expression -> expression . TERN expression DOSPTS expression
 
     PYC             reduce using rule 44 (expression -> expression MAYOR expression .)
-    MAS             reduce using rule 44 (expression -> expression MAYOR expression .)
-    MENOS           reduce using rule 44 (expression -> expression MAYOR expression .)
-    POR             reduce using rule 44 (expression -> expression MAYOR expression .)
-    DIVIDIDO        reduce using rule 44 (expression -> expression MAYOR expression .)
     MAYOR           reduce using rule 44 (expression -> expression MAYOR expression .)
     MENOR           reduce using rule 44 (expression -> expression MAYOR expression .)
     IGIG            reduce using rule 44 (expression -> expression MAYOR expression .)
     DIF             reduce using rule 44 (expression -> expression MAYOR expression .)
+    AND             reduce using rule 44 (expression -> expression MAYOR expression .)
+    OR              reduce using rule 44 (expression -> expression MAYOR expression .)
     TERN            reduce using rule 44 (expression -> expression MAYOR expression .)
     PARDER          reduce using rule 44 (expression -> expression MAYOR expression .)
     COMA            reduce using rule 44 (expression -> expression MAYOR expression .)
     CORDER          reduce using rule 44 (expression -> expression MAYOR expression .)
     DOSPTS          reduce using rule 44 (expression -> expression MAYOR expression .)
+    MAS             shift and go to state 54
+    MENOS           shift and go to state 55
+    POR             shift and go to state 56
+    DIVIDIDO        shift and go to state 57
     MAYORIG         shift and go to state 60
     MENORIG         shift and go to state 61
-    AND             shift and go to state 64
-    OR              shift and go to state 65
 
+  ! MAS             [ reduce using rule 44 (expression -> expression MAYOR expression .) ]
+  ! MENOS           [ reduce using rule 44 (expression -> expression MAYOR expression .) ]
+  ! POR             [ reduce using rule 44 (expression -> expression MAYOR expression .) ]
+  ! DIVIDIDO        [ reduce using rule 44 (expression -> expression MAYOR expression .) ]
   ! MAYORIG         [ reduce using rule 44 (expression -> expression MAYOR expression .) ]
   ! MENORIG         [ reduce using rule 44 (expression -> expression MAYOR expression .) ]
-  ! AND             [ reduce using rule 44 (expression -> expression MAYOR expression .) ]
-  ! OR              [ reduce using rule 44 (expression -> expression MAYOR expression .) ]
-  ! MAS             [ shift and go to state 54 ]
-  ! MENOS           [ shift and go to state 55 ]
-  ! POR             [ shift and go to state 56 ]
-  ! DIVIDIDO        [ shift and go to state 57 ]
   ! MAYOR           [ shift and go to state 58 ]
   ! MENOR           [ shift and go to state 59 ]
   ! IGIG            [ shift and go to state 62 ]
   ! DIF             [ shift and go to state 63 ]
+  ! AND             [ shift and go to state 64 ]
+  ! OR              [ shift and go to state 65 ]
   ! TERN            [ shift and go to state 66 ]
 
 
@@ -2474,36 +2474,36 @@ state 95
     (54) expression -> expression . TERN expression DOSPTS expression
 
     PYC             reduce using rule 45 (expression -> expression MENOR expression .)
-    MAS             reduce using rule 45 (expression -> expression MENOR expression .)
-    MENOS           reduce using rule 45 (expression -> expression MENOR expression .)
-    POR             reduce using rule 45 (expression -> expression MENOR expression .)
-    DIVIDIDO        reduce using rule 45 (expression -> expression MENOR expression .)
     MAYOR           reduce using rule 45 (expression -> expression MENOR expression .)
     MENOR           reduce using rule 45 (expression -> expression MENOR expression .)
     IGIG            reduce using rule 45 (expression -> expression MENOR expression .)
     DIF             reduce using rule 45 (expression -> expression MENOR expression .)
+    AND             reduce using rule 45 (expression -> expression MENOR expression .)
+    OR              reduce using rule 45 (expression -> expression MENOR expression .)
     TERN            reduce using rule 45 (expression -> expression MENOR expression .)
     PARDER          reduce using rule 45 (expression -> expression MENOR expression .)
     COMA            reduce using rule 45 (expression -> expression MENOR expression .)
     CORDER          reduce using rule 45 (expression -> expression MENOR expression .)
     DOSPTS          reduce using rule 45 (expression -> expression MENOR expression .)
+    MAS             shift and go to state 54
+    MENOS           shift and go to state 55
+    POR             shift and go to state 56
+    DIVIDIDO        shift and go to state 57
     MAYORIG         shift and go to state 60
     MENORIG         shift and go to state 61
-    AND             shift and go to state 64
-    OR              shift and go to state 65
 
+  ! MAS             [ reduce using rule 45 (expression -> expression MENOR expression .) ]
+  ! MENOS           [ reduce using rule 45 (expression -> expression MENOR expression .) ]
+  ! POR             [ reduce using rule 45 (expression -> expression MENOR expression .) ]
+  ! DIVIDIDO        [ reduce using rule 45 (expression -> expression MENOR expression .) ]
   ! MAYORIG         [ reduce using rule 45 (expression -> expression MENOR expression .) ]
   ! MENORIG         [ reduce using rule 45 (expression -> expression MENOR expression .) ]
-  ! AND             [ reduce using rule 45 (expression -> expression MENOR expression .) ]
-  ! OR              [ reduce using rule 45 (expression -> expression MENOR expression .) ]
-  ! MAS             [ shift and go to state 54 ]
-  ! MENOS           [ shift and go to state 55 ]
-  ! POR             [ shift and go to state 56 ]
-  ! DIVIDIDO        [ shift and go to state 57 ]
   ! MAYOR           [ shift and go to state 58 ]
   ! MENOR           [ shift and go to state 59 ]
   ! IGIG            [ shift and go to state 62 ]
   ! DIF             [ shift and go to state 63 ]
+  ! AND             [ shift and go to state 64 ]
+  ! OR              [ shift and go to state 65 ]
   ! TERN            [ shift and go to state 66 ]
 
 
@@ -2525,36 +2525,36 @@ state 96
     (54) expression -> expression . TERN expression DOSPTS expression
 
     PYC             reduce using rule 46 (expression -> expression MAYORIG expression .)
-    MAS             reduce using rule 46 (expression -> expression MAYORIG expression .)
-    MENOS           reduce using rule 46 (expression -> expression MAYORIG expression .)
-    POR             reduce using rule 46 (expression -> expression MAYORIG expression .)
-    DIVIDIDO        reduce using rule 46 (expression -> expression MAYORIG expression .)
     MAYOR           reduce using rule 46 (expression -> expression MAYORIG expression .)
     MENOR           reduce using rule 46 (expression -> expression MAYORIG expression .)
     MAYORIG         reduce using rule 46 (expression -> expression MAYORIG expression .)
     MENORIG         reduce using rule 46 (expression -> expression MAYORIG expression .)
     IGIG            reduce using rule 46 (expression -> expression MAYORIG expression .)
     DIF             reduce using rule 46 (expression -> expression MAYORIG expression .)
+    AND             reduce using rule 46 (expression -> expression MAYORIG expression .)
+    OR              reduce using rule 46 (expression -> expression MAYORIG expression .)
     TERN            reduce using rule 46 (expression -> expression MAYORIG expression .)
     PARDER          reduce using rule 46 (expression -> expression MAYORIG expression .)
     COMA            reduce using rule 46 (expression -> expression MAYORIG expression .)
     CORDER          reduce using rule 46 (expression -> expression MAYORIG expression .)
     DOSPTS          reduce using rule 46 (expression -> expression MAYORIG expression .)
-    AND             shift and go to state 64
-    OR              shift and go to state 65
+    MAS             shift and go to state 54
+    MENOS           shift and go to state 55
+    POR             shift and go to state 56
+    DIVIDIDO        shift and go to state 57
 
-  ! AND             [ reduce using rule 46 (expression -> expression MAYORIG expression .) ]
-  ! OR              [ reduce using rule 46 (expression -> expression MAYORIG expression .) ]
-  ! MAS             [ shift and go to state 54 ]
-  ! MENOS           [ shift and go to state 55 ]
-  ! POR             [ shift and go to state 56 ]
-  ! DIVIDIDO        [ shift and go to state 57 ]
+  ! MAS             [ reduce using rule 46 (expression -> expression MAYORIG expression .) ]
+  ! MENOS           [ reduce using rule 46 (expression -> expression MAYORIG expression .) ]
+  ! POR             [ reduce using rule 46 (expression -> expression MAYORIG expression .) ]
+  ! DIVIDIDO        [ reduce using rule 46 (expression -> expression MAYORIG expression .) ]
   ! MAYOR           [ shift and go to state 58 ]
   ! MENOR           [ shift and go to state 59 ]
   ! MAYORIG         [ shift and go to state 60 ]
   ! MENORIG         [ shift and go to state 61 ]
   ! IGIG            [ shift and go to state 62 ]
   ! DIF             [ shift and go to state 63 ]
+  ! AND             [ shift and go to state 64 ]
+  ! OR              [ shift and go to state 65 ]
   ! TERN            [ shift and go to state 66 ]
 
 
@@ -2576,36 +2576,36 @@ state 97
     (54) expression -> expression . TERN expression DOSPTS expression
 
     PYC             reduce using rule 47 (expression -> expression MENORIG expression .)
-    MAS             reduce using rule 47 (expression -> expression MENORIG expression .)
-    MENOS           reduce using rule 47 (expression -> expression MENORIG expression .)
-    POR             reduce using rule 47 (expression -> expression MENORIG expression .)
-    DIVIDIDO        reduce using rule 47 (expression -> expression MENORIG expression .)
     MAYOR           reduce using rule 47 (expression -> expression MENORIG expression .)
     MENOR           reduce using rule 47 (expression -> expression MENORIG expression .)
     MAYORIG         reduce using rule 47 (expression -> expression MENORIG expression .)
     MENORIG         reduce using rule 47 (expression -> expression MENORIG expression .)
     IGIG            reduce using rule 47 (expression -> expression MENORIG expression .)
     DIF             reduce using rule 47 (expression -> expression MENORIG expression .)
+    AND             reduce using rule 47 (expression -> expression MENORIG expression .)
+    OR              reduce using rule 47 (expression -> expression MENORIG expression .)
     TERN            reduce using rule 47 (expression -> expression MENORIG expression .)
     PARDER          reduce using rule 47 (expression -> expression MENORIG expression .)
     COMA            reduce using rule 47 (expression -> expression MENORIG expression .)
     CORDER          reduce using rule 47 (expression -> expression MENORIG expression .)
     DOSPTS          reduce using rule 47 (expression -> expression MENORIG expression .)
-    AND             shift and go to state 64
-    OR              shift and go to state 65
+    MAS             shift and go to state 54
+    MENOS           shift and go to state 55
+    POR             shift and go to state 56
+    DIVIDIDO        shift and go to state 57
 
-  ! AND             [ reduce using rule 47 (expression -> expression MENORIG expression .) ]
-  ! OR              [ reduce using rule 47 (expression -> expression MENORIG expression .) ]
-  ! MAS             [ shift and go to state 54 ]
-  ! MENOS           [ shift and go to state 55 ]
-  ! POR             [ shift and go to state 56 ]
-  ! DIVIDIDO        [ shift and go to state 57 ]
+  ! MAS             [ reduce using rule 47 (expression -> expression MENORIG expression .) ]
+  ! MENOS           [ reduce using rule 47 (expression -> expression MENORIG expression .) ]
+  ! POR             [ reduce using rule 47 (expression -> expression MENORIG expression .) ]
+  ! DIVIDIDO        [ reduce using rule 47 (expression -> expression MENORIG expression .) ]
   ! MAYOR           [ shift and go to state 58 ]
   ! MENOR           [ shift and go to state 59 ]
   ! MAYORIG         [ shift and go to state 60 ]
   ! MENORIG         [ shift and go to state 61 ]
   ! IGIG            [ shift and go to state 62 ]
   ! DIF             [ shift and go to state 63 ]
+  ! AND             [ shift and go to state 64 ]
+  ! OR              [ shift and go to state 65 ]
   ! TERN            [ shift and go to state 66 ]
 
 
@@ -2755,14 +2755,6 @@ state 100
     (54) expression -> expression . TERN expression DOSPTS expression
 
     PYC             reduce using rule 50 (expression -> expression AND expression .)
-    MAS             reduce using rule 50 (expression -> expression AND expression .)
-    MENOS           reduce using rule 50 (expression -> expression AND expression .)
-    POR             reduce using rule 50 (expression -> expression AND expression .)
-    DIVIDIDO        reduce using rule 50 (expression -> expression AND expression .)
-    MAYOR           reduce using rule 50 (expression -> expression AND expression .)
-    MENOR           reduce using rule 50 (expression -> expression AND expression .)
-    MAYORIG         reduce using rule 50 (expression -> expression AND expression .)
-    MENORIG         reduce using rule 50 (expression -> expression AND expression .)
     IGIG            reduce using rule 50 (expression -> expression AND expression .)
     DIF             reduce using rule 50 (expression -> expression AND expression .)
     AND             reduce using rule 50 (expression -> expression AND expression .)
@@ -2772,15 +2764,23 @@ state 100
     COMA            reduce using rule 50 (expression -> expression AND expression .)
     CORDER          reduce using rule 50 (expression -> expression AND expression .)
     DOSPTS          reduce using rule 50 (expression -> expression AND expression .)
+    MAS             shift and go to state 54
+    MENOS           shift and go to state 55
+    POR             shift and go to state 56
+    DIVIDIDO        shift and go to state 57
+    MAYOR           shift and go to state 58
+    MENOR           shift and go to state 59
+    MAYORIG         shift and go to state 60
+    MENORIG         shift and go to state 61
 
-  ! MAS             [ shift and go to state 54 ]
-  ! MENOS           [ shift and go to state 55 ]
-  ! POR             [ shift and go to state 56 ]
-  ! DIVIDIDO        [ shift and go to state 57 ]
-  ! MAYOR           [ shift and go to state 58 ]
-  ! MENOR           [ shift and go to state 59 ]
-  ! MAYORIG         [ shift and go to state 60 ]
-  ! MENORIG         [ shift and go to state 61 ]
+  ! MAS             [ reduce using rule 50 (expression -> expression AND expression .) ]
+  ! MENOS           [ reduce using rule 50 (expression -> expression AND expression .) ]
+  ! POR             [ reduce using rule 50 (expression -> expression AND expression .) ]
+  ! DIVIDIDO        [ reduce using rule 50 (expression -> expression AND expression .) ]
+  ! MAYOR           [ reduce using rule 50 (expression -> expression AND expression .) ]
+  ! MENOR           [ reduce using rule 50 (expression -> expression AND expression .) ]
+  ! MAYORIG         [ reduce using rule 50 (expression -> expression AND expression .) ]
+  ! MENORIG         [ reduce using rule 50 (expression -> expression AND expression .) ]
   ! IGIG            [ shift and go to state 62 ]
   ! DIF             [ shift and go to state 63 ]
   ! AND             [ shift and go to state 64 ]
@@ -2806,35 +2806,35 @@ state 101
     (54) expression -> expression . TERN expression DOSPTS expression
 
     PYC             reduce using rule 51 (expression -> expression OR expression .)
-    MAS             reduce using rule 51 (expression -> expression OR expression .)
-    MENOS           reduce using rule 51 (expression -> expression OR expression .)
-    POR             reduce using rule 51 (expression -> expression OR expression .)
-    DIVIDIDO        reduce using rule 51 (expression -> expression OR expression .)
-    MAYOR           reduce using rule 51 (expression -> expression OR expression .)
-    MENOR           reduce using rule 51 (expression -> expression OR expression .)
-    MAYORIG         reduce using rule 51 (expression -> expression OR expression .)
-    MENORIG         reduce using rule 51 (expression -> expression OR expression .)
     IGIG            reduce using rule 51 (expression -> expression OR expression .)
     DIF             reduce using rule 51 (expression -> expression OR expression .)
-    AND             reduce using rule 51 (expression -> expression OR expression .)
     OR              reduce using rule 51 (expression -> expression OR expression .)
     TERN            reduce using rule 51 (expression -> expression OR expression .)
     PARDER          reduce using rule 51 (expression -> expression OR expression .)
     COMA            reduce using rule 51 (expression -> expression OR expression .)
     CORDER          reduce using rule 51 (expression -> expression OR expression .)
     DOSPTS          reduce using rule 51 (expression -> expression OR expression .)
+    MAS             shift and go to state 54
+    MENOS           shift and go to state 55
+    POR             shift and go to state 56
+    DIVIDIDO        shift and go to state 57
+    MAYOR           shift and go to state 58
+    MENOR           shift and go to state 59
+    MAYORIG         shift and go to state 60
+    MENORIG         shift and go to state 61
+    AND             shift and go to state 64
 
-  ! MAS             [ shift and go to state 54 ]
-  ! MENOS           [ shift and go to state 55 ]
-  ! POR             [ shift and go to state 56 ]
-  ! DIVIDIDO        [ shift and go to state 57 ]
-  ! MAYOR           [ shift and go to state 58 ]
-  ! MENOR           [ shift and go to state 59 ]
-  ! MAYORIG         [ shift and go to state 60 ]
-  ! MENORIG         [ shift and go to state 61 ]
+  ! MAS             [ reduce using rule 51 (expression -> expression OR expression .) ]
+  ! MENOS           [ reduce using rule 51 (expression -> expression OR expression .) ]
+  ! POR             [ reduce using rule 51 (expression -> expression OR expression .) ]
+  ! DIVIDIDO        [ reduce using rule 51 (expression -> expression OR expression .) ]
+  ! MAYOR           [ reduce using rule 51 (expression -> expression OR expression .) ]
+  ! MENOR           [ reduce using rule 51 (expression -> expression OR expression .) ]
+  ! MAYORIG         [ reduce using rule 51 (expression -> expression OR expression .) ]
+  ! MENORIG         [ reduce using rule 51 (expression -> expression OR expression .) ]
+  ! AND             [ reduce using rule 51 (expression -> expression OR expression .) ]
   ! IGIG            [ shift and go to state 62 ]
   ! DIF             [ shift and go to state 63 ]
-  ! AND             [ shift and go to state 64 ]
   ! OR              [ shift and go to state 65 ]
   ! TERN            [ shift and go to state 66 ]
 

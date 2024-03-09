@@ -165,11 +165,12 @@ def t_error(t):
 
 #SINTACTICO
 precedence = (
-    ('left','MAS','MENOS'),
-    ('left','POR','DIVIDIDO'),
-    ('left','MAYOR','MENOR'),
-    ('left','MAYORIG','MENORIG'),
-    ('left','AND', 'OR')
+    ('left', 'OR'),
+    ('left', 'AND'),
+    ('left', 'MENOR', 'MAYOR'),
+    ('left', 'MENORIG', 'MAYORIG'),
+    ('left', 'MAS', 'MENOS'),
+    ('left', 'POR', 'DIVIDIDO')
 )
 
 #START
