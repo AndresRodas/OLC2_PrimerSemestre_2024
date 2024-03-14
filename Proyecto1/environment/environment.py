@@ -58,6 +58,24 @@ class Environment():
         ast.setErrors(f"La función {id} no existe.")
         return {}
 
+    def saveStruct(self, ast, id, struct):
+        if id in self.interfaces:
+            ast.setErrors(f"Ya existe una interface con el nombre {id}")
+            return
+        self.interfaces[id] = struct
+    
+    def getStruct(self, ast, id):
+        tmpEnv = self
+        while True:
+            if id in tmpEnv.interfaces:
+                return tmpEnv.interfaces[id]
+            if tmpEnv.previous == None:
+                break
+            else:
+                tmpEnv = tmpEnv.previous
+        ast.setErrors(f"La interfaz {id} no existe.")
+        return None
+
     def LoopValidation(self):
         tmpEnv = self
         while True:

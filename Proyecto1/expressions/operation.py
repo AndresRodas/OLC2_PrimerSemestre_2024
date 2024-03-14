@@ -28,8 +28,6 @@ class Operation(Expression):
         dominant_type = ExpressionType.NULL
         if self.opR != None:
             op2 = self.opR.ejecutar(ast, env)
-            print('val 1: ',op1.type.value, op1.value)
-            print('val 2: ',op2.type.value, op2.value)
             dominant_type = dominant_table[op1.type.value][op2.type.value]
         elif self.operador == '!':
             dominant_type = ExpressionType.BOOLEAN

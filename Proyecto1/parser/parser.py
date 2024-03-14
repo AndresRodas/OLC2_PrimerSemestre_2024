@@ -14,6 +14,7 @@ from expressions.continue_statement import Continue
 from expressions.ternario import Ternario
 from expressions.call import Call
 from expressions.return_statement import Return
+from expressions.interface_access import InterfaceAccess
 
 # Instructions imports
 from instructions.print import Print
@@ -23,6 +24,8 @@ from instructions.array_declaration import ArrayDeclaration
 from instructions.if_instruction import If
 from instructions.while_instruction import While
 from instructions.function import Function
+from instructions.interface import Interface
+from instructions.interface_declaration import InterfaceDeclaration
 
 class codeParams:
     def __init__(self, line, column):
@@ -32,7 +35,7 @@ class codeParams:
 #LEXICO
 reserved_words = {
     'console': 'CONSOLE', 
-    'log': 'LOG', 
+    'log': 'LOG',
     'var': 'VAR',
     'float': 'FLOAT',
     'number': 'NUMBER',
@@ -43,7 +46,8 @@ reserved_words = {
     'break' : 'BREAK',
     'continue' : 'CONTINUE',
     'return' : 'RETURN',
-    'function' : 'FUNC'
+    'function' : 'FUNC',
+    'interface' : 'INTERFACE'
 }
 
 # Listado de tokens
@@ -144,7 +148,8 @@ def t_DECIMAL(t):
 
 def t_ID(t):
     r'[a-zA-Z_][a-zA-Z_0-9]*'
-    t.type = reserved_words.get(t.value.lower(),'ID')
+    #  t.type = reserved_words.get(t.value.lower(),'ID')
+    t.type = reserved_words.get(t.value,'ID')
     return t
 
 t_ignore = " \t"
@@ -199,7 +204,9 @@ def p_instruction_list(t):
                 | continuestmt
                 | functionstmt
                 | call
-                | returnstmt'''
+                | returnstmt
+                | interfacecreation
+                | interdeclaration'''
     t[0] = t[1]
 
 def p_instruction_console(t):
@@ -226,6 +233,23 @@ def p_instruction_array_declaration(t):
     'arraydeclaration : VAR ID DOSPTS type CORIZQ CORDER IG expression PYC'
     params = get_params(t)
     t[0] = ArrayDeclaration(params.line, params.column, t[2], t[4], t[8])
+
+def p_instruction_interface_declaration(t):
+    'interdeclaration : VAR ID DOSPTS ID IG LLAVEIZQ interfaceContent LLAVEDER PYC'
+    params = get_params(t)
+    t[0] = InterfaceDeclaration(params.line, params.column, t[2], t[4], t[7])
+
+def p_instruction_interface_content(t):
+    '''interfaceContent : interfaceContent COMA ID DOSPTS expression
+                | ID DOSPTS expression'''
+    arr = []
+    if len(t) > 5:
+        param = {t[3] : t[5]}
+        arr = t[1] + [param]
+    else:
+        param = {t[1] : t[3]}
+        arr.append(param)
+    t[0] = arr
 
 def p_instruction_assignment(t):
     'assignment : ID IG expression PYC'
@@ -262,6 +286,23 @@ def p_instruction_function_params_list(t):
         t[0] = t[2]
     else:
         t[0] = []
+
+def p_instruction_interface_creation(t):
+    'interfacecreation : INTERFACE ID LLAVEIZQ attributeList LLAVEDER PYC'
+    params = get_params(t)
+    t[0] = Interface(params.line, params.column, t[2], t[4])
+
+def p_instruction_interface_attribute(t):
+    '''attributeList : attributeList ID DOSPTS type PYC
+                | ID DOSPTS type PYC'''
+    arr = []
+    if len(t) > 5:
+        param = {t[2] : t[4]}
+        arr = t[1] + [param]
+    else:
+        param = {t[1] : t[3]}
+        arr.append(param)
+    t[0] = arr
 
 def p_expression_param_list(t):
     '''paramsList : paramsList COMA ID DOSPTS type
@@ -420,7 +461,7 @@ def p_expression_list_array(t):
     if len(t) > 4:
         t[0] = ArrayAccess(params.line, params.column, t[1], t[3])
     elif len(t) > 3:
-        print('ToDo: InterfaceAccess')
+        t[0] = InterfaceAccess(params.line, params.column, t[1], t[3])
     else:
         t[0] = Access(params.line, params.column, t[1])
 
