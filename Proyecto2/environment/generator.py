@@ -37,7 +37,7 @@ class Generator:
 
     def new_temp(self):
         self.Temporal += 4
-        self.TempList.append(self.Temporal)
+        #self.TempList.append(self.Temporal)
         return self.Temporal
 
     def new_label(self):

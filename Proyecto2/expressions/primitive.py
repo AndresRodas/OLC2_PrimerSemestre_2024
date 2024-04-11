@@ -12,7 +12,7 @@ class Primitive(Expression):
 
     def ejecutar(self, ast, env, gen):
         if(self.type == ExpressionType.INTEGER):
-            temp = gen.new_temp()
+            temp = gen.new_temp() # 4
             gen.add_br()
             gen.add_li('t0', str(self.value))
             gen.add_li('t3', str(temp))
