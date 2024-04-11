@@ -33,7 +33,7 @@ def recibir_datos():
     # Ejecución
     RootExecuter(instructionsArr, ast, env, gen)
     # Estructurando respuesta
-    res = {"result": True,"console":ast.getConsole(),"errors":ast.getErrors()}
+    res = {"result": True,"console": gen.get_final_code(),"errors": ast.getErrors()}
     return jsonify(res)
 
 if __name__ == '__main__':
