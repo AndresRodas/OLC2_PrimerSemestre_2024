@@ -11,10 +11,14 @@ class Primitive(Expression):
         self.type = type
 
     def ejecutar(self, ast, env, gen):
+        temp = gen.new_temp()
         if(self.type == ExpressionType.INTEGER):
-            temp = gen.new_temp() # 4
             gen.add_br()
             gen.add_li('t0', str(self.value))
             gen.add_li('t3', str(temp))
             gen.add_sw('t0', '0(t3)')
-            return  Value(str(temp), self.value, self.type, [], [], [])
+            return  Value(str(temp), True, self.type, [], [], [])
+        elif (self.type == ExpressionType.STRING):
+            nameId = 'str_'+str(temp)
+            gen.variable_data(nameId, 'string', '\"'+str(self.value)+'\"')
+            return  Value(nameId, False, self.type, [], [], [])

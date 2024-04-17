@@ -1,6 +1,7 @@
 class Symbol:
-    def __init__(self, line, col, value, type):
+    def __init__(self, line, col, id, type, position):
         self.line = line
         self.col = col
-        self.value = value
+        self.id = id
         self.type = type
+        self.position = position

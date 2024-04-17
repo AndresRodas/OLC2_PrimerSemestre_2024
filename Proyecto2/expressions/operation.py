@@ -26,33 +26,29 @@ class Operation(Expression):
 
         if self.operador == "+":
             gen.add_operation('add', 't0', 't1', 't2')
-            newVal = op1.intValue + op2.intValue
             gen.add_li('t3', str(temp))
             gen.add_sw('t0', '0(t3)')
 
-            return  Value(str(temp), newVal, ExpressionType.INTEGER, [], [], [])
+            return  Value(str(temp), True, ExpressionType.INTEGER, [], [], [])
     
         if self.operador == "-":
             gen.add_operation('sub', 't0', 't1', 't2')
-            newVal = op1.intValue - op2.intValue
             gen.add_li('t3', str(temp))
             gen.add_sw('t0', '0(t3)')
 
-            return  Value(str(temp), newVal, ExpressionType.INTEGER, [], [], [])
+            return  Value(str(temp), True, ExpressionType.INTEGER, [], [], [])
         
         if self.operador == "*":
             gen.add_operation('mul', 't0', 't1', 't2')
-            newVal = op1.intValue * op2.intValue
             gen.add_li('t3', str(temp))
             gen.add_sw('t0', '0(t3)')
 
-            return  Value(str(temp), newVal, ExpressionType.INTEGER, [], [], [])
+            return  Value(str(temp), True, ExpressionType.INTEGER, [], [], [])
         
         if self.operador == "/":
             gen.add_operation('div', 't0', 't1', 't2')
-            newVal = op1.intValue / op2.intValue
             gen.add_li('t3', str(temp))
             gen.add_sw('t0', '0(t3)')
 
-            return  Value(str(temp), newVal, ExpressionType.INTEGER, [], [], [])
+            return  Value(str(temp), True, ExpressionType.INTEGER, [], [], [])
         return None

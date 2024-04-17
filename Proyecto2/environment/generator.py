@@ -4,6 +4,7 @@ class Generator:
         self.Temporal = 0
         self.Label = 0
         self.Code = []
+        self.Data = []
         self.FinalCode = []
         self.Natives = []
         self.FuncCode = []
@@ -31,6 +32,9 @@ class Generator:
 
     def add_code(self, code):
         self.Code.append(code)
+    
+    def add_data_code(self, code):
+        self.Data.append(code)
 
     def add_continue(self, lvl):
         self.ContinueLabel = lvl
@@ -48,9 +52,15 @@ class Generator:
     def add_br(self):
         self.Code.append("\n")
 
+    def variable_data(self, name, type, value):
+        self.Data.append(f"{name}: .{type} {value} \n")
+
     def add_li(self, left, right):
         self.Code.append(f"\tli {left}, {right}\n")
-    
+
+    def add_la(self, left, right):
+        self.Code.append(f"\tla {left}, {right}\n")
+
     def add_lw(self, left, right):
         self.Code.append(f"\tlw {left}, {right}\n")
 
@@ -64,7 +74,9 @@ class Generator:
         self.Code.append('\tecall\n')
 
     def add_headers(self):
-        self.Code.insert(0,'.globl _start\n_start:\n\n')
+        self.Code.insert(0,'\n.text\n.globl _start\n\n_start:\n')
+        self.Data.insert(0,'.data\n')
+        self.Code[:0] = self.Data
             
     def add_footers(self):
         self.Code.append('\n\tli a0, 0\n')

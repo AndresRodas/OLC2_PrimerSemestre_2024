@@ -25,7 +25,7 @@ class Environment():
             else:
                 tmpEnv = tmpEnv.previous
         ast.setErrors(f"La variable {id} no existe.")
-        return Symbol(0, 0, None, ExpressionType.NULL)
+        return Symbol(0, 0, '', ExpressionType.NULL, '')
 
     def setVariable(self, ast, id, symbol):
         tmpEnv = self
