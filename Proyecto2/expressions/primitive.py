@@ -14,6 +14,7 @@ class Primitive(Expression):
         temp = gen.new_temp()
         if(self.type == ExpressionType.INTEGER):
             gen.add_br()
+            gen.comment('Agregando un primitivo numerico')
             gen.add_li('t0', str(self.value))
             gen.add_li('t3', str(temp))
             gen.add_sw('t0', '0(t3)')

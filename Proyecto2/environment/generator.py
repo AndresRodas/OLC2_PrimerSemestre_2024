@@ -52,6 +52,9 @@ class Generator:
     def add_br(self):
         self.Code.append("\n")
 
+    def comment(self, txt):
+        self.Code.append(f"### {txt} \n")
+
     def variable_data(self, name, type, value):
         self.Data.append(f"{name}: .{type} {value} \n")
 
@@ -66,6 +69,12 @@ class Generator:
 
     def add_sw(self, left, right):
         self.Code.append(f"\tsw {left}, {right}\n")
+
+    def add_slli(self, target, left, right):
+        self.Code.append(f"\tslli {target}, {left}, {right}\n")
+
+    def add_move(self, left, right):
+        self.Code.append(f"\tmv {left}, {right}\n")
 
     def add_operation(self, operation, target, left, right):
         self.Code.append(f"\t{operation} {target}, {left}, {right}\n")

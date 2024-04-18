@@ -18,9 +18,18 @@ class Operation(Expression):
         op2 = self.opR.ejecutar(ast, env, gen)
 
         gen.add_br()
-        gen.add_li('t3', str(op1.value))
+        gen.comment('Realizando operacion')
+        if 't' in str(op1.value):
+            gen.add_move('t3', str(op1.value))
+        else:
+            gen.add_li('t3', str(op1.value))
+        #gen.add_li('t3', str(op1.value))
         gen.add_lw('t1', '0(t3)')
-        gen.add_li('t3', str(op2.value))
+        if 't' in str(op2.value):
+            gen.add_move('t3', str(op2.value))
+        else:
+            gen.add_li('t3', str(op2.value)) 
+        #gen.add_li('t3', str(op2.value))
         gen.add_lw('t2', '0(t3)')
         temp = gen.new_temp()
 

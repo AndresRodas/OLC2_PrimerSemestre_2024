@@ -75,9 +75,8 @@ Rule 65    expression -> listArray
 Rule 66    expression -> CORIZQ expressionList CORDER
 Rule 67    expression -> ID PARIZQ expressionList PARDER
 Rule 68    expression -> ID PARIZQ PARDER
-Rule 69    listArray -> listArray CORIZQ expression CORDER
-Rule 70    listArray -> listArray PUNTO ID
-Rule 71    listArray -> ID
+Rule 69    listArray -> ID CORIZQ expression CORDER
+Rule 70    listArray -> ID
 
 Terminals, with rules where they appear
 
@@ -97,7 +96,7 @@ DOSPTS               : 20 21 22 23 24 34 35 36 37 38 62
 ENTERO               : 63
 FLOAT                : 43
 FUNC                 : 30
-ID                   : 20 21 22 22 23 24 25 28 29 30 33 34 35 36 37 67 68 70 71
+ID                   : 20 21 22 22 23 24 25 28 29 30 33 34 35 36 37 67 68 69 70
 IF                   : 18
 IG                   : 20 21 22 25
 IGIG                 : 56
@@ -117,7 +116,7 @@ OR                   : 59
 PARDER               : 17 18 19 28 29 31 32 61 67 68
 PARIZQ               : 17 18 19 28 29 31 32 61 67 68
 POR                  : 50
-PUNTO                : 17 70
+PUNTO                : 17
 PYC                  : 17 20 21 22 25 26 27 28 29 33 34 35 40 41
 RETURN               : 26 27
 STRING               : 44
@@ -146,7 +145,7 @@ instruccion          : 2 3
 interdeclaration     : 16
 interfaceContent     : 22 23
 interfacecreation    : 15
-listArray            : 65 69 70
+listArray            : 65
 paramsList           : 31 36
 print                : 4
 returnstmt           : 14
@@ -623,9 +622,8 @@ state 25
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     PYC             shift and go to state 38
     NOT             shift and go to state 39
@@ -694,9 +692,8 @@ state 29
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -732,9 +729,8 @@ state 30
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -779,9 +775,8 @@ state 32
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -820,9 +815,8 @@ state 33
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     PARDER          shift and go to state 53
     NOT             shift and go to state 39
@@ -957,9 +951,8 @@ state 39
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -995,9 +988,8 @@ state 40
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1062,8 +1054,6 @@ state 42
 state 43
 
     (65) expression -> listArray .
-    (69) listArray -> listArray . CORIZQ expression CORDER
-    (70) listArray -> listArray . PUNTO ID
 
     PYC             reduce using rule 65 (expression -> listArray .)
     MAS             reduce using rule 65 (expression -> listArray .)
@@ -1084,8 +1074,6 @@ state 43
     CORDER          reduce using rule 65 (expression -> listArray .)
     DOSPTS          reduce using rule 65 (expression -> listArray .)
     LLAVEDER        reduce using rule 65 (expression -> listArray .)
-    CORIZQ          shift and go to state 73
-    PUNTO           shift and go to state 74
 
 
 state 44
@@ -1114,9 +1102,8 @@ state 44
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1125,7 +1112,7 @@ state 44
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expressionList                 shift and go to state 75
+    expressionList                 shift and go to state 73
     expression                     shift and go to state 54
     listArray                      shift and go to state 43
 
@@ -1133,44 +1120,44 @@ state 45
 
     (67) expression -> ID . PARIZQ expressionList PARDER
     (68) expression -> ID . PARIZQ PARDER
-    (71) listArray -> ID .
+    (69) listArray -> ID . CORIZQ expression CORDER
+    (70) listArray -> ID .
 
-    PARIZQ          shift and go to state 76
-    CORIZQ          reduce using rule 71 (listArray -> ID .)
-    PUNTO           reduce using rule 71 (listArray -> ID .)
-    PYC             reduce using rule 71 (listArray -> ID .)
-    MAS             reduce using rule 71 (listArray -> ID .)
-    MENOS           reduce using rule 71 (listArray -> ID .)
-    POR             reduce using rule 71 (listArray -> ID .)
-    DIVIDIDO        reduce using rule 71 (listArray -> ID .)
-    MAYOR           reduce using rule 71 (listArray -> ID .)
-    MENOR           reduce using rule 71 (listArray -> ID .)
-    MAYORIG         reduce using rule 71 (listArray -> ID .)
-    MENORIG         reduce using rule 71 (listArray -> ID .)
-    IGIG            reduce using rule 71 (listArray -> ID .)
-    DIF             reduce using rule 71 (listArray -> ID .)
-    AND             reduce using rule 71 (listArray -> ID .)
-    OR              reduce using rule 71 (listArray -> ID .)
-    TERN            reduce using rule 71 (listArray -> ID .)
-    PARDER          reduce using rule 71 (listArray -> ID .)
-    COMA            reduce using rule 71 (listArray -> ID .)
-    CORDER          reduce using rule 71 (listArray -> ID .)
-    DOSPTS          reduce using rule 71 (listArray -> ID .)
-    LLAVEDER        reduce using rule 71 (listArray -> ID .)
+    PARIZQ          shift and go to state 74
+    CORIZQ          shift and go to state 75
+    PYC             reduce using rule 70 (listArray -> ID .)
+    MAS             reduce using rule 70 (listArray -> ID .)
+    MENOS           reduce using rule 70 (listArray -> ID .)
+    POR             reduce using rule 70 (listArray -> ID .)
+    DIVIDIDO        reduce using rule 70 (listArray -> ID .)
+    MAYOR           reduce using rule 70 (listArray -> ID .)
+    MENOR           reduce using rule 70 (listArray -> ID .)
+    MAYORIG         reduce using rule 70 (listArray -> ID .)
+    MENORIG         reduce using rule 70 (listArray -> ID .)
+    IGIG            reduce using rule 70 (listArray -> ID .)
+    DIF             reduce using rule 70 (listArray -> ID .)
+    AND             reduce using rule 70 (listArray -> ID .)
+    OR              reduce using rule 70 (listArray -> ID .)
+    TERN            reduce using rule 70 (listArray -> ID .)
+    PARDER          reduce using rule 70 (listArray -> ID .)
+    COMA            reduce using rule 70 (listArray -> ID .)
+    CORDER          reduce using rule 70 (listArray -> ID .)
+    DOSPTS          reduce using rule 70 (listArray -> ID .)
+    LLAVEDER        reduce using rule 70 (listArray -> ID .)
 
 
 state 46
 
     (33) interfacecreation -> INTERFACE ID . LLAVEIZQ attributeList LLAVEDER PYC
 
-    LLAVEIZQ        shift and go to state 77
+    LLAVEIZQ        shift and go to state 76
 
 
 state 47
 
     (17) print -> CONSOLE PUNTO LOG . PARIZQ expressionList PARDER PYC
 
-    PARIZQ          shift and go to state 78
+    PARIZQ          shift and go to state 77
 
 
 state 48
@@ -1190,7 +1177,7 @@ state 48
     (59) expression -> expression . OR expression
     (62) expression -> expression . TERN expression DOSPTS expression
 
-    PARDER          shift and go to state 79
+    PARDER          shift and go to state 78
     MAS             shift and go to state 58
     MENOS           shift and go to state 59
     POR             shift and go to state 60
@@ -1223,7 +1210,7 @@ state 49
     (59) expression -> expression . OR expression
     (62) expression -> expression . TERN expression DOSPTS expression
 
-    PARDER          shift and go to state 80
+    PARDER          shift and go to state 79
     MAS             shift and go to state 58
     MENOS           shift and go to state 59
     POR             shift and go to state 60
@@ -1249,13 +1236,13 @@ state 50
     (44) type -> . STRING
     (45) type -> . BOOL
 
-    ID              shift and go to state 81
-    NUMBER          shift and go to state 83
-    FLOAT           shift and go to state 84
-    STRING          shift and go to state 85
-    BOOL            shift and go to state 86
+    ID              shift and go to state 80
+    NUMBER          shift and go to state 82
+    FLOAT           shift and go to state 83
+    STRING          shift and go to state 84
+    BOOL            shift and go to state 85
 
-    type                           shift and go to state 82
+    type                           shift and go to state 81
 
 state 51
 
@@ -1274,7 +1261,7 @@ state 51
     (59) expression -> expression . OR expression
     (62) expression -> expression . TERN expression DOSPTS expression
 
-    PYC             shift and go to state 87
+    PYC             shift and go to state 86
     MAS             shift and go to state 58
     MENOS           shift and go to state 59
     POR             shift and go to state 60
@@ -1295,15 +1282,15 @@ state 52
     (28) call -> ID PARIZQ expressionList . PARDER PYC
     (46) expressionList -> expressionList . COMA expression
 
-    PARDER          shift and go to state 88
-    COMA            shift and go to state 89
+    PARDER          shift and go to state 87
+    COMA            shift and go to state 88
 
 
 state 53
 
     (29) call -> ID PARIZQ PARDER . PYC
 
-    PYC             shift and go to state 90
+    PYC             shift and go to state 89
 
 
 state 54
@@ -1347,10 +1334,10 @@ state 55
     (38) functype -> . DOSPTS type
     (39) functype -> .
 
-    DOSPTS          shift and go to state 92
+    DOSPTS          shift and go to state 91
     LLAVEIZQ        reduce using rule 39 (functype -> .)
 
-    functype                       shift and go to state 91
+    functype                       shift and go to state 90
 
 state 56
 
@@ -1359,10 +1346,10 @@ state 56
     (36) paramsList -> . paramsList COMA ID DOSPTS type
     (37) paramsList -> . ID DOSPTS type
 
-    PARDER          shift and go to state 94
-    ID              shift and go to state 95
+    PARDER          shift and go to state 93
+    ID              shift and go to state 94
 
-    paramsList                     shift and go to state 93
+    paramsList                     shift and go to state 92
 
 state 57
 
@@ -1406,9 +1393,8 @@ state 58
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1417,7 +1403,7 @@ state 58
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 96
+    expression                     shift and go to state 95
     listArray                      shift and go to state 43
 
 state 59
@@ -1444,9 +1430,8 @@ state 59
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1455,7 +1440,7 @@ state 59
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 97
+    expression                     shift and go to state 96
     listArray                      shift and go to state 43
 
 state 60
@@ -1482,9 +1467,8 @@ state 60
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1493,7 +1477,7 @@ state 60
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 98
+    expression                     shift and go to state 97
     listArray                      shift and go to state 43
 
 state 61
@@ -1520,9 +1504,8 @@ state 61
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1531,7 +1514,7 @@ state 61
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 99
+    expression                     shift and go to state 98
     listArray                      shift and go to state 43
 
 state 62
@@ -1558,9 +1541,8 @@ state 62
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1569,7 +1551,7 @@ state 62
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 100
+    expression                     shift and go to state 99
     listArray                      shift and go to state 43
 
 state 63
@@ -1596,9 +1578,8 @@ state 63
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1607,7 +1588,7 @@ state 63
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 101
+    expression                     shift and go to state 100
     listArray                      shift and go to state 43
 
 state 64
@@ -1634,9 +1615,8 @@ state 64
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1645,7 +1625,7 @@ state 64
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 102
+    expression                     shift and go to state 101
     listArray                      shift and go to state 43
 
 state 65
@@ -1672,9 +1652,8 @@ state 65
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1683,7 +1662,7 @@ state 65
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 103
+    expression                     shift and go to state 102
     listArray                      shift and go to state 43
 
 state 66
@@ -1710,9 +1689,8 @@ state 66
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1721,7 +1699,7 @@ state 66
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 104
+    expression                     shift and go to state 103
     listArray                      shift and go to state 43
 
 state 67
@@ -1748,9 +1726,8 @@ state 67
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1759,7 +1736,7 @@ state 67
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 105
+    expression                     shift and go to state 104
     listArray                      shift and go to state 43
 
 state 68
@@ -1786,9 +1763,8 @@ state 68
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1797,7 +1773,7 @@ state 68
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 106
+    expression                     shift and go to state 105
     listArray                      shift and go to state 43
 
 state 69
@@ -1824,9 +1800,8 @@ state 69
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1835,7 +1810,7 @@ state 69
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 107
+    expression                     shift and go to state 106
     listArray                      shift and go to state 43
 
 state 70
@@ -1862,9 +1837,8 @@ state 70
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -1873,7 +1847,7 @@ state 70
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 108
+    expression                     shift and go to state 107
     listArray                      shift and go to state 43
 
 state 71
@@ -1958,7 +1932,7 @@ state 72
     (59) expression -> expression . OR expression
     (62) expression -> expression . TERN expression DOSPTS expression
 
-    PARDER          shift and go to state 109
+    PARDER          shift and go to state 108
     MAS             shift and go to state 58
     MENOS           shift and go to state 59
     POR             shift and go to state 60
@@ -1976,59 +1950,14 @@ state 72
 
 state 73
 
-    (69) listArray -> listArray CORIZQ . expression CORDER
-    (48) expression -> . expression MAS expression
-    (49) expression -> . expression MENOS expression
-    (50) expression -> . expression POR expression
-    (51) expression -> . expression DIVIDIDO expression
-    (52) expression -> . expression MAYOR expression
-    (53) expression -> . expression MENOR expression
-    (54) expression -> . expression MAYORIG expression
-    (55) expression -> . expression MENORIG expression
-    (56) expression -> . expression IGIG expression
-    (57) expression -> . expression DIF expression
-    (58) expression -> . expression AND expression
-    (59) expression -> . expression OR expression
-    (60) expression -> . NOT expression
-    (61) expression -> . PARIZQ expression PARDER
-    (62) expression -> . expression TERN expression DOSPTS expression
-    (63) expression -> . ENTERO
-    (64) expression -> . CADENA
-    (65) expression -> . listArray
-    (66) expression -> . CORIZQ expressionList CORDER
-    (67) expression -> . ID PARIZQ expressionList PARDER
-    (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
-
-    NOT             shift and go to state 39
-    PARIZQ          shift and go to state 40
-    ENTERO          shift and go to state 41
-    CADENA          shift and go to state 42
-    CORIZQ          shift and go to state 44
-    ID              shift and go to state 45
-
-    listArray                      shift and go to state 43
-    expression                     shift and go to state 110
-
-state 74
-
-    (70) listArray -> listArray PUNTO . ID
-
-    ID              shift and go to state 111
-
-
-state 75
-
     (66) expression -> CORIZQ expressionList . CORDER
     (46) expressionList -> expressionList . COMA expression
 
-    CORDER          shift and go to state 112
-    COMA            shift and go to state 89
+    CORDER          shift and go to state 109
+    COMA            shift and go to state 88
 
 
-state 76
+state 74
 
     (67) expression -> ID PARIZQ . expressionList PARDER
     (68) expression -> ID PARIZQ . PARDER
@@ -2055,11 +1984,10 @@ state 76
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
-    PARDER          shift and go to state 114
+    PARDER          shift and go to state 111
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
     ENTERO          shift and go to state 41
@@ -2067,21 +1995,58 @@ state 76
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expressionList                 shift and go to state 113
+    expressionList                 shift and go to state 110
     expression                     shift and go to state 54
     listArray                      shift and go to state 43
 
-state 77
+state 75
+
+    (69) listArray -> ID CORIZQ . expression CORDER
+    (48) expression -> . expression MAS expression
+    (49) expression -> . expression MENOS expression
+    (50) expression -> . expression POR expression
+    (51) expression -> . expression DIVIDIDO expression
+    (52) expression -> . expression MAYOR expression
+    (53) expression -> . expression MENOR expression
+    (54) expression -> . expression MAYORIG expression
+    (55) expression -> . expression MENORIG expression
+    (56) expression -> . expression IGIG expression
+    (57) expression -> . expression DIF expression
+    (58) expression -> . expression AND expression
+    (59) expression -> . expression OR expression
+    (60) expression -> . NOT expression
+    (61) expression -> . PARIZQ expression PARDER
+    (62) expression -> . expression TERN expression DOSPTS expression
+    (63) expression -> . ENTERO
+    (64) expression -> . CADENA
+    (65) expression -> . listArray
+    (66) expression -> . CORIZQ expressionList CORDER
+    (67) expression -> . ID PARIZQ expressionList PARDER
+    (68) expression -> . ID PARIZQ PARDER
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
+
+    NOT             shift and go to state 39
+    PARIZQ          shift and go to state 40
+    ENTERO          shift and go to state 41
+    CADENA          shift and go to state 42
+    CORIZQ          shift and go to state 44
+    ID              shift and go to state 45
+
+    expression                     shift and go to state 112
+    listArray                      shift and go to state 43
+
+state 76
 
     (33) interfacecreation -> INTERFACE ID LLAVEIZQ . attributeList LLAVEDER PYC
     (34) attributeList -> . attributeList ID DOSPTS type PYC
     (35) attributeList -> . ID DOSPTS type PYC
 
-    ID              shift and go to state 115
+    ID              shift and go to state 113
 
-    attributeList                  shift and go to state 116
+    attributeList                  shift and go to state 114
 
-state 78
+state 77
 
     (17) print -> CONSOLE PUNTO LOG PARIZQ . expressionList PARDER PYC
     (46) expressionList -> . expressionList COMA expression
@@ -2107,9 +2072,8 @@ state 78
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -2118,41 +2082,41 @@ state 78
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expressionList                 shift and go to state 117
+    expressionList                 shift and go to state 115
     expression                     shift and go to state 54
     listArray                      shift and go to state 43
 
-state 79
+state 78
 
     (18) ifinstruction -> IF PARIZQ expression PARDER . LLAVEIZQ block LLAVEDER
 
-    LLAVEIZQ        shift and go to state 118
+    LLAVEIZQ        shift and go to state 116
+
+
+state 79
+
+    (19) whileinstruction -> WHILE PARIZQ expression PARDER . LLAVEIZQ block LLAVEDER
+
+    LLAVEIZQ        shift and go to state 117
 
 
 state 80
 
-    (19) whileinstruction -> WHILE PARIZQ expression PARDER . LLAVEIZQ block LLAVEDER
+    (22) interdeclaration -> VAR ID DOSPTS ID . IG LLAVEIZQ interfaceContent LLAVEDER PYC
 
-    LLAVEIZQ        shift and go to state 119
+    IG              shift and go to state 118
 
 
 state 81
 
-    (22) interdeclaration -> VAR ID DOSPTS ID . IG LLAVEIZQ interfaceContent LLAVEDER PYC
-
-    IG              shift and go to state 120
-
-
-state 82
-
     (20) declaration -> VAR ID DOSPTS type . IG expression PYC
     (21) arraydeclaration -> VAR ID DOSPTS type . CORIZQ CORDER IG expression PYC
 
-    IG              shift and go to state 121
-    CORIZQ          shift and go to state 122
+    IG              shift and go to state 119
+    CORIZQ          shift and go to state 120
 
 
-state 83
+state 82
 
     (42) type -> NUMBER .
 
@@ -2164,7 +2128,7 @@ state 83
     PYC             reduce using rule 42 (type -> NUMBER .)
 
 
-state 84
+state 83
 
     (43) type -> FLOAT .
 
@@ -2176,7 +2140,7 @@ state 84
     PYC             reduce using rule 43 (type -> FLOAT .)
 
 
-state 85
+state 84
 
     (44) type -> STRING .
 
@@ -2188,7 +2152,7 @@ state 85
     PYC             reduce using rule 44 (type -> STRING .)
 
 
-state 86
+state 85
 
     (45) type -> BOOL .
 
@@ -2200,7 +2164,7 @@ state 86
     PYC             reduce using rule 45 (type -> BOOL .)
 
 
-state 87
+state 86
 
     (25) assignment -> ID IG expression PYC .
 
@@ -2218,14 +2182,14 @@ state 87
     LLAVEDER        reduce using rule 25 (assignment -> ID IG expression PYC .)
 
 
-state 88
+state 87
 
     (28) call -> ID PARIZQ expressionList PARDER . PYC
 
-    PYC             shift and go to state 123
+    PYC             shift and go to state 121
 
 
-state 89
+state 88
 
     (46) expressionList -> expressionList COMA . expression
     (48) expression -> . expression MAS expression
@@ -2249,9 +2213,8 @@ state 89
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -2260,10 +2223,10 @@ state 89
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 124
+    expression                     shift and go to state 122
     listArray                      shift and go to state 43
 
-state 90
+state 89
 
     (29) call -> ID PARIZQ PARDER PYC .
 
@@ -2281,14 +2244,14 @@ state 90
     LLAVEDER        reduce using rule 29 (call -> ID PARIZQ PARDER PYC .)
 
 
-state 91
+state 90
 
     (30) functionstmt -> FUNC ID funcparams functype . LLAVEIZQ block LLAVEDER
 
-    LLAVEIZQ        shift and go to state 125
+    LLAVEIZQ        shift and go to state 123
 
 
-state 92
+state 91
 
     (38) functype -> DOSPTS . type
     (42) type -> . NUMBER
@@ -2296,23 +2259,23 @@ state 92
     (44) type -> . STRING
     (45) type -> . BOOL
 
-    NUMBER          shift and go to state 83
-    FLOAT           shift and go to state 84
-    STRING          shift and go to state 85
-    BOOL            shift and go to state 86
+    NUMBER          shift and go to state 82
+    FLOAT           shift and go to state 83
+    STRING          shift and go to state 84
+    BOOL            shift and go to state 85
 
-    type                           shift and go to state 126
+    type                           shift and go to state 124
 
-state 93
+state 92
 
     (31) funcparams -> PARIZQ paramsList . PARDER
     (36) paramsList -> paramsList . COMA ID DOSPTS type
 
-    PARDER          shift and go to state 127
-    COMA            shift and go to state 128
+    PARDER          shift and go to state 125
+    COMA            shift and go to state 126
 
 
-state 94
+state 93
 
     (32) funcparams -> PARIZQ PARDER .
 
@@ -2320,14 +2283,14 @@ state 94
     LLAVEIZQ        reduce using rule 32 (funcparams -> PARIZQ PARDER .)
 
 
-state 95
+state 94
 
     (37) paramsList -> ID . DOSPTS type
 
-    DOSPTS          shift and go to state 129
+    DOSPTS          shift and go to state 127
 
 
-state 96
+state 95
 
     (48) expression -> expression MAS expression .
     (48) expression -> expression . MAS expression
@@ -2379,7 +2342,7 @@ state 96
   ! TERN            [ shift and go to state 70 ]
 
 
-state 97
+state 96
 
     (49) expression -> expression MENOS expression .
     (48) expression -> expression . MAS expression
@@ -2431,7 +2394,7 @@ state 97
   ! TERN            [ shift and go to state 70 ]
 
 
-state 98
+state 97
 
     (50) expression -> expression POR expression .
     (48) expression -> expression . MAS expression
@@ -2483,7 +2446,7 @@ state 98
   ! TERN            [ shift and go to state 70 ]
 
 
-state 99
+state 98
 
     (51) expression -> expression DIVIDIDO expression .
     (48) expression -> expression . MAS expression
@@ -2535,7 +2498,7 @@ state 99
   ! TERN            [ shift and go to state 70 ]
 
 
-state 100
+state 99
 
     (52) expression -> expression MAYOR expression .
     (48) expression -> expression . MAS expression
@@ -2587,7 +2550,7 @@ state 100
   ! TERN            [ shift and go to state 70 ]
 
 
-state 101
+state 100
 
     (53) expression -> expression MENOR expression .
     (48) expression -> expression . MAS expression
@@ -2639,7 +2602,7 @@ state 101
   ! TERN            [ shift and go to state 70 ]
 
 
-state 102
+state 101
 
     (54) expression -> expression MAYORIG expression .
     (48) expression -> expression . MAS expression
@@ -2691,7 +2654,7 @@ state 102
   ! TERN            [ shift and go to state 70 ]
 
 
-state 103
+state 102
 
     (55) expression -> expression MENORIG expression .
     (48) expression -> expression . MAS expression
@@ -2743,7 +2706,7 @@ state 103
   ! TERN            [ shift and go to state 70 ]
 
 
-state 104
+state 103
 
     (56) expression -> expression IGIG expression .
     (48) expression -> expression . MAS expression
@@ -2808,7 +2771,7 @@ state 104
   ! TERN            [ reduce using rule 56 (expression -> expression IGIG expression .) ]
 
 
-state 105
+state 104
 
     (57) expression -> expression DIF expression .
     (48) expression -> expression . MAS expression
@@ -2873,7 +2836,7 @@ state 105
   ! TERN            [ reduce using rule 57 (expression -> expression DIF expression .) ]
 
 
-state 106
+state 105
 
     (58) expression -> expression AND expression .
     (48) expression -> expression . MAS expression
@@ -2925,7 +2888,7 @@ state 106
   ! TERN            [ shift and go to state 70 ]
 
 
-state 107
+state 106
 
     (59) expression -> expression OR expression .
     (48) expression -> expression . MAS expression
@@ -2977,7 +2940,7 @@ state 107
   ! TERN            [ shift and go to state 70 ]
 
 
-state 108
+state 107
 
     (62) expression -> expression TERN expression . DOSPTS expression
     (48) expression -> expression . MAS expression
@@ -2994,7 +2957,7 @@ state 108
     (59) expression -> expression . OR expression
     (62) expression -> expression . TERN expression DOSPTS expression
 
-    DOSPTS          shift and go to state 130
+    DOSPTS          shift and go to state 128
     MAS             shift and go to state 58
     MENOS           shift and go to state 59
     POR             shift and go to state 60
@@ -3010,7 +2973,7 @@ state 108
     TERN            shift and go to state 70
 
 
-state 109
+state 108
 
     (61) expression -> PARIZQ expression PARDER .
 
@@ -3035,67 +2998,7 @@ state 109
     LLAVEDER        reduce using rule 61 (expression -> PARIZQ expression PARDER .)
 
 
-state 110
-
-    (69) listArray -> listArray CORIZQ expression . CORDER
-    (48) expression -> expression . MAS expression
-    (49) expression -> expression . MENOS expression
-    (50) expression -> expression . POR expression
-    (51) expression -> expression . DIVIDIDO expression
-    (52) expression -> expression . MAYOR expression
-    (53) expression -> expression . MENOR expression
-    (54) expression -> expression . MAYORIG expression
-    (55) expression -> expression . MENORIG expression
-    (56) expression -> expression . IGIG expression
-    (57) expression -> expression . DIF expression
-    (58) expression -> expression . AND expression
-    (59) expression -> expression . OR expression
-    (62) expression -> expression . TERN expression DOSPTS expression
-
-    CORDER          shift and go to state 131
-    MAS             shift and go to state 58
-    MENOS           shift and go to state 59
-    POR             shift and go to state 60
-    DIVIDIDO        shift and go to state 61
-    MAYOR           shift and go to state 62
-    MENOR           shift and go to state 63
-    MAYORIG         shift and go to state 64
-    MENORIG         shift and go to state 65
-    IGIG            shift and go to state 66
-    DIF             shift and go to state 67
-    AND             shift and go to state 68
-    OR              shift and go to state 69
-    TERN            shift and go to state 70
-
-
-state 111
-
-    (70) listArray -> listArray PUNTO ID .
-
-    CORIZQ          reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    PUNTO           reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    PYC             reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    MAS             reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    MENOS           reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    POR             reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    DIVIDIDO        reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    MAYOR           reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    MENOR           reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    MAYORIG         reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    MENORIG         reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    IGIG            reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    DIF             reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    AND             reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    OR              reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    TERN            reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    PARDER          reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    COMA            reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    CORDER          reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    DOSPTS          reduce using rule 70 (listArray -> listArray PUNTO ID .)
-    LLAVEDER        reduce using rule 70 (listArray -> listArray PUNTO ID .)
-
-
-state 112
+state 109
 
     (66) expression -> CORIZQ expressionList CORDER .
 
@@ -3120,16 +3023,16 @@ state 112
     LLAVEDER        reduce using rule 66 (expression -> CORIZQ expressionList CORDER .)
 
 
-state 113
+state 110
 
     (67) expression -> ID PARIZQ expressionList . PARDER
     (46) expressionList -> expressionList . COMA expression
 
-    PARDER          shift and go to state 132
-    COMA            shift and go to state 89
+    PARDER          shift and go to state 129
+    COMA            shift and go to state 88
 
 
-state 114
+state 111
 
     (68) expression -> ID PARIZQ PARDER .
 
@@ -3154,32 +3057,65 @@ state 114
     LLAVEDER        reduce using rule 68 (expression -> ID PARIZQ PARDER .)
 
 
-state 115
+state 112
+
+    (69) listArray -> ID CORIZQ expression . CORDER
+    (48) expression -> expression . MAS expression
+    (49) expression -> expression . MENOS expression
+    (50) expression -> expression . POR expression
+    (51) expression -> expression . DIVIDIDO expression
+    (52) expression -> expression . MAYOR expression
+    (53) expression -> expression . MENOR expression
+    (54) expression -> expression . MAYORIG expression
+    (55) expression -> expression . MENORIG expression
+    (56) expression -> expression . IGIG expression
+    (57) expression -> expression . DIF expression
+    (58) expression -> expression . AND expression
+    (59) expression -> expression . OR expression
+    (62) expression -> expression . TERN expression DOSPTS expression
+
+    CORDER          shift and go to state 130
+    MAS             shift and go to state 58
+    MENOS           shift and go to state 59
+    POR             shift and go to state 60
+    DIVIDIDO        shift and go to state 61
+    MAYOR           shift and go to state 62
+    MENOR           shift and go to state 63
+    MAYORIG         shift and go to state 64
+    MENORIG         shift and go to state 65
+    IGIG            shift and go to state 66
+    DIF             shift and go to state 67
+    AND             shift and go to state 68
+    OR              shift and go to state 69
+    TERN            shift and go to state 70
+
+
+state 113
 
     (35) attributeList -> ID . DOSPTS type PYC
 
-    DOSPTS          shift and go to state 133
+    DOSPTS          shift and go to state 131
 
 
-state 116
+state 114
 
     (33) interfacecreation -> INTERFACE ID LLAVEIZQ attributeList . LLAVEDER PYC
     (34) attributeList -> attributeList . ID DOSPTS type PYC
 
-    LLAVEDER        shift and go to state 135
-    ID              shift and go to state 134
+    LLAVEDER        shift and go to state 133
+    ID              shift and go to state 132
 
 
-state 117
+state 115
 
     (17) print -> CONSOLE PUNTO LOG PARIZQ expressionList . PARDER PYC
     (46) expressionList -> expressionList . COMA expression
 
-    PARDER          shift and go to state 136
-    COMA            shift and go to state 89
+    PARDER          shift and go to state 134
+    COMA            shift and go to state 88
 
 
-state 118
+state 116
 
     (18) ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ . block LLAVEDER
     (2) block -> . block instruccion
@@ -3224,7 +3160,7 @@ state 118
     RETURN          shift and go to state 25
     INTERFACE       shift and go to state 26
 
-    block                          shift and go to state 137
+    block                          shift and go to state 135
     instruccion                    shift and go to state 3
     print                          shift and go to state 4
     ifinstruction                  shift and go to state 5
@@ -3240,7 +3176,7 @@ state 118
     interfacecreation              shift and go to state 15
     interdeclaration               shift and go to state 16
 
-state 119
+state 117
 
     (19) whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ . block LLAVEDER
     (2) block -> . block instruccion
@@ -3285,7 +3221,7 @@ state 119
     RETURN          shift and go to state 25
     INTERFACE       shift and go to state 26
 
-    block                          shift and go to state 138
+    block                          shift and go to state 136
     instruccion                    shift and go to state 3
     print                          shift and go to state 4
     ifinstruction                  shift and go to state 5
@@ -3301,14 +3237,14 @@ state 119
     interfacecreation              shift and go to state 15
     interdeclaration               shift and go to state 16
 
-state 120
+state 118
 
     (22) interdeclaration -> VAR ID DOSPTS ID IG . LLAVEIZQ interfaceContent LLAVEDER PYC
 
-    LLAVEIZQ        shift and go to state 139
+    LLAVEIZQ        shift and go to state 137
 
 
-state 121
+state 119
 
     (20) declaration -> VAR ID DOSPTS type IG . expression PYC
     (48) expression -> . expression MAS expression
@@ -3332,9 +3268,8 @@ state 121
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -3343,17 +3278,17 @@ state 121
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 140
+    expression                     shift and go to state 138
     listArray                      shift and go to state 43
 
-state 122
+state 120
 
     (21) arraydeclaration -> VAR ID DOSPTS type CORIZQ . CORDER IG expression PYC
 
-    CORDER          shift and go to state 141
+    CORDER          shift and go to state 139
 
 
-state 123
+state 121
 
     (28) call -> ID PARIZQ expressionList PARDER PYC .
 
@@ -3371,7 +3306,7 @@ state 123
     LLAVEDER        reduce using rule 28 (call -> ID PARIZQ expressionList PARDER PYC .)
 
 
-state 124
+state 122
 
     (46) expressionList -> expressionList COMA expression .
     (48) expression -> expression . MAS expression
@@ -3406,7 +3341,7 @@ state 124
     TERN            shift and go to state 70
 
 
-state 125
+state 123
 
     (30) functionstmt -> FUNC ID funcparams functype LLAVEIZQ . block LLAVEDER
     (2) block -> . block instruccion
@@ -3451,7 +3386,7 @@ state 125
     RETURN          shift and go to state 25
     INTERFACE       shift and go to state 26
 
-    block                          shift and go to state 142
+    block                          shift and go to state 140
     instruccion                    shift and go to state 3
     print                          shift and go to state 4
     ifinstruction                  shift and go to state 5
@@ -3467,14 +3402,14 @@ state 125
     interfacecreation              shift and go to state 15
     interdeclaration               shift and go to state 16
 
-state 126
+state 124
 
     (38) functype -> DOSPTS type .
 
     LLAVEIZQ        reduce using rule 38 (functype -> DOSPTS type .)
 
 
-state 127
+state 125
 
     (31) funcparams -> PARIZQ paramsList PARDER .
 
@@ -3482,14 +3417,14 @@ state 127
     LLAVEIZQ        reduce using rule 31 (funcparams -> PARIZQ paramsList PARDER .)
 
 
-state 128
+state 126
 
     (36) paramsList -> paramsList COMA . ID DOSPTS type
 
-    ID              shift and go to state 143
+    ID              shift and go to state 141
 
 
-state 129
+state 127
 
     (37) paramsList -> ID DOSPTS . type
     (42) type -> . NUMBER
@@ -3497,14 +3432,14 @@ state 129
     (44) type -> . STRING
     (45) type -> . BOOL
 
-    NUMBER          shift and go to state 83
-    FLOAT           shift and go to state 84
-    STRING          shift and go to state 85
-    BOOL            shift and go to state 86
+    NUMBER          shift and go to state 82
+    FLOAT           shift and go to state 83
+    STRING          shift and go to state 84
+    BOOL            shift and go to state 85
 
-    type                           shift and go to state 144
+    type                           shift and go to state 142
 
-state 130
+state 128
 
     (62) expression -> expression TERN expression DOSPTS . expression
     (48) expression -> . expression MAS expression
@@ -3528,9 +3463,8 @@ state 130
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -3539,37 +3473,10 @@ state 130
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 145
+    expression                     shift and go to state 143
     listArray                      shift and go to state 43
 
-state 131
-
-    (69) listArray -> listArray CORIZQ expression CORDER .
-
-    CORIZQ          reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    PUNTO           reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    PYC             reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    MAS             reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    MENOS           reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    POR             reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    DIVIDIDO        reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    MAYOR           reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    MENOR           reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    MAYORIG         reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    MENORIG         reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    IGIG            reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    DIF             reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    AND             reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    OR              reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    TERN            reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    PARDER          reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    COMA            reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    CORDER          reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    DOSPTS          reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-    LLAVEDER        reduce using rule 69 (listArray -> listArray CORIZQ expression CORDER .)
-
-
-state 132
+state 129
 
     (67) expression -> ID PARIZQ expressionList PARDER .
 
@@ -3594,7 +3501,32 @@ state 132
     LLAVEDER        reduce using rule 67 (expression -> ID PARIZQ expressionList PARDER .)
 
 
-state 133
+state 130
+
+    (69) listArray -> ID CORIZQ expression CORDER .
+
+    PYC             reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    MAS             reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    MENOS           reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    POR             reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    DIVIDIDO        reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    MAYOR           reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    MENOR           reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    MAYORIG         reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    MENORIG         reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    IGIG            reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    DIF             reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    AND             reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    OR              reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    TERN            reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    PARDER          reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    COMA            reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    CORDER          reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    DOSPTS          reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+    LLAVEDER        reduce using rule 69 (listArray -> ID CORIZQ expression CORDER .)
+
+
+state 131
 
     (35) attributeList -> ID DOSPTS . type PYC
     (42) type -> . NUMBER
@@ -3602,35 +3534,35 @@ state 133
     (44) type -> . STRING
     (45) type -> . BOOL
 
-    NUMBER          shift and go to state 83
-    FLOAT           shift and go to state 84
-    STRING          shift and go to state 85
-    BOOL            shift and go to state 86
+    NUMBER          shift and go to state 82
+    FLOAT           shift and go to state 83
+    STRING          shift and go to state 84
+    BOOL            shift and go to state 85
 
-    type                           shift and go to state 146
+    type                           shift and go to state 144
 
-state 134
+state 132
 
     (34) attributeList -> attributeList ID . DOSPTS type PYC
 
-    DOSPTS          shift and go to state 147
+    DOSPTS          shift and go to state 145
 
 
-state 135
+state 133
 
     (33) interfacecreation -> INTERFACE ID LLAVEIZQ attributeList LLAVEDER . PYC
 
-    PYC             shift and go to state 148
+    PYC             shift and go to state 146
 
 
-state 136
+state 134
 
     (17) print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER . PYC
 
-    PYC             shift and go to state 149
+    PYC             shift and go to state 147
 
 
-state 137
+state 135
 
     (18) ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block . LLAVEDER
     (2) block -> block . instruccion
@@ -3663,7 +3595,7 @@ state 137
     (33) interfacecreation -> . INTERFACE ID LLAVEIZQ attributeList LLAVEDER PYC
     (22) interdeclaration -> . VAR ID DOSPTS ID IG LLAVEIZQ interfaceContent LLAVEDER PYC
 
-    LLAVEDER        shift and go to state 150
+    LLAVEDER        shift and go to state 148
     CONSOLE         shift and go to state 17
     IF              shift and go to state 18
     WHILE           shift and go to state 19
@@ -3690,7 +3622,7 @@ state 137
     interfacecreation              shift and go to state 15
     interdeclaration               shift and go to state 16
 
-state 138
+state 136
 
     (19) whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block . LLAVEDER
     (2) block -> block . instruccion
@@ -3723,7 +3655,7 @@ state 138
     (33) interfacecreation -> . INTERFACE ID LLAVEIZQ attributeList LLAVEDER PYC
     (22) interdeclaration -> . VAR ID DOSPTS ID IG LLAVEIZQ interfaceContent LLAVEDER PYC
 
-    LLAVEDER        shift and go to state 151
+    LLAVEDER        shift and go to state 149
     CONSOLE         shift and go to state 17
     IF              shift and go to state 18
     WHILE           shift and go to state 19
@@ -3750,17 +3682,17 @@ state 138
     interfacecreation              shift and go to state 15
     interdeclaration               shift and go to state 16
 
-state 139
+state 137
 
     (22) interdeclaration -> VAR ID DOSPTS ID IG LLAVEIZQ . interfaceContent LLAVEDER PYC
     (23) interfaceContent -> . interfaceContent COMA ID DOSPTS expression
     (24) interfaceContent -> . ID DOSPTS expression
 
-    ID              shift and go to state 152
+    ID              shift and go to state 150
 
-    interfaceContent               shift and go to state 153
+    interfaceContent               shift and go to state 151
 
-state 140
+state 138
 
     (20) declaration -> VAR ID DOSPTS type IG expression . PYC
     (48) expression -> expression . MAS expression
@@ -3777,7 +3709,7 @@ state 140
     (59) expression -> expression . OR expression
     (62) expression -> expression . TERN expression DOSPTS expression
 
-    PYC             shift and go to state 154
+    PYC             shift and go to state 152
     MAS             shift and go to state 58
     MENOS           shift and go to state 59
     POR             shift and go to state 60
@@ -3793,14 +3725,14 @@ state 140
     TERN            shift and go to state 70
 
 
-state 141
+state 139
 
     (21) arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER . IG expression PYC
 
-    IG              shift and go to state 155
+    IG              shift and go to state 153
 
 
-state 142
+state 140
 
     (30) functionstmt -> FUNC ID funcparams functype LLAVEIZQ block . LLAVEDER
     (2) block -> block . instruccion
@@ -3833,7 +3765,7 @@ state 142
     (33) interfacecreation -> . INTERFACE ID LLAVEIZQ attributeList LLAVEDER PYC
     (22) interdeclaration -> . VAR ID DOSPTS ID IG LLAVEIZQ interfaceContent LLAVEDER PYC
 
-    LLAVEDER        shift and go to state 156
+    LLAVEDER        shift and go to state 154
     CONSOLE         shift and go to state 17
     IF              shift and go to state 18
     WHILE           shift and go to state 19
@@ -3860,14 +3792,14 @@ state 142
     interfacecreation              shift and go to state 15
     interdeclaration               shift and go to state 16
 
-state 143
+state 141
 
     (36) paramsList -> paramsList COMA ID . DOSPTS type
 
-    DOSPTS          shift and go to state 157
+    DOSPTS          shift and go to state 155
 
 
-state 144
+state 142
 
     (37) paramsList -> ID DOSPTS type .
 
@@ -3875,7 +3807,7 @@ state 144
     COMA            reduce using rule 37 (paramsList -> ID DOSPTS type .)
 
 
-state 145
+state 143
 
     (62) expression -> expression TERN expression DOSPTS expression .
     (48) expression -> expression . MAS expression
@@ -3940,14 +3872,14 @@ state 145
   ! TERN            [ reduce using rule 62 (expression -> expression TERN expression DOSPTS expression .) ]
 
 
-state 146
+state 144
 
     (35) attributeList -> ID DOSPTS type . PYC
 
-    PYC             shift and go to state 158
+    PYC             shift and go to state 156
 
 
-state 147
+state 145
 
     (34) attributeList -> attributeList ID DOSPTS . type PYC
     (42) type -> . NUMBER
@@ -3955,14 +3887,14 @@ state 147
     (44) type -> . STRING
     (45) type -> . BOOL
 
-    NUMBER          shift and go to state 83
-    FLOAT           shift and go to state 84
-    STRING          shift and go to state 85
-    BOOL            shift and go to state 86
+    NUMBER          shift and go to state 82
+    FLOAT           shift and go to state 83
+    STRING          shift and go to state 84
+    BOOL            shift and go to state 85
 
-    type                           shift and go to state 159
+    type                           shift and go to state 157
 
-state 148
+state 146
 
     (33) interfacecreation -> INTERFACE ID LLAVEIZQ attributeList LLAVEDER PYC .
 
@@ -3980,7 +3912,7 @@ state 148
     LLAVEDER        reduce using rule 33 (interfacecreation -> INTERFACE ID LLAVEIZQ attributeList LLAVEDER PYC .)
 
 
-state 149
+state 147
 
     (17) print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .
 
@@ -3998,7 +3930,7 @@ state 149
     LLAVEDER        reduce using rule 17 (print -> CONSOLE PUNTO LOG PARIZQ expressionList PARDER PYC .)
 
 
-state 150
+state 148
 
     (18) ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .
 
@@ -4016,7 +3948,7 @@ state 150
     LLAVEDER        reduce using rule 18 (ifinstruction -> IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
 
 
-state 151
+state 149
 
     (19) whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .
 
@@ -4034,23 +3966,23 @@ state 151
     LLAVEDER        reduce using rule 19 (whileinstruction -> WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER .)
 
 
-state 152
+state 150
 
     (24) interfaceContent -> ID . DOSPTS expression
 
-    DOSPTS          shift and go to state 160
+    DOSPTS          shift and go to state 158
 
 
-state 153
+state 151
 
     (22) interdeclaration -> VAR ID DOSPTS ID IG LLAVEIZQ interfaceContent . LLAVEDER PYC
     (23) interfaceContent -> interfaceContent . COMA ID DOSPTS expression
 
-    LLAVEDER        shift and go to state 161
-    COMA            shift and go to state 162
+    LLAVEDER        shift and go to state 159
+    COMA            shift and go to state 160
 
 
-state 154
+state 152
 
     (20) declaration -> VAR ID DOSPTS type IG expression PYC .
 
@@ -4068,7 +4000,7 @@ state 154
     LLAVEDER        reduce using rule 20 (declaration -> VAR ID DOSPTS type IG expression PYC .)
 
 
-state 155
+state 153
 
     (21) arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG . expression PYC
     (48) expression -> . expression MAS expression
@@ -4092,9 +4024,8 @@ state 155
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -4103,10 +4034,10 @@ state 155
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 163
+    expression                     shift and go to state 161
     listArray                      shift and go to state 43
 
-state 156
+state 154
 
     (30) functionstmt -> FUNC ID funcparams functype LLAVEIZQ block LLAVEDER .
 
@@ -4124,7 +4055,7 @@ state 156
     LLAVEDER        reduce using rule 30 (functionstmt -> FUNC ID funcparams functype LLAVEIZQ block LLAVEDER .)
 
 
-state 157
+state 155
 
     (36) paramsList -> paramsList COMA ID DOSPTS . type
     (42) type -> . NUMBER
@@ -4132,14 +4063,14 @@ state 157
     (44) type -> . STRING
     (45) type -> . BOOL
 
-    NUMBER          shift and go to state 83
-    FLOAT           shift and go to state 84
-    STRING          shift and go to state 85
-    BOOL            shift and go to state 86
+    NUMBER          shift and go to state 82
+    FLOAT           shift and go to state 83
+    STRING          shift and go to state 84
+    BOOL            shift and go to state 85
 
-    type                           shift and go to state 164
+    type                           shift and go to state 162
 
-state 158
+state 156
 
     (35) attributeList -> ID DOSPTS type PYC .
 
@@ -4147,14 +4078,14 @@ state 158
     ID              reduce using rule 35 (attributeList -> ID DOSPTS type PYC .)
 
 
-state 159
+state 157
 
     (34) attributeList -> attributeList ID DOSPTS type . PYC
 
-    PYC             shift and go to state 165
+    PYC             shift and go to state 163
 
 
-state 160
+state 158
 
     (24) interfaceContent -> ID DOSPTS . expression
     (48) expression -> . expression MAS expression
@@ -4178,9 +4109,8 @@ state 160
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -4189,24 +4119,24 @@ state 160
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 166
+    expression                     shift and go to state 164
     listArray                      shift and go to state 43
 
-state 161
+state 159
 
     (22) interdeclaration -> VAR ID DOSPTS ID IG LLAVEIZQ interfaceContent LLAVEDER . PYC
 
-    PYC             shift and go to state 167
+    PYC             shift and go to state 165
 
 
-state 162
+state 160
 
     (23) interfaceContent -> interfaceContent COMA . ID DOSPTS expression
 
-    ID              shift and go to state 168
+    ID              shift and go to state 166
 
 
-state 163
+state 161
 
     (21) arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression . PYC
     (48) expression -> expression . MAS expression
@@ -4223,7 +4153,7 @@ state 163
     (59) expression -> expression . OR expression
     (62) expression -> expression . TERN expression DOSPTS expression
 
-    PYC             shift and go to state 169
+    PYC             shift and go to state 167
     MAS             shift and go to state 58
     MENOS           shift and go to state 59
     POR             shift and go to state 60
@@ -4239,7 +4169,7 @@ state 163
     TERN            shift and go to state 70
 
 
-state 164
+state 162
 
     (36) paramsList -> paramsList COMA ID DOSPTS type .
 
@@ -4247,7 +4177,7 @@ state 164
     COMA            reduce using rule 36 (paramsList -> paramsList COMA ID DOSPTS type .)
 
 
-state 165
+state 163
 
     (34) attributeList -> attributeList ID DOSPTS type PYC .
 
@@ -4255,7 +4185,7 @@ state 165
     ID              reduce using rule 34 (attributeList -> attributeList ID DOSPTS type PYC .)
 
 
-state 166
+state 164
 
     (24) interfaceContent -> ID DOSPTS expression .
     (48) expression -> expression . MAS expression
@@ -4289,7 +4219,7 @@ state 166
     TERN            shift and go to state 70
 
 
-state 167
+state 165
 
     (22) interdeclaration -> VAR ID DOSPTS ID IG LLAVEIZQ interfaceContent LLAVEDER PYC .
 
@@ -4307,14 +4237,14 @@ state 167
     LLAVEDER        reduce using rule 22 (interdeclaration -> VAR ID DOSPTS ID IG LLAVEIZQ interfaceContent LLAVEDER PYC .)
 
 
-state 168
+state 166
 
     (23) interfaceContent -> interfaceContent COMA ID . DOSPTS expression
 
-    DOSPTS          shift and go to state 170
+    DOSPTS          shift and go to state 168
 
 
-state 169
+state 167
 
     (21) arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .
 
@@ -4332,7 +4262,7 @@ state 169
     LLAVEDER        reduce using rule 21 (arraydeclaration -> VAR ID DOSPTS type CORIZQ CORDER IG expression PYC .)
 
 
-state 170
+state 168
 
     (23) interfaceContent -> interfaceContent COMA ID DOSPTS . expression
     (48) expression -> . expression MAS expression
@@ -4356,9 +4286,8 @@ state 170
     (66) expression -> . CORIZQ expressionList CORDER
     (67) expression -> . ID PARIZQ expressionList PARDER
     (68) expression -> . ID PARIZQ PARDER
-    (69) listArray -> . listArray CORIZQ expression CORDER
-    (70) listArray -> . listArray PUNTO ID
-    (71) listArray -> . ID
+    (69) listArray -> . ID CORIZQ expression CORDER
+    (70) listArray -> . ID
 
     NOT             shift and go to state 39
     PARIZQ          shift and go to state 40
@@ -4367,10 +4296,10 @@ state 170
     CORIZQ          shift and go to state 44
     ID              shift and go to state 45
 
-    expression                     shift and go to state 171
+    expression                     shift and go to state 169
     listArray                      shift and go to state 43
 
-state 171
+state 169
 
     (23) interfaceContent -> interfaceContent COMA ID DOSPTS expression .
     (48) expression -> expression . MAS expression
@@ -4419,6 +4348,19 @@ WARNING: shift/reduce conflict for DIF in state 71 resolved as shift
 WARNING: shift/reduce conflict for AND in state 71 resolved as shift
 WARNING: shift/reduce conflict for OR in state 71 resolved as shift
 WARNING: shift/reduce conflict for TERN in state 71 resolved as shift
+WARNING: shift/reduce conflict for MAS in state 103 resolved as shift
+WARNING: shift/reduce conflict for MENOS in state 103 resolved as shift
+WARNING: shift/reduce conflict for POR in state 103 resolved as shift
+WARNING: shift/reduce conflict for DIVIDIDO in state 103 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 103 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 103 resolved as shift
+WARNING: shift/reduce conflict for MAYORIG in state 103 resolved as shift
+WARNING: shift/reduce conflict for MENORIG in state 103 resolved as shift
+WARNING: shift/reduce conflict for IGIG in state 103 resolved as shift
+WARNING: shift/reduce conflict for DIF in state 103 resolved as shift
+WARNING: shift/reduce conflict for AND in state 103 resolved as shift
+WARNING: shift/reduce conflict for OR in state 103 resolved as shift
+WARNING: shift/reduce conflict for TERN in state 103 resolved as shift
 WARNING: shift/reduce conflict for MAS in state 104 resolved as shift
 WARNING: shift/reduce conflict for MENOS in state 104 resolved as shift
 WARNING: shift/reduce conflict for POR in state 104 resolved as shift
@@ -4432,29 +4374,16 @@ WARNING: shift/reduce conflict for DIF in state 104 resolved as shift
 WARNING: shift/reduce conflict for AND in state 104 resolved as shift
 WARNING: shift/reduce conflict for OR in state 104 resolved as shift
 WARNING: shift/reduce conflict for TERN in state 104 resolved as shift
-WARNING: shift/reduce conflict for MAS in state 105 resolved as shift
-WARNING: shift/reduce conflict for MENOS in state 105 resolved as shift
-WARNING: shift/reduce conflict for POR in state 105 resolved as shift
-WARNING: shift/reduce conflict for DIVIDIDO in state 105 resolved as shift
-WARNING: shift/reduce conflict for MAYOR in state 105 resolved as shift
-WARNING: shift/reduce conflict for MENOR in state 105 resolved as shift
-WARNING: shift/reduce conflict for MAYORIG in state 105 resolved as shift
-WARNING: shift/reduce conflict for MENORIG in state 105 resolved as shift
-WARNING: shift/reduce conflict for IGIG in state 105 resolved as shift
-WARNING: shift/reduce conflict for DIF in state 105 resolved as shift
-WARNING: shift/reduce conflict for AND in state 105 resolved as shift
-WARNING: shift/reduce conflict for OR in state 105 resolved as shift
-WARNING: shift/reduce conflict for TERN in state 105 resolved as shift
-WARNING: shift/reduce conflict for MAS in state 145 resolved as shift
-WARNING: shift/reduce conflict for MENOS in state 145 resolved as shift
-WARNING: shift/reduce conflict for POR in state 145 resolved as shift
-WARNING: shift/reduce conflict for DIVIDIDO in state 145 resolved as shift
-WARNING: shift/reduce conflict for MAYOR in state 145 resolved as shift
-WARNING: shift/reduce conflict for MENOR in state 145 resolved as shift
-WARNING: shift/reduce conflict for MAYORIG in state 145 resolved as shift
-WARNING: shift/reduce conflict for MENORIG in state 145 resolved as shift
-WARNING: shift/reduce conflict for IGIG in state 145 resolved as shift
-WARNING: shift/reduce conflict for DIF in state 145 resolved as shift
-WARNING: shift/reduce conflict for AND in state 145 resolved as shift
-WARNING: shift/reduce conflict for OR in state 145 resolved as shift
-WARNING: shift/reduce conflict for TERN in state 145 resolved as shift
+WARNING: shift/reduce conflict for MAS in state 143 resolved as shift
+WARNING: shift/reduce conflict for MENOS in state 143 resolved as shift
+WARNING: shift/reduce conflict for POR in state 143 resolved as shift
+WARNING: shift/reduce conflict for DIVIDIDO in state 143 resolved as shift
+WARNING: shift/reduce conflict for MAYOR in state 143 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 143 resolved as shift
+WARNING: shift/reduce conflict for MAYORIG in state 143 resolved as shift
+WARNING: shift/reduce conflict for MENORIG in state 143 resolved as shift
+WARNING: shift/reduce conflict for IGIG in state 143 resolved as shift
+WARNING: shift/reduce conflict for DIF in state 143 resolved as shift
+WARNING: shift/reduce conflict for AND in state 143 resolved as shift
+WARNING: shift/reduce conflict for OR in state 143 resolved as shift
+WARNING: shift/reduce conflict for TERN in state 143 resolved as shift

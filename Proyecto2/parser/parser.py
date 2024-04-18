@@ -454,14 +454,11 @@ def p_expression_call_function(t):
         t[0] = Call(params.line, params.column, t[1], [])
 
 def p_expression_list_array(t):
-    '''listArray : listArray CORIZQ expression CORDER
-                | listArray PUNTO ID
+    '''listArray : ID CORIZQ expression CORDER
                 | ID'''
     params = get_params(t)
-    if len(t) > 4:
+    if len(t) > 3:
         t[0] = ArrayAccess(params.line, params.column, t[1], t[3])
-    elif len(t) > 3:
-        t[0] = InterfaceAccess(params.line, params.column, t[1], t[3])
     else:
         t[0] = Access(params.line, params.column, t[1])
 
