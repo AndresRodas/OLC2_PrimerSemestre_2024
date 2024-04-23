@@ -41,7 +41,6 @@ class Generator:
 
     def new_temp(self):
         self.Temporal += 4
-        #self.TempList.append(self.Temporal)
         return self.Temporal
 
     def new_label(self):
@@ -72,6 +71,30 @@ class Generator:
 
     def add_slli(self, target, left, right):
         self.Code.append(f"\tslli {target}, {left}, {right}\n")
+
+    def add_blt(self, left, right, target):
+        self.Code.append(f"\tblt {left}, {right}, {target}\n")
+
+    def add_bgt(self, left, right, target):
+        self.Code.append(f"\tbgt {left}, {right}, {target}\n")
+
+    def add_bge(self, left, right, target):
+        self.Code.append(f"\tbge {left}, {right}, {target}\n")
+
+    def add_blez(self, left, right, target):
+        self.Code.append(f"\tblez {left}, {right}, {target}\n")
+
+    def add_beq(self, left, right, target):
+        self.Code.append(f"\tbeq {left}, {right}, {target}\n")
+
+    def add_bne(self, left, right, target):
+        self.Code.append(f"\tbne {left}, {right}, {target}\n")
+
+    def add_jump(self, lvl):
+        self.Code.append(f"\tj {lvl}\n")
+
+    def new_body_label(self, lvl):
+        self.Code.append(f"\t{lvl}:\n")
 
     def add_move(self, left, right):
         self.Code.append(f"\tmv {left}, {right}\n")

@@ -42,6 +42,7 @@ reserved_words = {
     'string': 'STRING',
     'bool': 'BOOL',
     'if' : 'IF',
+    'else' : 'ELSE',
     'while' : 'WHILE',
     'break' : 'BREAK',
     'continue' : 'CONTINUE',
@@ -215,9 +216,13 @@ def p_instruction_console(t):
     t[0] = Print(params.line, params.column, t[5])
 
 def p_instruction_if(t):
-    'ifinstruction : IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER'
+    '''ifinstruction : IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER ELSE LLAVEIZQ block LLAVEDER
+                    | IF PARIZQ expression PARDER LLAVEIZQ block LLAVEDER'''
     params = get_params(t)
-    t[0] = If(params.line, params.column, t[3], t[6])
+    if len(t) > 8:
+        t[0] = If(params.line, params.column, t[3], t[6], t[10])
+    else:
+        t[0] = If(params.line, params.column, t[3], t[6], None)
 
 def p_instruction_while(t):
     'whileinstruction : WHILE PARIZQ expression PARDER LLAVEIZQ block LLAVEDER'

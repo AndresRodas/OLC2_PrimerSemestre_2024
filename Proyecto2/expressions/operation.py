@@ -60,4 +60,90 @@ class Operation(Expression):
             gen.add_sw('t0', '0(t3)')
 
             return  Value(str(temp), True, ExpressionType.INTEGER, [], [], [])
+        
+        if self.operador == "<":
+            # Generando etiquetas
+            trueLvl = gen.new_label()
+            falseLvl = gen.new_label()
+            # Agregando condición
+            gen.add_blt('t1', 't2', trueLvl)
+            # Agregando salto
+            gen.add_jump(falseLvl)
+            # Result
+            result = Value("", False, ExpressionType.BOOLEAN, [], [], [])
+            result.truelvl.append(trueLvl)
+            result.falselvl.append(falseLvl)
+            return result
+
+        if self.operador == ">":
+            # Generando etiquetas
+            trueLvl = gen.new_label()
+            falseLvl = gen.new_label()
+            # Agregando condición
+            gen.add_bgt('t1', 't2', trueLvl)
+            # Agregando salto
+            gen.add_jump(falseLvl)
+            # Result
+            result = Value("", False, ExpressionType.BOOLEAN, [], [], [])
+            result.truelvl.append(trueLvl)
+            result.falselvl.append(falseLvl)
+            return result
+        
+        
+        if self.operador == ">=":
+            # Generando etiquetas
+            trueLvl = gen.new_label()
+            falseLvl = gen.new_label()
+            # Agregando condición
+            gen.add_bge('t1', 't2', trueLvl)
+            # Agregando salto
+            gen.add_jump(falseLvl)
+            # Result
+            result = Value("", False, ExpressionType.BOOLEAN, [], [], [])
+            result.truelvl.append(trueLvl)
+            result.falselvl.append(falseLvl)
+            return result
+
+        if self.operador == "<=":
+            # Generando etiquetas
+            trueLvl = gen.new_label()
+            falseLvl = gen.new_label()
+            # Agregando condición
+            gen.add_blez('t1', 't2', trueLvl)
+            # Agregando salto
+            gen.add_jump(falseLvl)
+            # Result
+            result = Value("", False, ExpressionType.BOOLEAN, [], [], [])
+            result.truelvl.append(trueLvl)
+            result.falselvl.append(falseLvl)
+            return result
+        
+        if self.operador == "==":
+            # Generando etiquetas
+            trueLvl = gen.new_label()
+            falseLvl = gen.new_label()
+            # Agregando condición
+            gen.add_beq('t1', 't2', trueLvl)
+            # Agregando salto
+            gen.add_jump(falseLvl)
+            # Result
+            result = Value("", False, ExpressionType.BOOLEAN, [], [], [])
+            result.truelvl.append(trueLvl)
+            result.falselvl.append(falseLvl)
+            return result
+        
+        if self.operador == "!=":
+            # Generando etiquetas
+            trueLvl = gen.new_label()
+            falseLvl = gen.new_label()
+            # Agregando condición
+            gen.add_bne('t1', 't2', trueLvl)
+            # Agregando salto
+            gen.add_jump(falseLvl)
+            # Result
+            result = Value("", False, ExpressionType.BOOLEAN, [], [], [])
+            result.truelvl.append(trueLvl)
+            result.falselvl.append(falseLvl)
+            return result
+
         return None
